@@ -89,7 +89,7 @@
   <h2>Request early access</h2>
   <p class="section-text">Tell us a bit about yourself and we’ll follow up with next steps.</p>
   <div class="contact-inner">
-    <form name="early-access" id="early-access-form" method="POST" data-netlify="true" action="/?form-success=1" netlify-honeypot="bot-field">
+    <form name="early-access" id="early-access-form" method="POST" data-netlify="true" action="#" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="early-access">
       <p class="form-row" style="position:absolute;left:-9999px" aria-hidden="true"><label>Don’t fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="form-row">
@@ -115,36 +115,68 @@
         <textarea id="contact-message" name="message" required placeholder="e.g., schedule a demo, pricing, or specific features…"></textarea>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn-cta">Submit</button>
+        <button type="submit" class="btn-cta" id="form-submit-btn">Submit</button>
       </div>
     </form>
     <div class="form-success" id="form-success" aria-live="polite">
       <p>Thank you. We’ve received your request and will email you at the address you provided.</p>
+    </div>
+    <div class="form-error" id="form-error" aria-live="polite" style="display:none;max-width:420px;margin:1rem auto 0;padding:1rem;background:rgba(196,112,75,.1);border:1px solid var(--terracotta);border-radius:12px;color:var(--charcoal);font-weight:500;">
+      <p style="margin:0;">Something went wrong. Please try again or email us directly.</p>
     </div>
   </div>
 </section>
 
 <script>
 (function(){
-  // Query param works after Netlify redirect (hash is not sent to server and gets lost)
-  var params = new URLSearchParams(window.location.search);
-  var isSuccess = params.get('form-success') === '1' || window.location.hash === '#form-success';
-  if (isSuccess) {
-    var form = document.getElementById('early-access-form');
-    var success = document.getElementById('form-success');
+  var form = document.getElementById('early-access-form');
+  var successEl = document.getElementById('form-success');
+  var errorEl = document.getElementById('form-error');
+  var submitBtn = document.getElementById('form-submit-btn');
+
+  function showSuccess() {
     if (form) form.style.display = 'none';
-    if (success) {
-      success.classList.add('visible');
-      success.setAttribute('role', 'status');
-      requestAnimationFrame(function(){
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
+    if (errorEl) errorEl.style.display = 'none';
+    if (successEl) {
+      successEl.classList.add('visible');
+      successEl.setAttribute('role', 'status');
+      requestAnimationFrame(function(){ successEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
     }
-    // Replace URL with #form-success so refresh doesn't show success again with ?form-success=1
-    if (params.has('form-success')) {
-      history.replaceState(null, '', window.location.pathname + '#form-success');
-    }
+    history.replaceState(null, '', (window.location.pathname || '/') + '#form-success');
   }
+
+  // Show success when page loads with #form-success (e.g. user bookmarked or shared)
+  if (window.location.hash === '#form-success') {
+    showSuccess();
+    return;
+  }
+
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (errorEl) errorEl.style.display = 'none';
+    if (!submitBtn) return;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    var body = new FormData(form);
+    var url = window.location.pathname || '/';
+
+    fetch(url, { method: 'POST', body: body })
+      .then(function(res) {
+        if (res.ok || res.redirected) {
+          showSuccess();
+        } else {
+          throw new Error('Submit failed');
+        }
+      })
+      .catch(function() {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit'; }
+        if (errorEl) errorEl.style.display = 'block';
+        if (errorEl) errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+  });
 })();
 </script>
 <footer><div class="logo">prax<span>note</span></div><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">HIPAA Compliance</a><a href="#">Contact</a><a href="#">Blog</a></div><div>© 2026 Praxnote. All rights reserved.</div></footer>
