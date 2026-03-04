@@ -89,7 +89,7 @@
   <h2>Request early access</h2>
   <p class="section-text">Tell us a bit about yourself and we’ll follow up with next steps.</p>
   <div class="contact-inner">
-    <form name="early-access" id="early-access-form" method="POST" data-netlify="true" action="/#form-success" netlify-honeypot="bot-field">
+    <form name="early-access" id="early-access-form" method="POST" data-netlify="true" action="/?form-success=1" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="early-access">
       <p class="form-row" style="position:absolute;left:-9999px" aria-hidden="true"><label>Don’t fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="form-row">
@@ -126,18 +126,23 @@
 
 <script>
 (function(){
-  var hash = window.location.hash;
-  if (hash === '#form-success') {
+  // Query param works after Netlify redirect (hash is not sent to server and gets lost)
+  var params = new URLSearchParams(window.location.search);
+  var isSuccess = params.get('form-success') === '1' || window.location.hash === '#form-success';
+  if (isSuccess) {
     var form = document.getElementById('early-access-form');
     var success = document.getElementById('form-success');
     if (form) form.style.display = 'none';
     if (success) {
       success.classList.add('visible');
       success.setAttribute('role', 'status');
-      // Scroll success message into view (e.g. after Netlify redirect)
       requestAnimationFrame(function(){
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
+    }
+    // Replace URL with #form-success so refresh doesn't show success again with ?form-success=1
+    if (params.has('form-success')) {
+      history.replaceState(null, '', window.location.pathname + '#form-success');
     }
   }
 })();
