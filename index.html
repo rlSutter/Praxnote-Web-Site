@@ -131,7 +131,14 @@
     var form = document.getElementById('early-access-form');
     var success = document.getElementById('form-success');
     if (form) form.style.display = 'none';
-    if (success) success.classList.add('visible');
+    if (success) {
+      success.classList.add('visible');
+      success.setAttribute('role', 'status');
+      // Scroll success message into view (e.g. after Netlify redirect)
+      requestAnimationFrame(function(){
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
   }
 })();
 </script>
