@@ -1,0 +1,323 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroVisual from '../components/HeroVisual.astro';
+import SkillMock from '../components/SkillMock.astro';
+import CTASection from '../components/CTASection.astro';
+
+const pillars = [
+  {
+    title: 'Clinician control over AI output',
+    body: 'Every AI draft is a starting point. Skills are editable templates. Clinicians sign every document. The AI is your scribe, not your clinician.',
+  },
+  {
+    title: 'Defense-grade privacy',
+    body: 'Encrypted at rest. No third-party AI proxies. No Google Fonts CDN. Optional client-side offline vault. GDPR and PIPEDA right-to-erasure.',
+  },
+  {
+    title: 'Modality breadth without bloat',
+    body: 'SOAP, DAP, BIRP, narrative, PBT/EEMM, CBT, DBT, standard goals-based, all from one note interface. Skills make the format, not your code.',
+  },
+];
+
+const personas = [
+  {
+    title: 'Solo clinicians',
+    body: 'Get your evenings back. Drafts in minutes. Your voice, kept.',
+    href: '/solutions/solo-clinicians',
+  },
+  {
+    title: 'Group practices',
+    body: 'Scale supervision and billing without sacrificing clinical oversight.',
+    href: '/solutions/group-practices',
+  },
+  {
+    title: 'Supervisors',
+    body: 'A queue built for thirty-note Fridays. Approve, return, flag. Keyboard-first.',
+    href: '/solutions/supervisors',
+  },
+  {
+    title: 'Practice administrators',
+    body: 'Calendars, intakes, consents, residency, audit. The operations seat is first-class.',
+    href: '/solutions/practice-admins',
+  },
+];
+---
+<BaseLayout
+  title="Notes in minutes. Nuance intact. Control yours."
+  description="Praxnote is a HIPAA-grade clinical workspace for behavioral health. AI drafts session notes, treatment plans, and client letters from clinician-specified context, without flattening clinical nuance or sacrificing your control."
+>
+  <section class="hero wash">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="badge">Now in private beta</span>
+        <h1>Notes in minutes.<br/><em>Nuance intact.</em><br/>Control yours.</h1>
+        <p class="lede">
+          Praxnote is the clinical workspace for behavioral health. AI drafts session notes,
+          treatment plans, and client documents from the context <em>you</em> specify, never
+          replacing your clinical judgment, never trained on your charts, never reaching PHI
+          without your consent.
+        </p>
+        <div class="hero-actions">
+          <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+          <a href="/product" class="btn btn-ghost">See the platform →</a>
+        </div>
+        <p class="hero-fineprint">
+          For solo and group practices in the US and Canada · BAA available · GDPR and PIPEDA workflows shipped
+        </p>
+      </div>
+      <div class="hero-visual-wrap">
+        <HeroVisual />
+      </div>
+    </div>
+  </section>
+
+  <aside class="trust-line">
+    <div class="container">
+      <p>Encrypted by default. BAA available. GDPR and PIPEDA workflows shipped. <a href="/security">No third-party AI proxies, no Google Fonts, no analytics.</a></p>
+    </div>
+  </aside>
+
+  <section class="pillars">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Three commitments</p>
+        <h2>Built into the architecture, not the brochure.</h2>
+      </header>
+
+      <ol class="pillar-row">
+        {pillars.map((p, i) => (
+          <li class="pillar-card">
+            <span class="pillar-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="showcase">
+    <div class="container">
+      <div class="showcase-grid">
+        <div class="showcase-text">
+          <p class="eyebrow">Show the prompt, not the magic</p>
+          <h2>Every AI draft starts here. <em>An editable plain-text file.</em></h2>
+          <p class="lede">
+            Most AI scribes hide their prompts. Praxnote's are plain-text files you can read
+            and change. When you customize a global skill for your practice, your edit
+            becomes the prompt every clinician on the team uses, immediately, until you
+            change it again.
+          </p>
+          <p>
+            Fourteen skills ship as global defaults: session notes, treatment plans (in five
+            formats), referral letters, discharge summaries, case conceptualizations, and more.
+            Practices override them as needed. Praxnote tracks the version of the skill in
+            effect for every draft.
+          </p>
+          <a href="/features/ai-skills" class="showcase-link">Read about AI skills →</a>
+        </div>
+        <div class="showcase-visual">
+          <SkillMock />
+          <p class="caption">A real Praxnote skill. Open in the product, customize, publish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="personas section-ink">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Who Praxnote is for</p>
+        <h2>Behavioral health, end to end.</h2>
+        <p class="lede">
+          From a solo clinician with twenty-five clients a week to a group practice with five
+          supervisors and a full operations team, every role is first-class.
+        </p>
+      </header>
+
+      <div class="grid grid-3 persona-grid">
+        {personas.map((p) => (
+          <a class="persona-card" href={p.href}>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+            <span class="persona-arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Ready to see it on your workflow?"
+    heading="Book a 30-minute demo on your real practice."
+    body="Bring a recent session you'd document, or a supervision queue, a billing batch, an erasure scenario. We'll walk Praxnote through the work you actually do."
+    primaryHref="/demo"
+    primaryLabel="Book a demo"
+    secondaryHref="/security"
+    secondaryLabel="Read the security overview"
+  />
+</BaseLayout>
+
+<style>
+  .hero { padding: clamp(3rem, 6vw, 5rem) 0 clamp(3rem, 5vw, 5rem); }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .hero-text { max-width: 580px; }
+  .hero-text h1 { margin: 1.25rem 0 1.5rem; }
+  .hero-text .lede { margin-bottom: 0; }
+
+  .hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-lg { padding: 1rem 1.9rem; font-size: 1rem; }
+
+  .hero-fineprint {
+    margin-top: 1.25rem;
+    color: var(--stone-500);
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 920px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual-wrap { order: -1; max-width: 460px; margin: 0 auto; }
+  }
+
+  /* One-sentence trust band */
+  .trust-line {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    background: var(--paper-warm);
+    padding: 1.1rem 0;
+  }
+  .trust-line p {
+    font-size: 0.95rem;
+    color: var(--stone-700);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .trust-line a {
+    color: var(--brand-teal-dark);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--hairline-strong);
+  }
+  .trust-line a:hover { border-bottom-color: var(--brand-teal); }
+
+  /* Three commitments */
+  .pillars { padding: clamp(3.5rem, 6vw, 5.5rem) 0; }
+  .section-head { max-width: 720px; margin-bottom: 2.5rem; }
+  .section-head .lede { margin-top: 1rem; }
+
+  .pillar-row {
+    list-style: none;
+    counter-reset: pillar;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .pillar-card {
+    padding: 2rem 1.75rem 1.75rem 0;
+    margin-right: 1.75rem;
+    border-right: 1px solid var(--hairline);
+    background: transparent;
+  }
+  .pillar-card:last-child { border-right: 0; margin-right: 0; }
+  .pillar-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-variation-settings: 'opsz' 48, 'SOFT' 30;
+    color: var(--brand-teal);
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+  }
+  .pillar-card h3 { margin-bottom: 0.6rem; max-width: 18ch; }
+  .pillar-card p { color: var(--stone-600); font-size: 0.98rem; line-height: 1.6; max-width: 38ch; }
+  @media (max-width: 920px) {
+    .pillar-row { grid-template-columns: 1fr; }
+    .pillar-card { padding: 1.5rem 0; margin-right: 0; border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .pillar-card:last-child { border-bottom: 0; }
+  }
+
+  /* Skill mock centerpiece */
+  .showcase {
+    padding: clamp(4rem, 7vw, 6.5rem) 0;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+  .showcase-text { max-width: 520px; }
+  .showcase-text h2 { margin: 0.4rem 0 1.25rem; }
+  .showcase-text .lede { margin-bottom: 1rem; color: var(--stone-700); }
+  .showcase-text p { color: var(--stone-700); line-height: 1.7; }
+  .showcase-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--brand-teal-dark);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--brand-teal-soft);
+    padding-bottom: 1px;
+  }
+  .showcase-link:hover { border-bottom-color: var(--brand-teal); }
+  .showcase-visual { display: flex; flex-direction: column; gap: 0.85rem; }
+  .showcase-visual .caption {
+    font-size: 0.85rem;
+    color: var(--stone-500);
+    margin: 0;
+    text-align: center;
+    font-style: italic;
+  }
+
+  @media (max-width: 920px) {
+    .showcase-grid { grid-template-columns: 1fr; }
+    .showcase-visual { order: 2; }
+  }
+
+  /* Personas dark band */
+  .personas .section-head { margin-bottom: 2.5rem; }
+  .persona-grid { margin-top: 1rem; }
+
+  .personas .persona-card {
+    background: rgba(250, 247, 242, 0.04);
+    border: 1px solid rgba(250, 247, 242, 0.08);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    text-decoration: none;
+    color: var(--paper);
+    transition: background 200ms ease, border-color 200ms ease;
+    position: relative;
+  }
+  .personas .persona-card:hover {
+    background: rgba(250, 247, 242, 0.07);
+    border-color: rgba(213, 196, 165, 0.3);
+  }
+  .personas .persona-card h3 { color: var(--paper); margin-bottom: 0.5rem; }
+  .personas .persona-card p { color: rgba(250, 247, 242, 0.65); font-size: 0.95rem; line-height: 1.55; }
+  .persona-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    color: var(--brand-teal-soft);
+    font-size: 1.1rem;
+  }
+</style>

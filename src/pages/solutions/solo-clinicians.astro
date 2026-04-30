@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+import Quote from '../../components/Quote.astro';
+---
+<BaseLayout
+  title="Praxnote for solo clinicians"
+  description="Get your evenings back. AI-drafted session notes, treatment plans, and client letters in your voice, with PHI never reaching a third-party AI proxy."
+>
+  <PageHeader
+    eyebrow="Solo clinicians"
+    title="Get your <em>evenings</em> back."
+    lede="You're seeing twenty-five clients a week. By Friday at 9 pm there are still six notes to write. Praxnote drafts them, in your format, in your voice. The time you spend on documentation is editing, not staring at a blank page."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/features/session-notes" class="btn btn-secondary">How session notes work</a>
+  </PageHeader>
+
+  <section class="story">
+    <div class="container container-narrow">
+      <p class="eyebrow">A common Friday</p>
+      <h2>Maria runs a private practice. Twenty-five clients a week. Six unfinished notes.</h2>
+      <p>
+        Maria records her sessions on her phone, or transcribes a brief summary inside Praxnote.
+        The system drafts SOAP notes in her preferred voice, "Maria shared" rather than "client
+        reported." She edits in the places that need her clinical impression, signs the note, and
+        moves on. Three to five minutes a note. Her Friday evening is hers again.
+      </p>
+    </div>
+  </section>
+
+  <section class="capabilities alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">What Praxnote does for a solo practice</p>
+        <h2>The full clinical workspace, sized for one.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>AI-drafted documentation</h4>
+          <p>Session notes from typed transcript or audio. Treatment plans in your modality. Referral, discharge, leave-of-absence letters. Case conceptualization. Every draft signed by you.</p>
+        </div>
+        <div class="card">
+          <h4>Client portal that clients use</h4>
+          <p>One-click sign-in links, no passwords. Self-scheduling, document upload, secure messaging. Multilingual. Generous touch targets sized for thumbs. Your clients won't email you their intake form.</p>
+        </div>
+        <div class="card">
+          <h4>Self-pay billing through Stripe</h4>
+          <p>Invoice per session. Payment links via SMS or email. Autopay with saved payment method. AR aging at a glance. Stripe at Stripe's rates, no platform markup.</p>
+        </div>
+        <div class="card">
+          <h4>Offline vault</h4>
+          <p>For home visits, school sessions, or rural settings. A PIN-locked vault on your device. Notes you write while offline queue up and sync the moment you reconnect. The chart goes where you go.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="container">
+      <Quote
+        quote="My referral letters used to take thirty minutes apiece. Now I spend that time on clinical thinking instead. The AI never sees the patient's name. It sees the question I asked."
+        author="Dr. Sarah M."
+        role="Licensed Clinical Psychologist"
+      />
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="See it on a real workflow"
+    heading="A demo for solo clinicians, on solo-clinician terms."
+    body="Bring a recent session you'd document. We'll draft the note, edit it together, and walk through scheduling, the portal, and billing, about thirty minutes."
+  />
+</BaseLayout>
+
+<style>
+  .story { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+  .story p { color: var(--stone-700); line-height: 1.7; max-width: 640px; }
+  .story h2 { margin: 0.5rem 0 1.5rem; }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  .quote-section { padding: clamp(2rem, 4vw, 4rem) 0; }
+  .quote-section .container { display: flex; justify-content: center; }
+</style>

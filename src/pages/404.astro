@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page not found" description="That page isn't here. Try the platform overview or book a demo." noindex>
+  <section class="notfound wash">
+    <div class="container container-narrow text-center">
+      <p class="eyebrow">404</p>
+      <h1>That page doesn't appear to exist.</h1>
+      <p class="lede">
+        The link may have moved, or it never existed. From here you can read the
+        <a href="/product">platform overview</a>, learn how
+        <a href="/features/ai-skills">AI skills</a> work, or
+        <a href="/demo">book a demo</a>.
+      </p>
+      <div class="nf-actions">
+        <a href="/" class="btn btn-primary">Go home</a>
+        <a href="/demo" class="btn btn-secondary">Book a demo</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound { padding: clamp(5rem, 10vw, 8rem) 0; text-align: center; }
+  .notfound .lede { margin: 1.5rem auto 0; }
+  .nf-actions { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+</style>

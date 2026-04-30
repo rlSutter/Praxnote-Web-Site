@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/early-access"
+  to = "/demo"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; form-action 'self' https://*.netlify.app; base-uri 'self'; frame-ancestors 'none'; object-src 'none'"

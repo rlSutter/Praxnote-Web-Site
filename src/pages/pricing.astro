@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout
+  title="Pricing"
+  description="Praxnote prices by conversation. The shape: per active clinician, AI use included up to a generous monthly limit, no per-client charging, no markup on card processing."
+>
+  <PageHeader
+    eyebrow="Pricing"
+    title="Built around how your practice actually runs."
+    lede="Praxnote is in private beta. The right number for your practice depends on a handful of specifics, so we don't post a price list that would be wrong for most of the people reading it."
+  />
+
+  <section class="position">
+    <div class="container container-narrow">
+      <p class="position-paragraph">
+        Praxnote prices by conversation, not by table. The right number for your practice
+        depends on how many clinicians you'll have using it, whether you want it running
+        on your own servers, and which other tools we need to connect to. We'd rather
+        give you an accurate quote on a 20-minute call than post one that's wrong for
+        half the people reading this page. What stays the same in every quote: we charge
+        per active clinician, AI use is included up to a generous monthly limit, we
+        never charge per client, and we don't add any markup on top of what your card
+        processor charges. The principles below are what we hold to. The numbers we
+        discuss when we know your practice.
+      </p>
+
+      <div class="position-cta">
+        <a href="/demo" class="btn btn-primary btn-lg">Book a 20-minute call</a>
+        <span class="muted">Replies within one business day. No marketing list.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-principles">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">How we think about pricing</p>
+        <h2>Pricing should reflect the value, not the leverage.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>What we won't do</h4>
+          <ul class="checks">
+            <li><strong>Per-client pricing.</strong> Charging per chart pushes practices to neglect low-revenue clients. Wrong incentive.</li>
+            <li><strong>Cheap intro, steep renewal.</strong> Pricing that triples a year in. Wrong relationship.</li>
+            <li><strong>Charging the same whether you use the AI a little or a lot.</strong> A clinician who uses the assistant twice a week shouldn't pay the same as one who uses it twice a day.</li>
+            <li><strong>Hidden card-processing fees.</strong> Stripe charges what Stripe charges. We don't add anything on top.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>What we will do</h4>
+          <ul class="checks">
+            <li><strong>Charge per active clinician.</strong> If a clinician is on leave, we don't charge for that seat.</li>
+            <li><strong>Include AI use up to a generous monthly limit.</strong> Anything above is billed at our cost from the AI provider, with no markup.</li>
+            <li><strong>Pass card fees through.</strong> Whatever Stripe charges, that's what you pay. We don't add anything.</li>
+            <li><strong>Keep storage generous.</strong> Documents, transcripts, and recordings within reason. Anything past that, billed at our cost.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Frequently asked</p>
+        <h2>What people ask before signing.</h2>
+      </header>
+
+      <div class="faq-list">
+        <details>
+          <summary>Why is there no public price list?</summary>
+          <p>
+            Because the right price depends on the number of clinicians you'll have using it,
+            whether you want Praxnote running on your own servers, and which other tools we
+            need to connect to. We'd rather give you an accurate number on a short call than
+            post one that's wrong for half the practices reading this page.
+          </p>
+        </details>
+        <details>
+          <summary>Is there a free trial?</summary>
+          <p>
+            We're in private beta. Getting started includes a tailored evaluation period in
+            your real workflow, with hands-on help moving your existing data over.
+            <a href="/demo">Book a demo</a> and we'll walk through how that works.
+          </p>
+        </details>
+        <details>
+          <summary>Do you offer nonprofit, training-program, or community-clinic pricing?</summary>
+          <p>
+            Yes. <a href="/contact?topic=pricing-nonprofit">Get in touch</a> with details about
+            your program and we'll structure something that fits.
+          </p>
+        </details>
+        <details>
+          <summary>How is AI use counted?</summary>
+          <p>
+            By the number of drafts the AI helps you produce: session notes, treatment plans,
+            letters, and scoring an assessment. We track it at the practice level, so individual
+            clinicians don't see day-to-day caps. Anything past the monthly limit is billed at
+            our cost from the AI provider, with no markup.
+          </p>
+        </details>
+        <details>
+          <summary>What happens if I cancel?</summary>
+          <p>
+            You export everything: clients, notes, treatment plans, and billing history, in
+            standard formats you can take elsewhere. We hold encrypted backups for the six
+            years HIPAA requires, then we redact them. No lock-in. No exit penalty.
+          </p>
+        </details>
+        <details>
+          <summary>Do you sign a Business Associate Agreement?</summary>
+          <p>
+            Yes. A BAA is included on every paid plan. <a href="/security/baa">Request one here.</a>
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .position { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1rem, 2vw, 1.5rem); }
+  .position-paragraph {
+    font-family: var(--font-display);
+    font-variation-settings: 'opsz' 60, 'SOFT' 50;
+    font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+    line-height: 1.55;
+    color: var(--stone-800);
+    max-width: 60ch;
+    margin: 0;
+  }
+  .position-cta {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .btn-lg { padding: 1rem 1.9rem; font-size: 1rem; }
+  .pricing-principles { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .faq { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.5rem; max-width: 800px; }
+  details {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+  }
+  details[open] { border-color: var(--brand-teal-soft); }
+  details summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--stone-900);
+    font-variation-settings: 'opsz' 48, 'SOFT' 50;
+    list-style: none;
+    position: relative;
+    padding-right: 1.5rem;
+  }
+  details summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--brand-teal);
+    font-family: var(--font-sans);
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  details[open] summary::after { content: '−'; }
+  details p { margin-top: 0.85rem; color: var(--stone-600); font-size: 0.95rem; line-height: 1.6; }
+</style>

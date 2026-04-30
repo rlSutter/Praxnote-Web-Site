@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const formats = [
+  {
+    name: 'PBT / EEMM',
+    title: 'Process-Based Therapy · Extended Evolutionary Meta-Model',
+    body: 'A Hayes-aligned process matrix with biopsychosocial dimensions. Built on a fixed clinical structure for consistency across cases. The most rigorous of the five, used by clinicians who treat process more than diagnosis.',
+  },
+  {
+    name: 'Standard',
+    title: 'Goals-based with measurable objectives',
+    body: 'Goals, objectives, interventions, anticipated outcomes. A skill-driven structured format that produces consistent plans every time. The format most insurance auditors expect; the format most supervisors are trained on.',
+  },
+  {
+    name: 'CBT',
+    title: 'Cognitive-Behavioral Therapy',
+    body: 'Cognitive distortions, behavioral targets, homework assignments, relapse prevention. Tuned for clinicians whose interventions are predominantly CBT and who want the plan to reflect that lens.',
+  },
+  {
+    name: 'DBT',
+    title: 'Dialectical Behavior Therapy',
+    body: 'Skills modules (mindfulness, distress tolerance, emotion regulation, interpersonal effectiveness), behavioral chain analyses, diary card integration. For DBT-leaning practices and clinicians.',
+  },
+  {
+    name: 'Simple 3-month',
+    title: 'Plain-text narrative',
+    body: 'A skill that produces a coherent narrative, formatted automatically into something readable. For clinicians who prefer paragraphs over forms, or who want a plan a client can read at home.',
+  },
+];
+---
+<BaseLayout
+  title="Treatment plans"
+  description="Five treatment-plan formats, PBT/EEMM, standard goals-based, CBT, DBT, simple, backed by editable skills with plan-divergence detection."
+>
+  <PageHeader
+    eyebrow="Treatment plans"
+    title="Five formats. <em>One source of truth.</em>"
+    lede="Most platforms give you one treatment-plan format. Praxnote gives you five, and adding a sixth is a skill-template change, not a months-long product request. Pick the format that fits the modality, not the other way around."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/features/ai-skills" class="btn btn-secondary">How skills work</a>
+  </PageHeader>
+
+  <section class="formats">
+    <div class="container">
+      {formats.map((f, i) => (
+        <article class="format-card">
+          <div class="format-num"><span class="eyebrow">Format {i + 1}</span><span class="format-name">{f.name}</span></div>
+          <div class="format-body">
+            <h3>{f.title}</h3>
+            <p>{f.body}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="behaviors alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Behaviors that work across all five formats</p>
+        <h2>The plan is more than a document.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>Plan divergence detection</h4>
+          <p>When a session note is drafted, Praxnote compares the content against the active treatment plan and surfaces departures. Some are intentional, therapy is alive. Some warrant a flag. You decide.</p>
+        </div>
+        <div class="card">
+          <h4>AI-drafted from clinical context</h4>
+          <p>Treatment plans are drafted from intake, diagnoses, recent sessions, and active assessments. The clinician reviews, customizes, and signs. The AI is never the author.</p>
+        </div>
+        <div class="card">
+          <h4>Versioned and audit-logged</h4>
+          <p>Every change is preserved. Every signature event is recorded. Supervisors and practice administrators can review treatment-plan evolution across the course of care.</p>
+        </div>
+        <div class="card">
+          <h4>Practice-override skills</h4>
+          <p>If your practice's CBT plan doesn't quite match the Praxnote default, copy it and adjust. Edit the skill, publish. Other practices keep the default. No engineering involved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="See a treatment plan drafted live"
+    heading="A 30-minute demo, your modality, your client."
+    body="Bring an intake (real or sanitized) and we'll draft a PBT, CBT, DBT, standard, or simple plan from it, and walk through plan-divergence detection in a session note that follows."
+  />
+</BaseLayout>
+
+<style>
+  .formats { padding: clamp(2rem, 4vw, 3rem) 0; }
+  .format-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .format-card:last-child { border-bottom: 0; }
+  .format-num { display: flex; flex-direction: column; gap: 0.25rem; }
+  .format-name {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--brand-teal-dark);
+    line-height: 1.05;
+  }
+  .format-body h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
+  .format-body p { color: var(--stone-700); line-height: 1.7; max-width: 640px; }
+  @media (max-width: 700px) {
+    .format-card { grid-template-columns: 1fr; gap: 0.5rem; }
+    .format-num { flex-direction: row; align-items: baseline; gap: 0.85rem; }
+  }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+</style>

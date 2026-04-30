@@ -1,0 +1,78 @@
+---
+interface Props {
+  filename?: string;
+  badge?: string;
+}
+const { filename = 'treatment_plan_pbt.txt', badge = 'Practice override' } = Astro.props;
+---
+<div class="skill-mock" aria-label="A Praxnote skill, shown as the actual plain-text file">
+  <header>
+    <span class="dots" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="filename">{filename}</span>
+    {badge && <span class="badge">{badge}</span>}
+  </header>
+  <pre><code>## Role
+You are drafting a Process-Based Therapy
+treatment plan in the EEMM matrix format.
+
+## Inputs
+- Client intake summary
+- Recent session notes (last 6)
+- Diagnoses
+- Active assessments
+
+## Output
+Return a structured EEMM treatment plan
+with biopsychosocial dimensions filled out
+from clinical context.
+
+## Clinical guardrails
+- Never invent a diagnosis not in the chart.
+- Surface plan-divergence flags inline.
+- Use the client's preferred name.</code></pre>
+</div>
+
+<style>
+  .skill-mock {
+    background: var(--surface-ink);
+    color: var(--paper-warm);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(250, 247, 242, 0.1);
+    overflow: hidden;
+    box-shadow: var(--shadow-modal);
+  }
+  .skill-mock header {
+    background: rgba(250, 247, 242, 0.05);
+    padding: 0.85rem 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.85rem;
+    border-bottom: 1px solid rgba(250, 247, 242, 0.08);
+  }
+  .skill-mock .dots { display: flex; gap: 5px; }
+  .skill-mock .dots span {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: rgba(250, 247, 242, 0.18);
+  }
+  .skill-mock .filename {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 48, 'SOFT' 30;
+  }
+  .skill-mock .badge { background: var(--brand-teal); color: var(--paper); font-size: 0.7rem; }
+  .skill-mock pre {
+    margin: 0;
+    padding: 1.25rem 1.4rem;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(250, 247, 242, 0.82);
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .skill-mock pre code { color: inherit; background: transparent; padding: 0; }
+</style>

@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CTASection from '../components/CTASection.astro';
+---
+<BaseLayout
+  title="Platform overview"
+  description="Praxnote is one platform with three layers: documentation, workflow, and the platform underneath. Four roles share all of it."
+>
+  <PageHeader
+    eyebrow="The platform"
+    title="One workspace. <em>Three layers.</em> Four roles."
+    lede="Praxnote isn't a documentation tool with a billing add-on, or a billing tool with a documentation add-on. It's three layers built together, for the four roles that actually run a behavioral-health practice."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/security" class="btn btn-secondary">Security overview</a>
+  </PageHeader>
+
+  <section class="prose">
+    <div class="container container-narrow">
+      <p>
+        At the top is the <strong>clinical record</strong>. Fourteen editable AI skills draft
+        session notes in five formats, treatment plans in five formats, referral and
+        discharge letters, case conceptualizations, and assessment-results letters. Every
+        prompt is a plain-text file. Practices customize the ones they want to. Clinicians edit and
+        sign. The version of the skill in effect is captured with every draft.
+      </p>
+      <p>
+        In the middle are the <strong>surfaces a practice runs on</strong>. The supervision
+        queue with keyboard navigation. The calendar with availability blocks, self-scheduling,
+        and waitlist routing. Billing with per-therapist rates, payment links, and Stripe
+        autopay. The client portal with one-click sign-in links, secure messaging, document upload,
+        and multilingual access. None of these are bolt-ons. They share one audit log, one
+        security model, and one set of permissions.
+      </p>
+      <p>
+        Underneath is the <strong>substrate</strong>. Encryption at rest and in transit. An
+        activity log on every read and write. The right-to-erasure workflow that satisfies
+        GDPR and PIPEDA without breaking HIPAA's six-year retention. A multilingual portal
+        with a live translation system. The PIN-locked offline vault for clinicians whose
+        practice doesn't always have wifi. These layers don't have surfaces of their own.
+        They're the things the surfaces depend on.
+      </p>
+      <p>
+        Four first-class roles share all of it: therapist, supervisor, practice administrator,
+        and client. Each has its own permissions and its own navigation. A dual-role
+        therapist-admin (the way most group-practice owners actually work) gets two themes
+        and one identity, audit-logged accordingly.
+      </p>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="container">
+      <figure class="stack" aria-labelledby="stack-caption">
+        <div class="layer layer--top">
+          <div class="layer-rail">
+            <span class="layer-num">01</span>
+            <h3>Documentation</h3>
+          </div>
+          <div class="layer-body">
+            <p>14 editable AI skills · session notes (SOAP · DAP · BIRP · narrative · custom) · treatment plans (PBT/EEMM · standard · CBT · DBT · simple) · diagnoses · case conceptualization · referral, discharge, and leave-of-absence letters · the assessments suite</p>
+          </div>
+        </div>
+        <div class="layer layer--mid">
+          <div class="layer-rail">
+            <span class="layer-num">02</span>
+            <h3>Workflow</h3>
+          </div>
+          <div class="layer-body">
+            <p>supervision queue · scheduling and waitlist · per-therapist billing with Stripe autopay · client portal with one-click sign-in · email and SMS templates · session-type and CPT-rate management</p>
+          </div>
+        </div>
+        <div class="layer layer--bottom">
+          <div class="layer-rail">
+            <span class="layer-num">03</span>
+            <h3>Platform</h3>
+          </div>
+          <div class="layer-body">
+            <p>encryption at rest and in transit · activity log on every read and write · GDPR and PIPEDA right-to-erasure · multilingual portal with live translation · PIN-locked offline vault · audit-ready exports</p>
+          </div>
+        </div>
+        <figcaption id="stack-caption">Three layers, one platform. Same audit log, same encryption, same role model.</figcaption>
+      </figure>
+
+      <aside class="roles-rail">
+        <span class="rail-label">Four roles share all of it</span>
+        <ul>
+          <li><a href="/solutions/solo-clinicians">Therapist</a></li>
+          <li><a href="/solutions/supervisors">Supervisor</a></li>
+          <li><a href="/solutions/practice-admins">Practice admin</a></li>
+          <li><a href="/features/client-portal">Client</a></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  /* Long-form narrative */
+  .prose { padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(1.5rem, 3vw, 2.5rem); }
+  .prose p {
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    line-height: 1.75;
+    color: var(--stone-700);
+    margin: 0 0 1.5rem;
+    max-width: 64ch;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--stone-900); font-weight: 600; }
+
+  /* Layered diagram */
+  .diagram { padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(4rem, 7vw, 6rem); }
+  .stack {
+    margin: 0;
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .layer {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: center;
+    padding: 1.85rem clamp(1.5rem, 3vw, 2.25rem);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .layer:last-of-type { border-bottom: 0; }
+  .layer--top { background: var(--surface-card); }
+  .layer--mid { background: var(--paper-warm); }
+  .layer--bottom { background: var(--surface-ink); color: var(--paper-warm); border-bottom: 0; }
+  .layer-rail { display: flex; flex-direction: column; gap: 0.35rem; }
+  .layer-num {
+    font-family: var(--font-display);
+    font-variation-settings: 'opsz' 48, 'SOFT' 30;
+    font-size: 1rem;
+    color: var(--brand-teal);
+    letter-spacing: 0.04em;
+  }
+  .layer--bottom .layer-num { color: var(--brand-teal-soft); }
+  .layer-rail h3 {
+    font-size: 1.55rem;
+    line-height: 1.05;
+    color: var(--stone-900);
+    font-variation-settings: 'opsz' 96, 'SOFT' 30;
+    margin: 0;
+  }
+  .layer--bottom .layer-rail h3 { color: var(--paper); }
+  .layer-body p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--stone-700);
+    max-width: 60ch;
+  }
+  .layer--bottom .layer-body p { color: rgba(250, 247, 242, 0.72); }
+
+  .stack figcaption {
+    grid-column: 1 / -1;
+    padding: 1rem 1.5rem;
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+    font-size: 0.88rem;
+    color: var(--stone-500);
+    text-align: center;
+    font-style: italic;
+  }
+
+  @media (max-width: 720px) {
+    .layer { grid-template-columns: 1fr; gap: 0.85rem; padding: 1.5rem; }
+    .layer-rail { flex-direction: row; align-items: baseline; gap: 0.85rem; }
+  }
+
+  /* Roles rail (separate, after the stack) */
+  .roles-rail {
+    margin-top: 1.5rem;
+    padding: 1.25rem clamp(1.25rem, 2vw, 1.75rem);
+    background: var(--paper-warm);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .rail-label {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--stone-700);
+    font-variation-settings: 'opsz' 48, 'SOFT' 30;
+  }
+  .roles-rail ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+  }
+  .roles-rail li { font-size: 0.95rem; color: var(--stone-800); }
+  .roles-rail a {
+    color: var(--stone-800);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--hairline-strong);
+    padding-bottom: 1px;
+  }
+  .roles-rail a:hover { color: var(--brand-teal-dark); border-bottom-color: var(--brand-teal); }
+
+  @media (max-width: 720px) {
+    .roles-rail { grid-template-columns: 1fr; }
+  }
+</style>

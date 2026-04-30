@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+<BaseLayout
+  title="Client portal"
+  description="One-click sign-in links, self-scheduling, secure messaging, document upload, multilingual portal. Generous touch targets. Built to respect clients' time and attention."
+>
+  <PageHeader
+    eyebrow="Client portal"
+    title="Care that respects your client's time. <em>And privacy.</em>"
+    lede="Praxnote's portal is intentionally sparse, fast, and mobile-first. Clients sign in with a one-click link, no passwords. Multilingual. Generous touch targets. Eight pages, every one translated."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+  </PageHeader>
+
+  <section class="overview">
+    <div class="container">
+      <div class="overview-grid">
+        <div>
+          <h2>What clients can do.</h2>
+          <ul class="checks">
+            <li>Sign in with a one-click link from email or SMS, no password</li>
+            <li>View and self-schedule appointments against therapist availability</li>
+            <li>Reschedule or cancel within practice-defined policy</li>
+            <li>Send and receive secure messages with read receipts</li>
+            <li>Upload intake forms, insurance cards, and assessments</li>
+            <li>Complete assigned assessments (PHQ-9, GAD-7, more)</li>
+            <li>View invoices and pay through Stripe</li>
+            <li>Enroll in autopay with saved payment method</li>
+            <li>Switch between English and Spanish (or other languages on request)</li>
+          </ul>
+        </div>
+        <div class="mock">
+          <div class="mock-card">
+            <header>
+              <span class="mock-logo">prax<i>note</i></span>
+              <span class="badge">EN · ES</span>
+            </header>
+            <h4>Welcome back, Jordan</h4>
+            <p class="muted">You have one upcoming session and one outstanding form.</p>
+            <ul class="mock-list">
+              <li><strong>Tue 3:00 pm</strong> · Dr. Patel · Telehealth</li>
+              <li><strong>Form</strong> · Initial Intake (8 min)</li>
+              <li><strong>Assessment</strong> · PHQ-9 · ready to start</li>
+            </ul>
+            <button class="btn btn-primary">Complete intake</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="auth alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">How clients sign in</p>
+        <h2>One-click links. No passwords to remember, lose, or leak.</h2>
+        <p class="lede">
+          Praxnote sends the client a sign-in link by email or text. On our side,
+          the link is stored in a form we can't read back. Only the client's tap
+          on the original email or text opens the portal.
+        </p>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>How sign-in works</h4>
+          <ol class="num-list">
+            <li>Client requests access (or receives an invite from the clinician)</li>
+            <li>Praxnote sends a one-click sign-in link by email or text</li>
+            <li>Client taps the link, the portal opens, signed in</li>
+            <li>Client device can also enable a PIN-locked offline cache for low-connectivity contexts</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h4>Why this is safer than passwords</h4>
+          <p>Most password breaches happen because clients reuse passwords across services. One-click sign-in links don't have that failure mode, there's no shared secret to reuse.</p>
+          <p>For practices that prefer two-factor, we layer a text code or an authenticator-app code on top of the sign-in flow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="i18n">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Multilingual</p>
+        <h2>English and Spanish out of the box. More languages on request.</h2>
+        <p class="lede">
+          Every page of the client portal is translated. English and Spanish ship by
+          default. Practices serving clients in additional languages can add more, and
+          Praxnote remembers each client's preference between visits. Practice and admin
+          screens stay in English by design.
+        </p>
+      </header>
+
+      <ul class="checks">
+        <li>Each client's language preference is remembered between visits</li>
+        <li>Add more languages on request; English is always available as a fallback</li>
+        <li>Every portal screen is accessible, with generous touch targets sized for thumbs</li>
+        <li>Warm, calm palette tuned to meet accessibility-grade contrast standards</li>
+      </ul>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="See the portal end-to-end"
+    heading="Walk through a client's first day."
+    body="From the first sign-in link to appointment, intake, and first assessment, about ten minutes on the demo. The shape of the experience your clients will actually have."
+  />
+</BaseLayout>
+
+<style>
+  .overview { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+  .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .overview-grid h2 { margin-bottom: 1.25rem; }
+  @media (max-width: 920px) { .overview-grid { grid-template-columns: 1fr; } }
+
+  .mock {
+    background: var(--paper-warm);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mock-card {
+    background: var(--surface-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--hairline);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: var(--shadow-popover);
+  }
+  .mock-card header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .mock-logo { font-family: var(--font-display); font-size: 1.2rem; color: var(--brand-teal-dark); }
+  .mock-logo i { color: var(--brand-teal); font-style: italic; }
+  .mock-card h4 { font-family: var(--font-display); margin-bottom: 0.4rem; }
+  .mock-list { list-style: none; padding: 0; margin: 1.25rem 0 1.5rem; display: grid; gap: 0.7rem; }
+  .mock-list li { padding: 0.7rem 0.85rem; background: var(--paper-warm); border-radius: var(--radius); font-size: 0.88rem; color: var(--stone-700); }
+  .mock-list strong { color: var(--brand-teal-dark); margin-right: 0.4rem; }
+
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .section-head .lede { margin-top: 1rem; }
+  .num-list { padding-left: 1.25rem; color: var(--stone-700); }
+  .num-list li { margin-bottom: 0.5rem; line-height: 1.6; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.85rem; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+</style>

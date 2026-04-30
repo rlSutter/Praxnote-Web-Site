@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import DemoForm from '../components/DemoForm.astro';
+---
+<BaseLayout
+  title="Book a demo"
+  description="Book a 30-minute demo of Praxnote on your real workflow, documentation, supervision, billing, or all three. We tailor the demo to your role."
+>
+  <PageHeader
+    eyebrow="Book a demo"
+    title="Bring Praxnote into your real practice."
+    lede="Thirty minutes. Your role, your workflow. We'll show the parts that map to what you actually do, drafting a note, clearing a supervision queue, sending an invoice, running an erasure request."
+  />
+
+  <section class="demo-grid-section">
+    <div class="container">
+      <div class="demo-grid">
+        <div class="demo-form-side">
+          <h2>Tell us about your practice.</h2>
+          <p class="lede">
+            We reply within one business day with two or three time options. No marketing list,
+            no follow-up sequence, just the demo conversation.
+          </p>
+          <div class="form-wrap">
+            <DemoForm />
+          </div>
+        </div>
+        <aside class="demo-side">
+          <div class="card-warm">
+            <h3>What we cover</h3>
+            <ul class="checks">
+              <li>Drafting a session note from a transcript or recording</li>
+              <li>Editing a treatment plan in your preferred format (PBT, CBT, DBT, standard, simple)</li>
+              <li>Walking the supervision queue with keyboard navigation</li>
+              <li>Sending an invoice and enabling autopay</li>
+              <li>Running a GDPR / PIPEDA erasure request from request to redaction</li>
+              <li>Customizing an AI skill: reading the prompt, copying it for your practice, deploying the change</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Who's on the call</h3>
+            <p class="muted">
+              You'll meet someone from the Praxnote team, usually the founder for solo and small
+              group practices, or a clinical solutions partner for larger practices. No SDRs, no
+              gatekeeping demos.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Already a Praxnote customer?</h3>
+            <p class="muted">
+              Email <a href="mailto:support@praxnote.com">support@praxnote.com</a> and we'll
+              route you to the right person.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .demo-grid-section { padding-top: 0; }
+  .demo-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+  .demo-form-side .lede { margin: 0.85rem 0 2rem; }
+  .form-wrap {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  }
+  .demo-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: sticky;
+    top: 100px;
+  }
+  .demo-side h3 { font-size: 1.1rem; margin-bottom: 0.85rem; }
+  @media (max-width: 980px) {
+    .demo-grid { grid-template-columns: 1fr; }
+    .demo-side { position: static; }
+  }
+</style>

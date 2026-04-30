@@ -1,0 +1,36 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lede?: string;
+  align?: 'left' | 'center';
+}
+const { eyebrow, title, lede, align = 'left' } = Astro.props;
+---
+<section class:list={['page-header', 'wash', align === 'center' && 'text-center']}>
+  <div class="container">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1 set:html={title} />
+    {lede && <p class="lede">{lede}</p>}
+    <div class={align === 'center' ? 'header-actions center' : 'header-actions'}>
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-header {
+    padding: clamp(4rem, 8vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+  }
+  .page-header .lede { margin-top: 1.1rem; }
+  .header-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .header-actions.center { justify-content: center; }
+  .text-center { text-align: center; }
+  .text-center .lede { margin-left: auto; margin-right: auto; }
+</style>

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const templates = [
+  { name: 'SOAP session note', use: 'Traditional medical model · subjective / objective / assessment / plan' },
+  { name: 'DAP session note', use: 'Streamlined version common in counseling · data / assessment / plan' },
+  { name: 'BIRP session note', use: 'Behavioral-health-friendly · behavior / intervention / response / plan' },
+  { name: 'Standard treatment plan', use: 'Goals, objectives, interventions, anticipated outcomes' },
+  { name: 'PBT / EEMM treatment plan', use: 'Hayes-aligned process matrix with biopsychosocial dimensions' },
+  { name: 'CBT treatment plan', use: 'Cognitive distortions, behavioral targets, homework, relapse prevention' },
+  { name: 'DBT treatment plan', use: 'Skills modules, behavioral chain analyses, diary card integration' },
+  { name: 'Referral letter', use: 'Specialist referral with clinical context and request' },
+  { name: 'Discharge summary', use: 'Structured close-out narrative with next-steps' },
+  { name: 'Case conceptualization', use: 'Theoretical framework-driven, drawn from chart history' },
+];
+---
+<BaseLayout
+  title="Skill template gallery"
+  description="Free, customizable plain-text templates for session notes, treatment plans, referral letters, and more, directly from the Praxnote skill library."
+>
+  <PageHeader
+    eyebrow="Skill templates"
+    title="Free, editable, <em>yours to customize.</em>"
+    lede="Praxnote's clinical skills are plain-text files. We're publishing them here so any practice (Praxnote customer or not) can read them, learn from them, and adapt them. Coming soon: per-template downloads."
+  >
+    <a href="/demo" class="btn btn-primary">Book a demo</a>
+    <a href="/contact?topic=skill-templates" class="btn btn-secondary">Request the gallery</a>
+  </PageHeader>
+
+  <section class="gallery">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">In the gallery</p>
+        <h2>Ten templates, with more on the way.</h2>
+        <p class="lede">
+          We're staging the gallery for public download. In the meantime, every template
+          below is the active source for the corresponding skill in Praxnote, readable in
+          the product on a demo, and emailable to interested clinicians.
+        </p>
+      </header>
+
+      <div class="tpl-grid">
+        {templates.map((t) => (
+          <article class="tpl-card">
+            <h4>{t.name}</h4>
+            <p>{t.use}</p>
+            <span class="tpl-flag badge badge-stone">Coming soon</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Want one now?"
+    heading="Email us, we'll send the template directly."
+    body="The public gallery is being staged. In the meantime, tell us which template you'd like and we'll send it straight to your inbox."
+    primaryHref="/contact?topic=skill-templates"
+    primaryLabel="Request a template"
+    secondaryHref="/demo"
+    secondaryLabel="See it in the product"
+    variant="paper"
+  />
+</BaseLayout>
+
+<style>
+  .gallery { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 720px; margin-bottom: 2.5rem; }
+  .section-head .lede { margin-top: 1rem; }
+  .tpl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .tpl-card {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .tpl-card h4 { font-family: var(--font-display); font-size: 1.2rem; color: var(--brand-teal-dark); }
+  .tpl-card p { color: var(--stone-600); font-size: 0.92rem; line-height: 1.55; flex: 1; }
+  .tpl-flag { align-self: flex-start; }
+</style>

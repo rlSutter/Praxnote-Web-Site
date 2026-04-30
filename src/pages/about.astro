@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CTASection from '../components/CTASection.astro';
+---
+<BaseLayout
+  title="About Praxnote"
+  description="Praxnote is built for behavioral health by people who care about clinical nuance, defense-grade privacy, and the craft of documentation."
+>
+  <PageHeader
+    eyebrow="About"
+    title="A clinical workspace, finally on your side."
+    lede="Praxnote was built because the platforms behavioral health was supposed to settle for kept missing what mattered most, the clinician's voice, the practice's autonomy, and the client's privacy."
+  />
+
+  <section class="about-body">
+    <div class="container container-narrow">
+      <h2>Why we built it</h2>
+      <p>
+        Most clinical software treats documentation as a checkbox. Most AI scribes treat
+        clinical reasoning as a transcription problem. Both miss something fundamental:
+        documentation is part of the work. The summary you write helps you think about the
+        next session. The treatment plan you draft is a document of what you and the client
+        agreed on. The referral letter is, for many clients, the only thing that lands in
+        front of the next provider.
+      </p>
+      <p>
+        We built Praxnote because we wanted documentation to be respected, neither
+        outsourced to a black box nor shoehorned into a 2008 EHR. We wanted skills the
+        clinician could read and edit. We wanted privacy that wasn't policy-only. We wanted
+        modality breadth, not because every practice needs ten formats, but because forcing
+        a CBT clinician into SOAP-only is a small daily violence.
+      </p>
+
+      <h2>What we believe</h2>
+      <ol class="beliefs">
+        <li>
+          <strong>The clinician is the author.</strong> AI is the apprentice. Every document is signed.
+        </li>
+        <li>
+          <strong>Skills are readable.</strong> If you can't see the prompt, you can't trust the output.
+        </li>
+        <li>
+          <strong>Privacy is architecture.</strong> Encryption at rest, no third-party AI proxies, no analytics phone-homes by default.
+        </li>
+        <li>
+          <strong>Practices are different.</strong> A solo clinician and a fifty-therapist group don't need the same product wearing the same hat. They need shared substrate and different surfaces.
+        </li>
+        <li>
+          <strong>The client is a person.</strong> One-click sign-in. Multilingual. Generous touch targets. Mobile-first.
+        </li>
+        <li>
+          <strong>Compliance is a feature.</strong> HIPAA six-year retention, GDPR right-to-erasure, PIPEDA. Built-in workflows, not policy PDFs.
+        </li>
+      </ol>
+
+      <h2>How we work</h2>
+      <p>
+        Praxnote is built by a small team that talks to clinicians, supervisors, billers,
+        and clients every week. We ship continuously, document canonically, and treat the
+        platform like a clinical artifact in itself, versioned, audited, signed.
+      </p>
+      <p>
+        We're privately held and self-funded. We do not sell user data. We do not train on
+        your charts. We do not run third-party trackers, fonts, or AI proxies. These are not
+        marketing claims. They are architectural choices we make and re-make every week.
+      </p>
+
+      <h2>Where we are, where we're going</h2>
+      <p>
+        Praxnote serves behavioral health practices in the United States and Canada,
+        from solo clinicians to mid-size groups. Hospital-system EHR integrations, native
+        mobile apps, and group-session documentation are on the roadmap; we'll be honest about
+        what's shipped and what's planned. Read the
+        <a href="/security">security overview</a> for what's in production today.
+      </p>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Talk to the team"
+    heading="The fastest way to understand Praxnote is to see it."
+    body="A 30-minute walkthrough of your real workflow, with someone who can answer clinical, technical, and pricing questions in the same call."
+    primaryHref="/demo"
+    primaryLabel="Book a demo"
+    secondaryHref="/contact"
+    secondaryLabel="Send us a note"
+    variant="paper"
+  />
+</BaseLayout>
+
+<style>
+  .about-body { padding: clamp(2rem, 4vw, 4rem) 0; }
+  .about-body h2 {
+    margin: 2.5rem 0 1rem;
+    font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  }
+  .about-body p { color: var(--stone-700); line-height: 1.7; margin-bottom: 1rem; max-width: 660px; }
+  .beliefs {
+    list-style: none;
+    counter-reset: belief;
+    padding: 0;
+    margin: 1.25rem 0 1.5rem;
+    max-width: 660px;
+    border-top: 1px solid var(--hairline);
+  }
+  .beliefs li {
+    counter-increment: belief;
+    position: relative;
+    padding: 1.1rem 0 1.1rem 3rem;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 1rem;
+    color: var(--stone-700);
+    line-height: 1.65;
+  }
+  .beliefs li::before {
+    content: counter(belief, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 1.15rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--brand-teal);
+    font-variation-settings: 'opsz' 48, 'SOFT' 30;
+    letter-spacing: 0.02em;
+  }
+  .beliefs strong { color: var(--stone-900); font-weight: 600; }
+</style>

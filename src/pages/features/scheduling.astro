@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+<BaseLayout
+  title="Scheduling"
+  description="All-therapist calendars, availability blocks, waitlist management, calendar sync, and session-type management with CPT-coded sessions."
+>
+  <PageHeader
+    eyebrow="Scheduling"
+    title="The schedule, <em>without the spreadsheet.</em>"
+    lede="Praxnote's scheduling layer is built for the practice administrator who manages four therapists' calendars, the solo clinician who wants self-scheduling, and the supervisor who needs to see who's where."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+  </PageHeader>
+
+  <section class="capabilities">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">What it does</p>
+        <h2>Calendars that map to how the practice runs.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>All-therapist visibility</h4>
+          <p>Practice administrators see every therapist's calendar in one view. Therapists see their own. Supervisees see their supervisor's availability when scheduling joint sessions.</p>
+        </div>
+        <div class="card">
+          <h4>Availability blocks</h4>
+          <p>Therapists set windows of availability. Clients self-schedule against those windows from the portal. No back-and-forth about times.</p>
+        </div>
+        <div class="card">
+          <h4>Calendar sync</h4>
+          <p>Google Calendar today; more on the roadmap. Sync respects practice boundaries, your personal calendar stays separate from your practice availability.</p>
+        </div>
+        <div class="card">
+          <h4>Waitlist management</h4>
+          <p>Status flow: waiting → notified → converted/removed. Practice administrators see who's waiting, what they're waiting for, and how long it's been.</p>
+        </div>
+        <div class="card">
+          <h4>Session types</h4>
+          <p>CPT-coded sessions with per-therapist rate overrides. The same code can be billed at different rates by different licensures, cleanly.</p>
+        </div>
+        <div class="card">
+          <h4>Status icons</h4>
+          <p>Scheduled, signed, no-show, late-cancelled, therapist-cancelled. Each has its own icon on the calendar, at-a-glance status without a click.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="self-sched alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Self-scheduling</p>
+        <h2>Clients book against availability. Without a phone call.</h2>
+        <p class="lede">
+          From the portal: pick a session type, see open windows for the assigned therapist
+          (or any therapist for new clients), confirm. The portal uses ProgressSteps UX so
+          clients always know where they are.
+        </p>
+      </header>
+
+      <ul class="checks">
+        <li>Practice-defined cancellation policy enforces itself in the portal</li>
+        <li>SMS and email reminders configurable per practice</li>
+        <li>Late-cancel and no-show fees route to the billing layer if your practice charges them</li>
+        <li>Telehealth integrations on supported providers; native video on the roadmap</li>
+      </ul>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .capabilities { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .section-head .lede { margin-top: 1rem; }
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+</style>

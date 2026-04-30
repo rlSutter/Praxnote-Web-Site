@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Praxnote, for sales conversations, security questions, support, or partnerships."
+>
+  <PageHeader
+    eyebrow="Contact"
+    title="Talk to a real person."
+    lede="The Praxnote team reads every message. We respond within one business day."
+  />
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-form">
+          <h2>Send us a note.</h2>
+          <p class="muted">For demos, please use the demo form. It routes faster and asks the right questions.</p>
+
+          <form
+            name="contact"
+            id="contact-form"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/?form-success=contact"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="hp" aria-hidden="true"><input name="bot-field" tabindex="-1" autocomplete="off" /></div>
+
+            <div class="form-row">
+              <label for="c-name">Name <span class="required">*</span></label>
+              <input id="c-name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="form-row">
+              <label for="c-email">Email <span class="required">*</span></label>
+              <input id="c-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="form-row">
+              <label for="c-topic">What's this about?</label>
+              <select id="c-topic" name="topic">
+                <option value="">Select a topic</option>
+                <option>Sales question</option>
+                <option>Security or compliance question</option>
+                <option>Pricing</option>
+                <option>Existing customer support</option>
+                <option>Partnership / integration</option>
+                <option>Press</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="c-message">Message <span class="required">*</span></label>
+              <textarea id="c-message" name="message" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-lg" id="contact-submit">Send</button>
+            </div>
+          </form>
+
+          <div class="form-success" id="contact-success" role="status" aria-live="polite">
+            <strong>Thanks. We have your note.</strong>
+            <p>We'll reply within one business day.</p>
+          </div>
+          <div class="form-error" id="contact-error" role="alert" aria-live="polite">
+            Something went wrong. Email <a href="mailto:hello@praxnote.com">hello@praxnote.com</a> instead.
+          </div>
+        </div>
+
+        <aside class="contact-side">
+          <div class="card-warm">
+            <h3>Direct lines</h3>
+            <dl class="contact-dl">
+              <dt>Demos</dt>
+              <dd><a href="/demo">/demo</a></dd>
+              <dt>Sales</dt>
+              <dd><a href="mailto:hello@praxnote.com">hello@praxnote.com</a></dd>
+              <dt>Customer support</dt>
+              <dd><a href="mailto:support@praxnote.com">support@praxnote.com</a></dd>
+              <dt>Security disclosures</dt>
+              <dd><a href="mailto:security@praxnote.com">security@praxnote.com</a></dd>
+              <dt>Press</dt>
+              <dd><a href="mailto:press@praxnote.com">press@praxnote.com</a></dd>
+            </dl>
+          </div>
+
+          <div class="card">
+            <h3>BAA &amp; compliance</h3>
+            <p class="muted">
+              For a Business Associate Agreement, audit artifacts, or compliance documentation,
+              start with our <a href="/security">security overview</a> or
+              <a href="/security/baa">request a BAA</a> directly.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-section { padding-top: 0; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+  .contact-form { max-width: 560px; }
+  .contact-form .muted { margin-bottom: 1.5rem; }
+  .hp { position: absolute; left: -9999px; }
+  .contact-dl { margin: 0; }
+  .contact-dl dt { font-weight: 600; color: var(--stone-700); margin-top: 0.85rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-dl dt:first-child { margin-top: 0; }
+  .contact-dl dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+  .contact-side { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 100px; }
+  .contact-side h3 { font-size: 1.1rem; margin-bottom: 0.85rem; }
+  @media (max-width: 980px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-side { position: static; }
+  }
+</style>
+
+<script>
+  (function () {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const ok = document.getElementById('contact-success');
+    const err = document.getElementById('contact-error');
+    const btn = document.getElementById('contact-submit') as HTMLButtonElement | null;
+
+    function show() {
+      if (form) form.style.display = 'none';
+      if (err) err.classList.remove('visible');
+      if (ok) { ok.classList.add('visible'); ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    }
+    if (window.location.search.includes('form-success=contact')) { show(); return; }
+    if (!form || !btn) return;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      btn.disabled = true; btn.textContent = 'Sending…';
+      const data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as any).toString(),
+      })
+        .then((r) => { if (r.ok || r.redirected) show(); else throw 0; })
+        .catch(() => {
+          btn.disabled = false; btn.textContent = 'Send';
+          if (err) err.classList.add('visible');
+        });
+    });
+  })();
+</script>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const guides = [
+  { title: 'SOAP vs. DAP vs. BIRP, when each note format fits', summary: 'A clinician\'s guide to the four traditional formats and when each one earns its place in your documentation.', tag: 'Documentation' },
+  { title: 'Process-Based Therapy for therapists who haven\'t adopted it yet', summary: 'A practical introduction to PBT and the EEMM matrix, with a worked example of a treatment plan.', tag: 'Modality' },
+  { title: 'GDPR for US-based therapists with EU clients', summary: 'What right-to-erasure means in practice, how it interacts with HIPAA retention, and what your erasure workflow needs to do.', tag: 'Compliance' },
+  { title: 'Building a supervision workflow that scales', summary: 'How to design a supervision practice that handles thirty notes a week without burning out the supervisor.', tag: 'Operations' },
+  { title: 'AI ethics in clinical practice, what "in your workflow" should mean', summary: 'A practical framework for thinking about AI in a clinical context, beyond marketing and beyond fear.', tag: 'AI ethics' },
+  { title: 'Burnout reduction through documentation efficiency', summary: 'The research on documentation burden in behavioral health, and what a more efficient documentation flow actually changes.', tag: 'Clinician wellbeing' },
+];
+---
+<BaseLayout
+  title="Guides"
+  description="Long-form guides on documentation craft, treatment-plan modalities, compliance, and behavioral-health operations."
+>
+  <PageHeader
+    eyebrow="Guides"
+    title="Long-form. <em>Considered.</em> Free."
+    lede="Pieces we wrote because the questions kept coming up, from clinicians, supervisors, and practice owners considering a documentation platform. Drafts of these are in progress; sign up to be notified when each lands."
+  />
+
+  <section class="guide-list">
+    <div class="container">
+      <ul class="list">
+        {guides.map((g) => (
+          <li class="guide-item">
+            <span class="badge badge-stone">{g.tag}</span>
+            <h3>{g.title}</h3>
+            <p>{g.summary}</p>
+            <span class="muted">Coming soon</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Want a heads-up when each lands?"
+    heading="We email you when a guide is published. No marketing list."
+    body="Tell us which topic you're most interested in and we'll email you when that piece is published. We do not send unrelated marketing email."
+    primaryHref="/contact?topic=guides"
+    primaryLabel="Email me when published"
+    secondaryHref="/demo"
+    secondaryLabel="Or book a demo"
+    variant="paper"
+  />
+</BaseLayout>
+
+<style>
+  .guide-list { padding: clamp(2rem, 4vw, 3.5rem) 0; }
+  .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+  .guide-item {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .guide-item h3 { font-size: 1.3rem; }
+  .guide-item p { color: var(--stone-600); font-size: 0.98rem; line-height: 1.6; max-width: 720px; }
+  .badge { align-self: flex-start; }
+</style>

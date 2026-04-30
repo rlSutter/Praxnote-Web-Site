@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+<BaseLayout
+  title="Comparisons"
+  description="How Praxnote compares with legacy EHRs (SimplePractice, TherapyNotes), AI scribes (Mentalyc, Heidi, Upheal), and DIY documentation."
+>
+  <PageHeader
+    eyebrow="Comparisons"
+    title="Honest comparisons. <em>Useful tradeoffs.</em>"
+    lede="The behavioral-health software landscape is crowded. Here's how Praxnote actually differs from the platforms practices most often weigh us against."
+  />
+
+  <section class="comparison">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Praxnote vs. legacy EHRs</p>
+        <h2>SimplePractice · TherapyNotes · TheraNest</h2>
+        <p class="lede">
+          Legacy EHRs ship the full operational stack: scheduling, billing, the client
+          portal. They treat AI documentation as a recent bolt-on. Praxnote starts with
+          documentation and treats AI as a first-class citizen, with editable skills the
+          practice owns.
+        </p>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>Where legacy EHRs lead</h4>
+          <ul class="checks">
+            <li>Years of insurance-claim workflow refinement</li>
+            <li>Established integration ecosystems</li>
+            <li>Wide-spread training resources, supervisor familiarity</li>
+            <li>Established e-prescribing options for medication-management practices</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Where Praxnote leads</h4>
+          <ul class="checks">
+            <li>Modern UI built around the documentation flow</li>
+            <li>Editable AI skills, not a black-box bolt-on</li>
+            <li>Five note formats, five treatment-plan formats</li>
+            <li>Defense-grade encryption at rest, no third-party AI middlemen</li>
+            <li>Supervision queue with keyboard navigation</li>
+            <li>Pluggable payment providers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Praxnote vs. AI scribes</p>
+        <h2>Mentalyc · Heidi · Upheal</h2>
+        <p class="lede">
+          AI scribes do one thing: turn audio into a draft. Praxnote does that, plus the
+          full clinical workspace around it (scheduling, billing, supervision, portal,
+          assessments). And Praxnote's skills are editable; most scribes' prompts are not.
+        </p>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>Where AI scribes lead</h4>
+          <ul class="checks">
+            <li>Narrow scope, easy to evaluate</li>
+            <li>Low setup overhead for solo clinicians not changing platforms</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Where Praxnote leads</h4>
+          <ul class="checks">
+            <li>Editable skills (you can read and customize the prompt)</li>
+            <li>Drafts integrate into a full practice management platform</li>
+            <li>Treatment plans, assessments, supervision, billing, not bolt-ons</li>
+            <li>HIPAA-grade architecture: defense-grade encryption at rest, no third-party AI middlemen</li>
+            <li>Multi-format documentation (SOAP, DAP, BIRP, narrative, custom)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Praxnote vs. DIY</p>
+        <h2>Word documents · Excel · standalone Stripe · email-only intake</h2>
+        <p class="lede">
+          DIY documentation works until the practice scales, and then it doesn't. The
+          audit trail is missing. The compliance posture is "trust us." Billing
+          reconciliation is a Monday morning.
+        </p>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>Where DIY leads</h4>
+          <ul class="checks">
+            <li>Maximum flexibility (and maximum overhead)</li>
+            <li>No vendor relationship</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Where Praxnote leads</h4>
+          <ul class="checks">
+            <li>Compliance-ready audit trail by default</li>
+            <li>Billing automation (autopay, AR aging, payment links)</li>
+            <li>Client portal with one-click sign-in links</li>
+            <li>Structured outcome tracking via assessments</li>
+            <li>Single platform, one bill, one audit log, one place to look</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Side-by-side on your real workflow"
+    heading="Bring the platform you're considering. We'll compare on your terms."
+    body="Most comparison demos focus on three workflows: drafting a session note, clearing a supervision queue, sending an invoice. We'll do all three, side-by-side, in 30 minutes."
+  />
+</BaseLayout>
+
+<style>
+  .comparison { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .section-head { max-width: 760px; margin-bottom: 2rem; }
+  .section-head .lede { margin-top: 1rem; }
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.85rem; }
+</style>

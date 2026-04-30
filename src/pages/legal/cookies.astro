@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+---
+<BaseLayout
+  title="Cookie notice"
+  description="Praxnote does not use cookies for tracking on the marketing site. Inside the platform, cookies and local storage are used only for session management."
+>
+  <PageHeader
+    eyebrow="Legal"
+    title="Cookie notice"
+    lede="Praxnote does not run third-party tracking on the marketing site. Inside the platform, we use cookies and local storage only for session management, never for advertising or cross-site tracking."
+  />
+
+  <section class="legal-body">
+    <div class="container container-narrow">
+      <p class="muted">Last updated: 2026-04-30.</p>
+
+      <h2>Marketing site (praxnote.com)</h2>
+      <p>
+        The marketing site uses no third-party tracking cookies by default. If we add an
+        analytics provider in the future, we'll update this notice and this site, and
+        any provider will be configured to respect Do Not Track and to anonymize IP
+        addresses.
+      </p>
+
+      <h2>The Praxnote platform</h2>
+      <p>
+        Inside the application, we use cookies and local storage for:
+      </p>
+      <ul>
+        <li>JWT-based session authentication</li>
+        <li>CSRF protection</li>
+        <li>Language preference (<code>praxnote_portal_lang</code>)</li>
+        <li>Theme preference (admin / therapist) for dual-role users</li>
+        <li>Local-cache state for the offline vault (when enabled)</li>
+      </ul>
+      <p>
+        We do not use cookies for cross-site tracking, advertising, or data resale. The
+        platform sends no analytics phone-homes by default.
+      </p>
+
+      <h2>Questions</h2>
+      <p>
+        If you have questions about cookies or the platform's data handling, email
+        <a href="mailto:privacy@praxnote.com">privacy@praxnote.com</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-body { padding: 0 0 clamp(3rem, 6vw, 5rem); }
+  .legal-body h2 { margin: 2rem 0 0.85rem; font-size: clamp(1.4rem, 2.2vw, 1.7rem); }
+  .legal-body p, .legal-body ul { color: var(--stone-700); line-height: 1.7; max-width: 720px; }
+  .legal-body ul { padding-left: 1.25rem; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
+</style>

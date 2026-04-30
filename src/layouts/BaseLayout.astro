@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = 'Praxnote, HIPAA-grade clinical documentation and practice management for behavioral health. Notes in minutes. Nuance intact. Control yours.',
+  ogImage = '/og.png',
+  noindex = false,
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://praxnote.com');
+const canonical = new URL(Astro.url.pathname, site).toString();
+const ogImageUrl = new URL(ogImage, site).toString();
+const pageTitle = title.includes('Praxnote') ? title : `${title} · Praxnote`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1d5448" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Praxnote" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Praxnote, clinical documentation and practice management for behavioral health" />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+  <meta name="twitter:image:alt" content="Praxnote, clinical documentation and practice management for behavioral health" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <Nav />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+
+  <style is:global>
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--brand-teal);
+      color: var(--paper);
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius);
+      z-index: 100;
+      font-weight: 600;
+      text-decoration: none;
+      transition: top 160ms ease;
+    }
+    .skip-link:focus { top: 1rem; }
+  </style>
+</body>
+</html>

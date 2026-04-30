@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+<BaseLayout
+  title="Offline vault"
+  description="A PIN-locked, encrypted local store on your device. Notes you write offline queue up and sync the moment you reconnect. Built for clinicians working in homes, schools, and rural clinics."
+>
+  <PageHeader
+    eyebrow="Offline vault"
+    title="The chart, <em>even when the wifi isn't.</em>"
+    lede="Praxnote's offline vault is a PIN-locked vault that lives on your device. Notes you write while offline queue up and sync the moment you reconnect. Built for clinicians whose practice doesn't always have an Ethernet jack."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+  </PageHeader>
+
+  <section class="overview">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">When the vault matters</p>
+        <h2>Real-world clinical contexts where connectivity isn't guaranteed.</h2>
+      </header>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>Home visits</h4>
+          <p>In-home therapy with families. Cell service is unreliable; wifi belongs to the family. The vault lets you document on-site, even offline.</p>
+        </div>
+        <div class="card">
+          <h4>School-based clinicians</h4>
+          <p>School wifi is locked down. Captive portals interrupt sessions. The vault keeps your work local until you're back on a known network.</p>
+        </div>
+        <div class="card">
+          <h4>Rural clinics</h4>
+          <p>Rural broadband is improving but not yet uniform. The vault lets clinicians work without waiting for a request to round-trip.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>An encrypted store on your device, locked behind your PIN.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>Encryption</h4>
+          <p>The vault lives on your device. Your PIN unlocks it. Without the PIN, nothing inside is readable, even by someone holding the laptop.</p>
+        </div>
+        <div class="card">
+          <h4>Auto-lock</h4>
+          <p>The vault auto-locks after a configurable idle window. The PIN is required to unlock, same UX pattern your phone trains.</p>
+        </div>
+        <div class="card">
+          <h4>Outbox</h4>
+          <p>Writes performed offline queue into the outbox. When the device reconnects to a known network, queued writes sync to the server in order. Conflicts are surfaced to the clinician for resolution.</p>
+        </div>
+        <div class="card">
+          <h4>Audit-aware</h4>
+          <p>Activity log entries are still recorded for offline reads and writes. They sync with the outbox. The vault doesn't bypass the audit trail. It batches it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="setup">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Setup</p>
+        <h2>Set a PIN during onboarding. That's most of it.</h2>
+        <p class="lede">
+          The vault is opt-in per clinician. During onboarding, you choose a PIN, the vault
+          provisions, and you're ready. Practices can require the vault for certain roles or
+          devices via practice options.
+        </p>
+      </header>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .overview { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .section-head .lede { margin-top: 1rem; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+</style>

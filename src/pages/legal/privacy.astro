@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+---
+<BaseLayout
+  title="Privacy policy"
+  description="Praxnote's privacy policy, how we collect, store, and protect data on the marketing site and in the platform."
+>
+  <PageHeader
+    eyebrow="Legal"
+    title="Privacy policy"
+    lede="This page describes how Praxnote handles data on this marketing site and in the Praxnote platform. Specific BAA and platform terms are governed by your service agreement."
+  />
+
+  <section class="legal-body">
+    <div class="container container-narrow">
+      <p class="muted">Last updated: 2026-04-30. This is a summary; the binding terms live in your signed agreement.</p>
+
+      <h2>What this policy covers</h2>
+      <p>This policy covers two surfaces:</p>
+      <ul>
+        <li><strong>The praxnote.com marketing site</strong>, the page you're reading.</li>
+        <li><strong>The Praxnote platform</strong>, the application your practice uses, governed by your BAA and service agreement.</li>
+      </ul>
+
+      <h2>The marketing site</h2>
+      <p>
+        praxnote.com is a static site served from Netlify with no third-party analytics by
+        default. We collect what you submit through forms (demo requests, contact, BAA
+        requests) and use that information to respond to you.
+      </p>
+      <ul>
+        <li>No third-party trackers or fingerprinters by default.</li>
+        <li>No third-party CDN assets, fonts are self-hosted via <code>@fontsource</code>.</li>
+        <li>Forms route to Netlify Forms; submissions are emailed to the Praxnote team.</li>
+        <li>We retain form submissions long enough to respond and follow up; we do not sell or share them.</li>
+      </ul>
+
+      <h2>The Praxnote platform</h2>
+      <p>
+        Inside the Praxnote application, your data (including PHI) is governed by your
+        BAA and service agreement. The architectural commitments below are baseline:
+      </p>
+      <ul>
+        <li>All PHI columns encrypted at rest with Fernet.</li>
+        <li>TLS 1.2+ in transit.</li>
+        <li>PostgreSQL Row-Level Security for multi-tenant isolation.</li>
+        <li>Activity log on every PHI read and write.</li>
+        <li>Right-to-erasure workflow (GDPR Article 17 / PIPEDA equivalent).</li>
+        <li>Six-year retention via redaction, not deletion.</li>
+        <li>No third-party AI proxies, Anthropic API direct.</li>
+        <li>Your data is never used to train AI models.</li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>
+        The marketing site uses no cookies for tracking. The platform uses cookies and
+        local storage for session management (JWT, language preference), never for
+        cross-site tracking or advertising.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        You have the right to access, correct, and (where applicable) erase data you've
+        provided. Email <a href="mailto:privacy@praxnote.com">privacy@praxnote.com</a> for
+        access or correction. For erasure inside the platform, your practice administrator
+        can open an erasure request from the application.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy should go to
+        <a href="mailto:privacy@praxnote.com">privacy@praxnote.com</a>. Security disclosures
+        should go to <a href="mailto:security@praxnote.com">security@praxnote.com</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-body { padding: 0 0 clamp(3rem, 6vw, 5rem); }
+  .legal-body h2 { margin: 2rem 0 0.85rem; font-size: clamp(1.4rem, 2.2vw, 1.7rem); }
+  .legal-body p { color: var(--stone-700); line-height: 1.7; max-width: 720px; }
+  .legal-body ul { color: var(--stone-700); line-height: 1.7; padding-left: 1.25rem; max-width: 720px; }
+  .legal-body li { margin-bottom: 0.4rem; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
+</style>

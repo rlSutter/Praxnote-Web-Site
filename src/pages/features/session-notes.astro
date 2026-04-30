@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const formats = [
+  { name: 'SOAP', sections: 'Subjective · Objective · Assessment · Plan', use: 'Traditional medical model. Recognized everywhere. Default for many supervisors and insurers.' },
+  { name: 'DAP', sections: 'Data · Assessment · Plan', use: 'Streamlined version. Common in counseling. Less duplication than SOAP for narrative-heavy sessions.' },
+  { name: 'BIRP', sections: 'Behavior · Intervention · Response · Plan', use: 'Behavioral-health-friendly. Surfaces what you did and how the client responded.' },
+  { name: 'Simple narrative', sections: 'Free prose', use: 'For veteran clinicians who think in paragraphs, not headings.' },
+  { name: 'Custom', sections: 'Skill-defined', use: 'Specialty practices, training programs, or clinical voices that don\'t map to the standard four.' },
+];
+---
+<BaseLayout
+  title="Session notes"
+  description="Five session-note formats (SOAP, DAP, BIRP, narrative, custom) drafted from transcript, audio, or telehealth recording. Every draft is signed by the clinician."
+>
+  <PageHeader
+    eyebrow="Session notes"
+    title="Five formats. <em>One interface.</em> Your voice."
+    lede="SOAP, DAP, BIRP, narrative, and custom, drafted from a typed transcript, an uploaded audio file, or a telehealth recording. Plan divergence detection flags departures from the treatment plan you and your client wrote together."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/features/ai-skills" class="btn btn-secondary">How skills work</a>
+  </PageHeader>
+
+  <section class="formats-section">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">The five formats</p>
+        <h2>Pick the one that matches how you actually document.</h2>
+        <p class="lede">
+          All five formats share the same encrypted column space under the hood. Switching
+          format isn't a migration, it's a setting. Practices with mixed clinical styles
+          run multiple formats side-by-side without conflict.
+        </p>
+      </header>
+
+      <table class="table-clean">
+        <thead>
+          <tr>
+            <th>Format</th>
+            <th>Sections</th>
+            <th>When it fits</th>
+          </tr>
+        </thead>
+        <tbody>
+          {formats.map((f) => (
+            <tr>
+              <td><strong>{f.name}</strong></td>
+              <td><code>{f.sections}</code></td>
+              <td>{f.use}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="how-it-works alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">How drafting works</p>
+        <h2>Four inputs. One signed note.</h2>
+      </header>
+
+      <div class="grid grid-4 inputs-grid">
+        <div class="input-card">
+          <h4>Typed transcript</h4>
+          <p>Paste your session notes, dictation transcript, or a free-form summary. Praxnote drafts from whatever shape you give it.</p>
+        </div>
+        <div class="input-card">
+          <h4>Uploaded audio</h4>
+          <p>Drop in a phone recording or audio file. Praxnote transcribes locally before drafting; raw audio never leaves your encrypted store.</p>
+        </div>
+        <div class="input-card">
+          <h4>Telehealth recording</h4>
+          <p>For practices using a supported telehealth integration, Praxnote drafts directly from the post-session recording, with consent on the chart.</p>
+        </div>
+        <div class="input-card">
+          <h4>Plan divergence</h4>
+          <p>Praxnote checks the draft against the active treatment plan and surfaces deviations inline. You decide whether each is intentional clinical movement or worth flagging.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="signing">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Versioning &amp; signature</p>
+        <h2>Every signed note is locked. Every prior version is kept.</h2>
+        <p class="lede">
+          Praxnote keeps multi-version history. Edit freely before signing, every change
+          rolls into the working version. When you sign, that version becomes immutable, and
+          the signature event is recorded in the activity log.
+        </p>
+      </header>
+
+      <ul class="checks">
+        <li>Mental status exam blocks (MSE) available on every session note format</li>
+        <li>Risk assessment fields surface inline when needed, hide when not</li>
+        <li>Multi-version history preserved, supervisors can see what was edited and when</li>
+        <li>Signature locks the version; audit log records the actor and timestamp</li>
+        <li>Late-cancel, no-show, and therapist-cancelled status icons render directly on the calendar</li>
+      </ul>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="See a draft on your transcript"
+    heading="Bring a recent session. We'll draft it in your format."
+    body="Most demos draft a real (or sanitized) transcript live. You'll see the SOAP, DAP, or BIRP draft in your voice, and edit it together."
+  />
+</BaseLayout>
+
+<style>
+  .formats-section { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .section-head .lede { margin-top: 1rem; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 0.85em; color: var(--stone-700); }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .inputs-grid { margin-top: 1rem; }
+  .input-card {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+  .input-card h4 { margin-bottom: 0.5rem; font-size: 1.05rem; font-family: var(--font-sans); font-weight: 600; }
+  .input-card p { color: var(--stone-600); font-size: 0.92rem; line-height: 1.55; }
+</style>

@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+import SkillMock from '../../components/SkillMock.astro';
+
+const skills = [
+  { name: 'Session notes', detail: 'default (SOAP)' },
+  { name: 'Session notes', detail: 'detailed' },
+  { name: 'Session plan', detail: 'detailed' },
+  { name: 'Diagnosis', detail: 'detailed' },
+  { name: 'Case conceptualization', detail: 'detailed' },
+  { name: 'Treatment plan', detail: 'PBT / EEMM' },
+  { name: 'Treatment plan', detail: 'standard goals-based' },
+  { name: 'Treatment plan', detail: 'CBT' },
+  { name: 'Treatment plan', detail: 'DBT' },
+  { name: 'Treatment plan', detail: 'minimal 3-month' },
+  { name: 'Referral letter', detail: 'detailed' },
+  { name: 'Leave-of-absence letter', detail: 'detailed' },
+  { name: 'Discharge summary', detail: 'detailed' },
+  { name: 'Assessment results letter', detail: 'provider and client modes' },
+];
+---
+<BaseLayout
+  title="AI skills"
+  description="Praxnote skills are editable plain-text templates that drive every AI draft. Read the prompt, customize it for your practice, publish."
+>
+  <PageHeader
+    eyebrow="AI skills"
+    title="The prompt is right there. <em>Read it. Customize it. Make it yours.</em>"
+    lede="Most AI scribes hide their prompts. Praxnote's are plain-text files you can read and change, with every revision saved. Skills are how Praxnote stays a tool, not a black box."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="#what-skills-are" class="btn btn-secondary">What is a skill?</a>
+  </PageHeader>
+
+  <section class="explain" id="what-skills-are">
+    <div class="container">
+      <div class="explain-grid">
+        <div class="explain-text">
+          <p class="eyebrow">What a skill is</p>
+          <h2>An editable plain-text template that drives one clinical task.</h2>
+          <p>
+            A skill is a plain-text file written in clinical language. It tells the AI how to
+            shape the draft: the clinical voice, the structure of the output, and the guardrails
+            it has to respect. Nothing is hidden behind it. The file you read is the file the
+            AI follows.
+          </p>
+          <p>
+            Every AI draft in Praxnote, a session note, a treatment plan, a referral letter,
+            a case conceptualization, runs through one skill. Your practice can copy any
+            Praxnote skill and customize it in your own clinical voice. If you've customized
+            it, your version is what your clinicians see. If you haven't, the Praxnote default
+            is what they see.
+          </p>
+          <p>
+            <strong>Every change to a skill is recorded.</strong> When you edit a skill, the
+            change is saved with a timestamp and the name of who made it. When a clinician
+            generates a draft, the exact version of the skill in effect is saved alongside
+            the document.
+          </p>
+        </div>
+        <div class="explain-visual">
+          <SkillMock />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shipped section-ink">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Skills shipped</p>
+        <h2>Fourteen global skills. <em>And counting.</em></h2>
+        <p class="lede">
+          Every Praxnote practice gets these on day one. Each one is yours to customize and
+          tune to your clinical voice.
+        </p>
+      </header>
+
+      <ol class="skills-list">
+        {skills.map((s, i) => (
+          <li>
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="sk-name">{s.name}</span>
+            <span class="sk-detail">{s.detail}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="resolution">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">How Praxnote chooses which version to use</p>
+        <h2>Your version first. The default if you haven't customized.</h2>
+      </header>
+
+      <div class="grid grid-2 res-grid">
+        <div class="card">
+          <h3>The default path</h3>
+          <p>If your practice hasn't customized a skill, every clinician uses the Praxnote default. It's written and reviewed by us, and you can read it any time.</p>
+        </div>
+        <div class="card">
+          <h3>The customized path</h3>
+          <p>If your practice has customized a skill, your version is what your clinicians see. Other practices keep their own. No overlap between practices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="See a real skill"
+    heading="Walk through one of the skills, on your terms."
+    body="On a demo we'll open a real skill, change it together, and generate a draft from a sample session. Bring your own session notes or use ours. Either way, you'll leave with a clear sense of how skills behave."
+  />
+</BaseLayout>
+
+<style>
+  .explain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .explain-text p { color: var(--stone-700); line-height: 1.7; margin-bottom: 1rem; }
+
+  @media (max-width: 920px) {
+    .explain-grid { grid-template-columns: 1fr; }
+  }
+
+  .skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem 1.5rem;
+    counter-reset: none;
+  }
+  .skills-list li {
+    display: grid;
+    grid-template-columns: 32px 1.4fr 1fr;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(250, 247, 242, 0.08);
+    color: rgba(250, 247, 242, 0.85);
+    font-size: 0.96rem;
+  }
+  .skills-list .num {
+    color: var(--brand-teal-soft);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+  }
+  .skills-list .sk-name { color: rgba(250, 247, 242, 0.92); font-weight: 500; }
+  .skills-list .sk-detail { color: rgba(250, 247, 242, 0.55); font-size: 0.88rem; }
+
+  @media (max-width: 700px) { .skills-list { grid-template-columns: 1fr; } }
+
+  .section-head { max-width: 720px; margin-bottom: 2.5rem; }
+  .section-head .lede { margin-top: 1rem; }
+</style>

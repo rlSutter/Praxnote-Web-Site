@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+---
+<BaseLayout
+  title="Request a BAA"
+  description="Request a Business Associate Agreement from Praxnote. Available on every paid plan."
+>
+  <PageHeader
+    eyebrow="Business Associate Agreement"
+    title="Request a BAA."
+    lede="A BAA is included on every paid Praxnote plan. Tell us a few details about your practice and we'll send the template (or your counsel's required redlines) within one business day."
+  />
+
+  <section class="baa-section">
+    <div class="container">
+      <div class="baa-grid">
+        <div class="form-wrap">
+          <form name="baa-request" id="baa-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?form-success=baa">
+            <input type="hidden" name="form-name" value="baa-request" />
+            <p class="hp" aria-hidden="true"><label>Skip: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+            <div class="form-row">
+              <label for="b-name">Name <span class="required">*</span></label>
+              <input id="b-name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="form-row">
+              <label for="b-email">Work email <span class="required">*</span></label>
+              <input id="b-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="form-row">
+              <label for="b-practice">Practice / organization <span class="required">*</span></label>
+              <input id="b-practice" name="practice" type="text" required autocomplete="organization" />
+            </div>
+            <div class="form-row">
+              <label for="b-role">Your role</label>
+              <select id="b-role" name="role">
+                <option value="">Select your role</option>
+                <option>Practice owner</option>
+                <option>Compliance / privacy officer</option>
+                <option>Practice administrator</option>
+                <option>Legal counsel</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="b-jurisdiction">Primary jurisdiction</label>
+              <select id="b-jurisdiction" name="jurisdiction">
+                <option value="">Select region</option>
+                <option>United States</option>
+                <option>Canada</option>
+                <option>Both US and Canada</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="b-message">Anything we should know?</label>
+              <textarea id="b-message" name="message" placeholder="e.g., counsel-required redlines, attestations, specific compliance frameworks"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-lg" id="baa-submit">Request BAA</button>
+              <span class="muted">Replies within one business day.</span>
+            </div>
+          </form>
+
+          <div class="form-success" id="baa-success" role="status" aria-live="polite">
+            <strong>Thanks, request received.</strong>
+            <p>We'll email the template (or your counsel's redlined version) within one business day.</p>
+          </div>
+          <div class="form-error" id="baa-error" role="alert" aria-live="polite">
+            Something went wrong. Email <a href="mailto:security@praxnote.com">security@praxnote.com</a> instead.
+          </div>
+        </div>
+
+        <aside>
+          <div class="card-warm">
+            <h3>What's in our standard BAA</h3>
+            <ul class="checks">
+              <li>Permitted uses and disclosures of PHI</li>
+              <li>Required safeguards (administrative, physical, technical)</li>
+              <li>Subcontractor flow-down terms</li>
+              <li>Breach notification procedures and timelines</li>
+              <li>Termination and PHI return / destruction obligations</li>
+              <li>HIPAA Privacy Rule and Security Rule alignment</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Already a customer?</h3>
+            <p class="muted">
+              Email <a href="mailto:security@praxnote.com">security@praxnote.com</a> with your
+              practice name and we'll route the BAA quickly.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .baa-section { padding: 0 0 clamp(3rem, 6vw, 5rem); }
+  .baa-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+  @media (max-width: 980px) { .baa-grid { grid-template-columns: 1fr; } }
+  .form-wrap {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  }
+  .hp { position: absolute; left: -9999px; }
+  aside { display: flex; flex-direction: column; gap: 1.25rem; }
+  aside h3 { font-size: 1.1rem; margin-bottom: 0.85rem; }
+</style>
+
+<script>
+  (function () {
+    const form = document.getElementById('baa-form') as HTMLFormElement | null;
+    const ok = document.getElementById('baa-success');
+    const err = document.getElementById('baa-error');
+    const btn = document.getElementById('baa-submit') as HTMLButtonElement | null;
+    function show() {
+      if (form) form.style.display = 'none';
+      if (err) err.classList.remove('visible');
+      if (ok) { ok.classList.add('visible'); ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    }
+    if (window.location.search.includes('form-success=baa')) { show(); return; }
+    if (!form || !btn) return;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      btn.disabled = true; btn.textContent = 'Sending…';
+      const data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as any).toString(),
+      })
+        .then((r) => { if (r.ok || r.redirected) show(); else throw 0; })
+        .catch(() => {
+          btn.disabled = false; btn.textContent = 'Request BAA';
+          if (err) err.classList.add('visible');
+        });
+    });
+  })();
+</script>

@@ -1,0 +1,399 @@
+---
+const pathname = Astro.url.pathname
+  .replace(/\/index\.html$/, '/')
+  .replace(/\.html$/, '');
+const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
+---
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="Praxnote home" aria-current={pathname === '/' ? 'page' : undefined}>
+      prax<span>note</span>
+    </a>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-controls="primary-nav"
+      aria-expanded="false"
+      aria-label="Open menu"
+    >
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+    <div class="nav-links" id="primary-nav">
+      <div class="nav-group" data-mobile-order="5">
+        <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-product">Product</button>
+        <div class="nav-menu" id="menu-product">
+          <div class="nav-menu-col">
+            <h4>Documentation</h4>
+            <a href="/features/ai-skills">AI skills</a>
+            <a href="/features/session-notes">Session notes</a>
+            <a href="/features/treatment-plans">Treatment plans</a>
+            <a href="/features/assessments">Assessments</a>
+          </div>
+          <div class="nav-menu-col">
+            <h4>Workflow</h4>
+            <a href="/features/supervision">Supervision queue</a>
+            <a href="/features/scheduling">Scheduling</a>
+            <a href="/features/billing">Billing</a>
+            <a href="/features/client-portal">Client portal</a>
+          </div>
+          <div class="nav-menu-col">
+            <h4>Platform</h4>
+            <a href="/features/offline-vault">Offline vault</a>
+            <a href="/product">Platform overview</a>
+            <a href="/security">Security &amp; trust</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-group" data-mobile-order="4">
+        <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-solutions">Solutions</button>
+        <div class="nav-menu nav-menu-narrow" id="menu-solutions">
+          <div class="nav-menu-col">
+            <h4>By role</h4>
+            <a href="/solutions/solo-clinicians">Solo clinicians</a>
+            <a href="/solutions/group-practices">Group practices</a>
+            <a href="/solutions/supervisors">Supervisors</a>
+            <a href="/solutions/practice-admins">Practice admins</a>
+          </div>
+        </div>
+      </div>
+      <a href="/security" data-mobile-order="3" class:list={['nav-link', isActive('/security') && 'is-active']} aria-current={isActive('/security') ? 'page' : undefined}>Security</a>
+      <a href="/pricing" data-mobile-order="2" class:list={['nav-link', isActive('/pricing') && 'is-active']} aria-current={isActive('/pricing') ? 'page' : undefined}>Pricing</a>
+      <a href="/resources" data-mobile-order="6" class:list={['nav-link', isActive('/resources') && 'is-active']} aria-current={isActive('/resources') ? 'page' : undefined}>Resources</a>
+      <a href="/demo" data-mobile-order="1" class="btn btn-primary nav-cta">Book a demo</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .nav-inner {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: 0.85rem clamp(1rem, 4vw, 2.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    color: var(--brand-teal-dark);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 144, 'SOFT' 30;
+    flex-shrink: 0;
+  }
+
+  .logo span { color: var(--brand-teal); font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-link, .nav-trigger {
+    background: transparent;
+    border: 0;
+    padding: 0.5rem 0.85rem;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--stone-700);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: color 160ms ease, background 160ms ease;
+    cursor: pointer;
+  }
+
+  .nav-link:hover, .nav-trigger:hover, .nav-link.is-active {
+    color: var(--brand-teal-dark);
+    background: var(--paper-warm);
+  }
+
+  .nav-cta { margin-left: 0.5rem; padding: 0.6rem 1.25rem; font-size: 0.88rem; }
+
+  .nav-group { position: relative; }
+
+  .nav-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: none;
+    grid-template-columns: repeat(3, 200px);
+    gap: 1.5rem;
+    box-shadow: var(--shadow-popover);
+  }
+
+  .nav-menu-narrow { grid-template-columns: 220px; }
+
+  .nav-group:hover .nav-menu,
+  .nav-group:focus-within .nav-menu,
+  .nav-group.is-open .nav-menu {
+    display: grid;
+  }
+
+  .nav-menu h4 {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--stone-500);
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-menu-col { display: flex; flex-direction: column; gap: 0.15rem; }
+
+  .nav-menu a {
+    display: block;
+    padding: 0.4rem 0.5rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--stone-800);
+    font-size: 0.92rem;
+  }
+
+  .nav-menu a:hover, .nav-menu a:focus-visible {
+    background: var(--paper-warm);
+    color: var(--brand-teal-dark);
+    outline: none;
+  }
+
+  /* Hamburger */
+  .nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sm);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+  }
+  .nav-toggle .bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--stone-800);
+    border-radius: 2px;
+    transition: transform 200ms ease, opacity 160ms ease;
+    transform-origin: center;
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* Disclosure chevrons (mobile only, see media query below) */
+  .nav-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  /* === Mobile (<=980px) ============================================ */
+  @media (max-width: 980px) {
+    .nav-inner { padding: 0.75rem 1rem; gap: 1rem; }
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      position: fixed;
+      inset: 60px 0 0 0;
+      background: var(--paper);
+      border-top: 1px solid var(--hairline);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0.75rem 1rem 2rem;
+      gap: 0.15rem;
+      display: none;
+      overflow-y: auto;
+      z-index: 49;
+    }
+    .nav-links.open { display: flex; }
+
+    /* Reorder for mobile: Demo, Pricing, Security, Solutions, Product, Resources */
+    .nav-links > [data-mobile-order="1"] { order: 1; }
+    .nav-links > [data-mobile-order="2"] { order: 2; }
+    .nav-links > [data-mobile-order="3"] { order: 3; }
+    .nav-links > [data-mobile-order="4"] { order: 4; }
+    .nav-links > [data-mobile-order="5"] { order: 5; }
+    .nav-links > [data-mobile-order="6"] { order: 6; }
+
+    /* Touch targets ≥44px, tappable spacing */
+    .nav-link, .nav-trigger {
+      width: 100%;
+      min-height: 48px;
+      text-align: left;
+      padding: 0.85rem 0.85rem;
+      font-size: 1rem;
+      border-radius: var(--radius);
+      justify-content: space-between;
+    }
+
+    /* Demo CTA at top, full-width tappable */
+    .nav-cta {
+      margin: 0 0 0.85rem 0;
+      padding: 1rem 1.25rem;
+      font-size: 1rem;
+      min-height: 56px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Disclosure chevron */
+    .nav-trigger::after {
+      content: '';
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid var(--stone-500);
+      border-bottom: 2px solid var(--stone-500);
+      transform: rotate(45deg) translate(-2px, -2px);
+      transition: transform 200ms ease;
+    }
+    .nav-trigger[aria-expanded="true"]::after {
+      transform: rotate(225deg) translate(-2px, -2px);
+    }
+
+    /* Disclosure body: hidden by default; visible when group is open */
+    .nav-group { width: 100%; }
+    .nav-menu {
+      position: static;
+      display: none;
+      grid-template-columns: 1fr;
+      box-shadow: none;
+      border: 0;
+      background: transparent;
+      padding: 0.25rem 0 0.5rem 0.85rem;
+      gap: 0.5rem;
+    }
+    .nav-menu-narrow { grid-template-columns: 1fr; }
+
+    /* Override desktop's hover/focus-within so it's click-only on touch */
+    .nav-group:hover .nav-menu,
+    .nav-group:focus-within .nav-menu { display: none; }
+    .nav-group.is-open .nav-menu { display: grid; }
+
+    .nav-menu-col { gap: 0.05rem; }
+    .nav-menu h4 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 0.68rem;
+    }
+    .nav-menu a {
+      padding: 0.7rem 0.85rem;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      font-size: 0.95rem;
+      color: var(--stone-700);
+    }
+
+    /* Subtle separator between top-level items in the drawer */
+    .nav-link, .nav-group {
+      border-bottom: 1px solid var(--hairline);
+    }
+    .nav-link:last-of-type, .nav-group:last-of-type { border-bottom: 0; }
+
+    /* Scroll lock when menu is open */
+    body.nav-open { overflow: hidden; }
+  }
+</style>
+
+<script>
+  (function () {
+    const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+    const drawer = document.getElementById('primary-nav');
+    const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>('.nav-trigger'));
+    const groups = Array.from(document.querySelectorAll<HTMLElement>('.nav-group'));
+    const drawerLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-links a'));
+    if (!toggle || !drawer) return;
+
+    const mq = window.matchMedia('(max-width: 980px)');
+
+    function setDrawerOpen(open: boolean) {
+      drawer!.classList.toggle('open', open);
+      toggle!.setAttribute('aria-expanded', String(open));
+      toggle!.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('nav-open', open && mq.matches);
+      if (!open) closeAllGroups();
+    }
+
+    function closeAllGroups() {
+      groups.forEach((g) => {
+        g.classList.remove('is-open');
+        const trigger = g.querySelector<HTMLButtonElement>('.nav-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = drawer.classList.contains('open');
+      setDrawerOpen(!isOpen);
+    });
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        // On mobile, click-to-toggle. On desktop, the menu is hover-driven; the
+        // click still toggles for keyboard users.
+        const group = trigger.closest('.nav-group');
+        if (!group) return;
+        e.preventDefault();
+        const willOpen = !group.classList.contains('is-open');
+        if (mq.matches) {
+          // Mobile: only one group open at a time
+          closeAllGroups();
+        }
+        group.classList.toggle('is-open', willOpen);
+        trigger.setAttribute('aria-expanded', String(willOpen));
+      });
+    });
+
+    // Close drawer when a destination link inside it is tapped
+    drawerLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (mq.matches) setDrawerOpen(false);
+      });
+    });
+
+    // Esc closes any open disclosure first, then the drawer
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const openGroup = groups.find((g) => g.classList.contains('is-open'));
+      if (openGroup) {
+        closeAllGroups();
+        openGroup.querySelector<HTMLButtonElement>('.nav-trigger')?.focus();
+        return;
+      }
+      if (drawer.classList.contains('open')) {
+        setDrawerOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Close drawer if viewport widens past mobile while open
+    mq.addEventListener('change', (e) => {
+      if (!e.matches) {
+        setDrawerOpen(false);
+        document.body.classList.remove('nav-open');
+        closeAllGroups();
+      }
+    });
+  })();
+</script>

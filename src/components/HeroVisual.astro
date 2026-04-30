@@ -1,0 +1,176 @@
+---
+// A static, hand-drawn-feel mockup of the Praxnote note editor for the home hero.
+// SVG/HTML only, no images.
+---
+<div class="hero-visual" aria-hidden="true">
+  <div class="hv-card">
+    <header class="hv-header">
+      <div class="hv-avatar">JK</div>
+      <div>
+        <div class="hv-name">Client J.K. · Session 12</div>
+        <div class="hv-meta">Referral · psychiatric eval</div>
+      </div>
+      <span class="hv-badge">Draft</span>
+    </header>
+
+    <nav class="hv-tabs" aria-label="Document type">
+      <span>Session note</span>
+      <span>Treatment plan</span>
+      <span class="hv-tab-active">Referral letter</span>
+      <span>Diagnosis</span>
+    </nav>
+
+    <div class="hv-context">
+      <span>Intake</span>
+      <span>PHQ-9 · 17</span>
+      <span>Tx plan</span>
+      <span>Last 3 sessions</span>
+    </div>
+
+    <div class="hv-body">
+      <p>
+        <strong>Reason for referral.</strong> Moderate-to-severe depressive symptoms persist despite twelve sessions of CBT. Sleep disturbance and anhedonia have not remitted; PHQ-9 trended <em>17 → 17 → 19</em> across the last six weeks.
+      </p>
+      <p>
+        <strong>What I'm asking.</strong> Medication evaluation to support continued therapeutic work. Client is open to SSRI consultation; family history is significant for…
+      </p>
+    </div>
+
+    <div class="hv-input">
+      <span class="hv-input-label">Your turn</span>
+      <span class="hv-input-text">Add specifics, urgency, what you'd like back, anything the chart can't say.</span>
+    </div>
+
+    <footer class="hv-footer">
+      <span class="hv-pill">PHI never sent to AI</span>
+      <span class="hv-action">Edit · Sign</span>
+    </footer>
+  </div>
+</div>
+
+<style>
+  .hero-visual {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    margin-left: auto;
+  }
+  .hv-card {
+    background: var(--surface-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--hairline);
+    box-shadow: var(--shadow-modal);
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--stone-700);
+    transform: rotate(0.3deg);
+  }
+  .hv-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .hv-avatar {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--brand-teal-soft);
+    color: var(--brand-teal-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .hv-name { font-weight: 600; color: var(--stone-900); font-size: 0.95rem; }
+  .hv-meta { font-size: 0.78rem; color: var(--stone-500); }
+  .hv-badge {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--terracotta-soft);
+    color: var(--terracotta);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+  }
+  .hv-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+  .hv-tabs span {
+    font-size: 0.74rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--hairline);
+    color: var(--stone-500);
+    background: var(--paper);
+  }
+  .hv-tab-active {
+    background: var(--brand-teal) !important;
+    color: var(--paper) !important;
+    border-color: var(--brand-teal) !important;
+  }
+  .hv-context {
+    display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.85rem;
+  }
+  .hv-context span {
+    font-size: 0.7rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--hairline);
+    color: var(--stone-700);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+  .hv-body {
+    background: var(--paper-warm);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 0.95rem 1.1rem;
+    line-height: 1.55;
+    margin-bottom: 0.85rem;
+  }
+  .hv-body p { margin: 0 0 0.5rem; font-size: 0.85rem; }
+  .hv-body p:last-child { margin: 0; }
+  .hv-body em { color: var(--brand-teal-dark); font-style: italic; }
+
+  .hv-input {
+    border: 1px dashed var(--hairline-strong);
+    background: rgba(243, 227, 216, 0.4);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  .hv-input-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--terracotta);
+    margin-bottom: 0.2rem;
+  }
+  .hv-input-text {
+    font-size: 0.83rem;
+    font-style: italic;
+    color: var(--stone-500);
+  }
+  .hv-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--hairline);
+    font-size: 0.78rem;
+  }
+  .hv-pill {
+    background: var(--brand-teal-soft);
+    color: var(--brand-teal-dark);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+  .hv-action { color: var(--brand-teal-dark); font-weight: 600; }
+</style>

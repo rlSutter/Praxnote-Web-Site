@@ -1,0 +1,183 @@
+---
+// Netlify-detected form (built into static HTML at build time).
+// Detection requires a hidden form named "demo-request" in the build output.
+---
+<form
+  name="demo-request"
+  id="demo-form"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  action="/?form-success=demo"
+>
+  <input type="hidden" name="form-name" value="demo-request" />
+  <div class="hp" aria-hidden="true">
+    <input name="bot-field" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="form-grid">
+    <div class="form-row">
+      <label for="d-name">Name <span class="required">*</span></label>
+      <input id="d-name" name="name" type="text" required autocomplete="name" />
+    </div>
+    <div class="form-row">
+      <label for="d-email">Work email <span class="required">*</span></label>
+      <input id="d-email" name="email" type="email" required autocomplete="email" placeholder="you@practice.org" />
+    </div>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-row">
+      <label for="d-practice">Practice or organization</label>
+      <input id="d-practice" name="practice" type="text" autocomplete="organization" />
+    </div>
+    <div class="form-row">
+      <label for="d-role">Your role</label>
+      <select id="d-role" name="role">
+        <option value="">Select your role</option>
+        <option>Solo clinician</option>
+        <option>Group practice owner</option>
+        <option>Clinical supervisor</option>
+        <option>Practice administrator</option>
+        <option>Evaluator / researcher</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-row">
+      <label for="d-size">Number of clinicians</label>
+      <select id="d-size" name="clinicians">
+        <option value="">Select size</option>
+        <option>Just me</option>
+        <option>2–5</option>
+        <option>6–15</option>
+        <option>16–50</option>
+        <option>50+</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="d-region">Where you practice</label>
+      <select id="d-region" name="region">
+        <option value="">Select region</option>
+        <option>United States</option>
+        <option>Canada</option>
+        <option>Both US and Canada</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label for="d-message">What would you like to see in the demo?</label>
+    <textarea id="d-message" name="message" placeholder="e.g., session notes from a recording, supervision queue, billing flow, GDPR erasure"></textarea>
+  </div>
+
+  <div class="form-row consent">
+    <label class="check">
+      <input type="checkbox" name="consent" required />
+      <span>I'd like Praxnote to email me to schedule a demo. <span class="muted">No marketing list, just the demo conversation.</span></span>
+    </label>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary btn-lg" id="demo-submit">Request a demo</button>
+    <span class="form-fineprint">We reply within one business day.</span>
+  </div>
+</form>
+
+<div class="form-success" id="demo-success" role="status" aria-live="polite" tabindex="-1">
+  <strong>Thanks. We have your request.</strong>
+  <p>We'll email <span id="demo-success-email">you</span> within one business day to find a time that works.</p>
+</div>
+
+<div class="form-error" id="demo-error" role="alert" aria-live="polite">
+  Something went wrong submitting the form. Email <a href="mailto:hello@praxnote.com">hello@praxnote.com</a> and we'll set up the demo from there.
+</div>
+
+<style>
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+  }
+  .hp { position: absolute; left: -9999px; }
+  .check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--stone-700);
+  }
+  .check input { width: auto; margin-top: 0.25rem; }
+  .form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-lg { padding: 1rem 1.9rem; font-size: 1rem; }
+  .form-fineprint { color: var(--stone-500); font-size: 0.88rem; }
+</style>
+
+<script>
+  (function () {
+    const form = document.getElementById('demo-form') as HTMLFormElement | null;
+    const successEl = document.getElementById('demo-success');
+    const errorEl = document.getElementById('demo-error');
+    const submitBtn = document.getElementById('demo-submit') as HTMLButtonElement | null;
+    const successEmail = document.getElementById('demo-success-email');
+
+    function showSuccess(email?: string) {
+      if (form) form.style.display = 'none';
+      if (errorEl) errorEl.classList.remove('visible');
+      if (successEl) successEl.classList.add('visible');
+      if (successEmail && email) successEmail.textContent = email;
+      if (successEl) {
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        (successEl as HTMLElement).focus({ preventScroll: true });
+      }
+    }
+
+    if (window.location.search.includes('form-success=demo')) {
+      showSuccess();
+      return;
+    }
+
+    if (!form || !submitBtn) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (errorEl) errorEl.classList.remove('visible');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      const data = new FormData(form);
+      const email = String(data.get('email') || '');
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as any).toString(),
+      })
+        .then((res) => {
+          if (res.ok || res.redirected) {
+            showSuccess(email);
+          } else {
+            throw new Error('submit failed');
+          }
+        })
+        .catch(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request a demo';
+          if (errorEl) errorEl.classList.add('visible');
+        });
+    });
+  })();
+</script>

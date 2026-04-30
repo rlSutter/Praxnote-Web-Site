@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const sections = [
+  { title: 'Skill template gallery', body: 'Editable plain-text templates for session notes, treatment plans, referral letters, and more. Free. Yours to customize.', href: '/resources/skill-templates' },
+  { title: 'Comparisons', body: 'How Praxnote compares with SimplePractice, the leading AI scribes, and DIY documentation.', href: '/resources/comparisons' },
+  { title: 'Guides', body: 'Long-form clinical and operations guides, note formats, treatment-plan modalities, GDPR for US practices, and more.', href: '/resources/guides' },
+  { title: 'Blog', body: 'Notes on documentation craft, AI ethics in clinical practice, and behavioral-health operations.', href: '/resources/blog' },
+];
+---
+<BaseLayout
+  title="Resources"
+  description="Skill templates, comparisons, long-form guides, and the Praxnote blog, for clinicians, supervisors, and practice owners."
+>
+  <PageHeader
+    eyebrow="Resources"
+    title="Free resources for clinicians who care about <em>the craft.</em>"
+    lede="Skill templates you can copy and adapt. Comparison guides you can hand a partner. Long-form pieces on the modalities, the operations, and the compliance landscape behavioral health actually navigates."
+  />
+
+  <section class="hub">
+    <div class="container">
+      <div class="grid grid-2 hub-grid">
+        {sections.map((s) => (
+          <a class="hub-card" href={s.href}>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+            <span class="hub-arrow">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection variant="paper" />
+</BaseLayout>
+
+<style>
+  .hub { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+  .hub-grid { gap: 1.25rem; }
+  .hub-card {
+    display: block;
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--stone-800);
+    transition: border-color 200ms ease, transform 200ms ease;
+    position: relative;
+  }
+  .hub-card:hover { border-color: var(--brand-teal-soft); transform: translateY(-2px); }
+  .hub-card h3 { color: var(--brand-teal-dark); margin-bottom: 0.6rem; }
+  .hub-card p { color: var(--stone-600); font-size: 0.98rem; line-height: 1.6; margin: 0; }
+  .hub-arrow {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: var(--brand-teal);
+    font-size: 1.2rem;
+  }
+</style>

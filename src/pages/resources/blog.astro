@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+<BaseLayout
+  title="Blog"
+  description="Notes from the Praxnote team on documentation craft, AI ethics in clinical practice, and behavioral-health operations."
+>
+  <PageHeader
+    eyebrow="Blog"
+    title="Notes from the Praxnote team."
+    lede="Pieces on documentation craft, AI ethics in clinical practice, and the operations of running a behavioral-health practice. The first posts are being staged."
+  />
+
+  <section class="empty">
+    <div class="container container-narrow">
+      <div class="card text-center">
+        <h2>The blog is coming online.</h2>
+        <p class="lede">
+          We'd rather ship one carefully written piece than fill a feed with filler. The
+          first articles are in draft. Sign up below and we'll send you the inaugural posts
+          when they land, and nothing else.
+        </p>
+        <div class="cta-actions">
+          <a href="/contact?topic=blog" class="btn btn-primary">Notify me</a>
+          <a href="/resources" class="btn btn-secondary">Browse other resources</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection variant="paper" />
+</BaseLayout>
+
+<style>
+  .empty { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+  .empty .card { padding: clamp(2.5rem, 5vw, 4rem); }
+  .empty h2 { margin-bottom: 1rem; }
+  .empty .lede { margin: 0 auto 2rem; }
+  .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+</style>

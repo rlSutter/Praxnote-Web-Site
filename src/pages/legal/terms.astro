@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+---
+<BaseLayout
+  title="Terms of service"
+  description="Praxnote's terms of service. The binding agreement is your signed service agreement; this page is a summary."
+>
+  <PageHeader
+    eyebrow="Legal"
+    title="Terms of service"
+    lede="This page summarizes the terms governing use of the Praxnote marketing site. Use of the Praxnote platform is governed by the service agreement and BAA you sign at onboarding."
+  />
+
+  <section class="legal-body">
+    <div class="container container-narrow">
+      <p class="muted">Last updated: 2026-04-30.</p>
+
+      <h2>Use of the marketing site</h2>
+      <p>
+        praxnote.com is provided for informational purposes. Forms on this site (demo
+        requests, contact, BAA requests) initiate a business conversation but do not
+        themselves create a customer relationship.
+      </p>
+
+      <h2>Acceptable use</h2>
+      <p>
+        Don't attempt to disrupt the site, scrape it at high volumes, or attempt to access
+        non-public surfaces without authorization. Security disclosures are welcome and
+        should be directed to <a href="mailto:security@praxnote.com">security@praxnote.com</a>.
+      </p>
+
+      <h2>Trademark and content</h2>
+      <p>
+        "Praxnote" and the Praxnote logo are property of the Praxnote owners. Content on
+        this site (other than third-party material clearly attributed) is owned by Praxnote
+        and may not be reproduced without permission, except in accordance with normal
+        web-citation practice.
+      </p>
+
+      <h2>Disclaimer</h2>
+      <p>
+        Praxnote is software for clinical documentation and practice management. It is not
+        a clinician. It does not provide clinical advice. Drafts produced by AI features
+        are not finished documents. Every clinical artifact in Praxnote is signed by a
+        licensed professional before it enters the chart of record.
+      </p>
+
+      <h2>Limitation of liability</h2>
+      <p>
+        In no event shall Praxnote be liable for any indirect, incidental, special,
+        consequential, or punitive damages arising from use of this marketing site. The
+        platform's liability is governed by your signed service agreement.
+      </p>
+
+      <h2>Changes to these terms</h2>
+      <p>
+        We may update these terms; the "last updated" date will reflect the change. Material
+        changes affecting active customers are communicated via email under the service
+        agreement.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms should go to
+        <a href="mailto:legal@praxnote.com">legal@praxnote.com</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-body { padding: 0 0 clamp(3rem, 6vw, 5rem); }
+  .legal-body h2 { margin: 2rem 0 0.85rem; font-size: clamp(1.4rem, 2.2vw, 1.7rem); }
+  .legal-body p { color: var(--stone-700); line-height: 1.7; max-width: 720px; }
+</style>

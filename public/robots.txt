@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://praxnote.com/sitemap-index.xml

@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+<BaseLayout
+  title="Praxnote for group practices"
+  description="Scale a group practice without sacrificing clinical oversight, supervision queue, per-therapist billing, dual-role therapist-admins, practice-wide analytics."
+>
+  <PageHeader
+    eyebrow="Group practices"
+    title="Scale without sacrificing <em>oversight.</em>"
+    lede="A group practice runs on supervision and billing, and the dual-role therapist-admins who keep the operation moving. Praxnote treats those as first-class concerns, not afterthoughts."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/features/supervision" class="btn btn-secondary">Supervision queue</a>
+  </PageHeader>
+
+  <section class="capabilities">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Built for the operations of a group practice</p>
+        <h2>The seats that actually run the place.</h2>
+      </header>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>Supervision queue</h4>
+          <p>Bulk approve, return for revision, flag for discussion. Keyboard navigation (down-arrow / up-arrow, plus single-key actions). ConfirmDialog on every destructive action. The reviewer surface that supervisors actually want to log into.</p>
+        </div>
+        <div class="card">
+          <h4>Practice-level analytics</h4>
+          <p>Revenue, utilization, AR aging, attendance, AI usage. Per-therapist or practice-wide. The reports your admin meeting expects.</p>
+        </div>
+        <div class="card">
+          <h4>Per-therapist CPT rates</h4>
+          <p>Practice defaults with COALESCE-safe per-therapist overrides. Different licensures, different rates, no spreadsheet.</p>
+        </div>
+        <div class="card">
+          <h4>Dual-role therapist-admin</h4>
+          <p>One user, two hats, two themes (admin dark, therapist light), to reduce role-switching errors. The way real group practices actually staff the operation.</p>
+        </div>
+        <div class="card">
+          <h4>Therapist availability &amp; waitlist</h4>
+          <p>Manage availability per clinician, route waitlist (waiting → notified → converted/removed), surface who's been waiting longest.</p>
+        </div>
+        <div class="card">
+          <h4>Email + SMS templates</h4>
+          <p>Practice-level templates for reminders, intake invitations, invoice notifications. Consistent voice across the practice without copy-paste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story alt">
+    <div class="container container-narrow">
+      <p class="eyebrow">A common scenario</p>
+      <h2>Dr. Patel supervises four therapists. Thirty notes a week.</h2>
+      <p>
+        On Friday afternoon, Dr. Patel opens the Supervision Queue. <kbd>j</kbd> through new
+        notes. <kbd>a</kbd> to approve clean ones. <kbd>r</kbd> to return with feedback.
+        <kbd>f</kbd> to flag for Tuesday's supervision meeting. Bulk approve five at once
+        after a quick read. Twenty minutes for what used to take an unreadable Friday inbox.
+      </p>
+      <p>
+        Meanwhile his practice administrator (who is also a half-time therapist) switches
+        between her admin theme for managing the calendar and sending invoices, and her
+        therapist theme for her own four clients, without ever opening a second app.
+      </p>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .capabilities { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .story { padding: clamp(3rem, 6vw, 5rem) 0; }
+  .story p { color: var(--stone-700); line-height: 1.7; margin-bottom: 1rem; }
+  .story h2 { margin: 0.5rem 0 1.5rem; }
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  kbd {
+    display: inline-block;
+    background: var(--surface-card);
+    border: 1px solid var(--hairline-strong);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 0.05rem 0.5rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.85em;
+    margin: 0 0.1rem;
+  }
+</style>

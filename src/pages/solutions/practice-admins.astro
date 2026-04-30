@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+<BaseLayout
+  title="Praxnote for practice administrators"
+  description="Run the practice, not the spreadsheet. Practice-wide visibility, scheduling oversight, financial controls, residency and consent management, first-class admin role."
+>
+  <PageHeader
+    eyebrow="Practice administrators"
+    title="Run the practice. <em>Not the spreadsheet.</em>"
+    lede="The practice-admin seat is first-class in Praxnote, not a stripped-down therapist account with extra menu items. Calendars, intakes, consents, residency, billing, and the audit trail come together in one role."
+  >
+    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/product" class="btn btn-secondary">Platform overview</a>
+  </PageHeader>
+
+  <section class="capabilities">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">What the role covers</p>
+        <h2>Practice oversight, end to end.</h2>
+      </header>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>Practice oversight</h4>
+          <p>Therapist roster (including dual-role therapist-admins). Client roster across all therapists. Reassign clients between therapists. Grant or revoke practice-admin role.</p>
+        </div>
+        <div class="card">
+          <h4>Scheduling</h4>
+          <p>View all therapist calendars. Manage availability blocks. Calendar sync (Google today, more on roadmap). Waitlist routing. Session-type and CPT-rate management.</p>
+        </div>
+        <div class="card">
+          <h4>Financial controls</h4>
+          <p>Invoice creation, sending, and voiding for any therapist's clients. Payment provider per practice. Autopay configuration.</p>
+        </div>
+        <div class="card">
+          <h4>Quality &amp; compliance</h4>
+          <p>Supervision queue oversight. Document approval workflows. Email + SMS templates. Practice setup, branding, and data residency (US/CA).</p>
+        </div>
+        <div class="card">
+          <h4>Erasure &amp; consent</h4>
+          <p>Review erasure requests (GDPR Article 17 / PIPEDA). Manage the consent log. Audit each step from request to redaction execution.</p>
+        </div>
+        <div class="card">
+          <h4>Operations</h4>
+          <p>Document categories. Assessment availability gating per practice. Activity log audit trail. Practice memberships and dual-role onboarding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dual-role alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Dual-role therapist-admin</p>
+        <h2>One user. Two hats. Two themes.</h2>
+        <p class="lede">
+          Most group-practice owners are also clinicians. Praxnote handles that natively
+          with role-switching UI, and two themes (admin dark, therapist light) to reduce
+          the cognitive overhead of context-switching mid-day.
+        </p>
+      </header>
+
+      <ul class="checks">
+        <li>One identity, two roles, two surfaces, no double-login</li>
+        <li>Role-aware navigation, role-aware command palette</li>
+        <li>Per-role theme (admin dark, therapist light) reduces switching errors</li>
+        <li>Audit log records actions under the role used at the time</li>
+      </ul>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .capabilities { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .section-head .lede { margin-top: 1rem; }
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
+</style>
