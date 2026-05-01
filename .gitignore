@@ -19,6 +19,10 @@ dist/
 *.swp
 *.swo
 
+# Claude Code / agent tooling (local only)
+.claude/
+.agents/skills/impeccable/
+
 # OS
 .DS_Store
 Thumbs.db
