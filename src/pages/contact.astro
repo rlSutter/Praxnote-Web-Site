@@ -9,7 +9,7 @@ import PageHeader from '../components/PageHeader.astro';
   <PageHeader
     eyebrow="Contact"
     title="Talk to a real person."
-    lede="The Praxnote team reads every message. We respond within one business day."
+    lede="The Praxnote team reads every message and replies within one business day. No marketing list, no sequence — just the answer to what you asked."
   />
 
   <section class="contact-section">
@@ -17,7 +17,7 @@ import PageHeader from '../components/PageHeader.astro';
       <div class="contact-grid">
         <div class="contact-form">
           <h2>Send us a note.</h2>
-          <p class="muted">For demos, please use the demo form. It routes faster and asks the right questions.</p>
+          <p class="muted">To request access or book a walk-through, use the <a href="/demo">access form</a> instead — it asks the right questions and reaches us faster.</p>
 
           <form
             name="contact"
@@ -42,11 +42,12 @@ import PageHeader from '../components/PageHeader.astro';
               <label for="c-topic">What's this about?</label>
               <select id="c-topic" name="topic">
                 <option value="">Select a topic</option>
-                <option>Sales question</option>
+                <option>Pricing or access</option>
                 <option>Security or compliance question</option>
-                <option>Pricing</option>
-                <option>Existing customer support</option>
-                <option>Partnership / integration</option>
+                <option>Question about Praxnote Dedicated</option>
+                <option>Services (migration, custom skills, training)</option>
+                <option>Existing practice support</option>
+                <option>Partnership or referral</option>
                 <option>Press</option>
                 <option>Other</option>
               </select>
@@ -73,11 +74,11 @@ import PageHeader from '../components/PageHeader.astro';
           <div class="card-warm">
             <h3>Direct lines</h3>
             <dl class="contact-dl">
-              <dt>Demos</dt>
+              <dt>Request access</dt>
               <dd><a href="/demo">/demo</a></dd>
-              <dt>Sales</dt>
+              <dt>General questions</dt>
               <dd><a href="mailto:hello@praxnote.com">hello@praxnote.com</a></dd>
-              <dt>Customer support</dt>
+              <dt>Existing-practice support</dt>
               <dd><a href="mailto:support@praxnote.com">support@praxnote.com</a></dd>
               <dt>Security disclosures</dt>
               <dd><a href="mailto:security@praxnote.com">security@praxnote.com</a></dd>

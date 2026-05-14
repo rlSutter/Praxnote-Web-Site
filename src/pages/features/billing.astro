@@ -5,47 +5,48 @@ import CTASection from '../../components/CTASection.astro';
 ---
 <BaseLayout
   title="Billing"
-  description="Per-therapist CPT rate overrides, Stripe integration, autopay, AR aging, attendance and AI usage reports, and a pluggable payment-provider architecture."
+  description="Cash-pay billing for behavioral health — invoices per session, payment links by text or email, autopay through Stripe, different rates for different clinicians, and a clear view of who owes what."
 >
   <PageHeader
     eyebrow="Billing"
     title="Get paid faster, <em>with cleaner records.</em>"
-    lede="Per-therapist CPT rate overrides. Invoice creation, sending, voiding. Payment links. Autopay through Stripe. AR aging, attendance, and AI usage reports. A pluggable payment-provider architecture so your practice isn't locked to one processor."
+    lede="Send an invoice in a click. Let clients pay by tapping a link in a text. Set autopay once and stop chasing. Charge the right rate for the right clinician without keeping a spreadsheet on the side of the monitor. Built for cash-pay and out-of-network practices."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
+    <a href="/pricing" class="btn btn-secondary">See pricing</a>
   </PageHeader>
 
   <section class="capabilities">
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">What it does</p>
-        <h2>The billing surface, end to end.</h2>
+        <h2>The work of getting paid, in one place.</h2>
       </header>
 
       <div class="grid grid-3">
         <div class="card">
-          <h4>Invoicing</h4>
-          <p>Per session, per period, or batch. Therapists invoice their own self-pay clients. Practice administrators invoice across the practice. Voiding is gated by role.</p>
+          <h4>Invoices the way the practice actually invoices</h4>
+          <p>Per session, per period, or in batches. Clinicians invoice their own self-pay clients; practice admins can invoice across the whole practice. Voiding an invoice is an admin decision, not a clinician one.</p>
         </div>
         <div class="card">
-          <h4>Payment links</h4>
-          <p>Stripe payment links generated per session and per invoice. Clients pay from email, SMS, or the portal. No friction.</p>
+          <h4>Payment links the client can tap</h4>
+          <p>Every invoice and every session can generate a secure payment link, sent by email or text. Clients pay in seconds, on their phone, without logging into anything.</p>
         </div>
         <div class="card">
-          <h4>Autopay</h4>
-          <p>Stripe customer + saved payment method + card brand + last-4. Charging is fired via <code>asyncio.ensure_future</code> in <code>create_client_invoice</code>, never blocks the UI.</p>
+          <h4>Autopay, set once</h4>
+          <p>A client saves their card; Praxnote charges it after each session. The charge runs in the background — you and your client never wait on a spinning wheel — and if a card fails, the system tells you, not the client mid-checkout.</p>
         </div>
         <div class="card">
-          <h4>Per-therapist CPT rates</h4>
-          <p>Practice defaults with COALESCE-safe per-therapist overrides. Different rates for different licensures or experience levels, handled cleanly.</p>
+          <h4>Different rates for different clinicians</h4>
+          <p>Set a default rate for the practice and override it per clinician when their license, experience, or contract calls for a different number. The right rate applies to the right session, every time. The spreadsheet on the side of the monitor can go.</p>
         </div>
         <div class="card">
-          <h4>AR aging</h4>
-          <p>Aging buckets across the practice or per therapist. Identify old balances; trigger payment links or autopay nudges; export for accounting.</p>
+          <h4>A clear view of who owes what</h4>
+          <p>See outstanding balances at a glance — across the whole practice, by clinician, or by client. Sort by how long a balance has been outstanding. Send a payment-link nudge, set up autopay, or export the list for your accountant.</p>
         </div>
         <div class="card">
-          <h4>Attendance &amp; AI usage</h4>
-          <p>Attendance reports for utilization analysis. AI usage reports for cost allocation across therapists or practices.</p>
+          <h4>Attendance and AI use, on the same dashboard</h4>
+          <p>See utilization by clinician and AI draft usage by clinician or by skill, alongside the billing numbers. The reports your monthly admin meeting actually asks for, ready when you sit down.</p>
         </div>
       </div>
     </div>
@@ -54,12 +55,12 @@ import CTASection from '../../components/CTASection.astro';
   <section class="role-matrix alt">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Role-based access</p>
-        <h2>Who can do what.</h2>
+        <p class="eyebrow">Who can do what</p>
+        <h2>The right hands on the right work.</h2>
         <p class="lede">
-          Billing is sensitive. Praxnote enforces role-based access on the server, not in
-          the browser where it could be bypassed. Here's the matrix that the
-          <a href="/security">activity log</a> reflects.
+          Billing is sensitive. Praxnote enforces who can do what at the server, not just in the
+          interface — so the rules can't be worked around. The picture below is what gets recorded
+          in the activity history every time.
         </p>
       </header>
 
@@ -76,18 +77,18 @@ import CTASection from '../../components/CTASection.astro';
         </thead>
         <tbody>
           <tr>
-            <td><strong>Therapist</strong></td>
-            <td>Own self-pay clients</td>
+            <td><strong>Clinician</strong></td>
+            <td>Their own self-pay clients</td>
             <td>Yes</td>
             <td>No</td>
-            <td>Own clients</td>
+            <td>Their own clients</td>
           </tr>
           <tr>
             <td><strong>Practice admin</strong></td>
-            <td>All</td>
+            <td>Anyone in the practice</td>
             <td>Yes</td>
             <td>Yes</td>
-            <td>Practice</td>
+            <td>Practice-wide</td>
           </tr>
         </tbody>
       </table>
@@ -98,40 +99,46 @@ import CTASection from '../../components/CTASection.astro';
   <section class="pluggable">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Pluggable payment providers</p>
-        <h2>Stripe today. <em>More tomorrow.</em></h2>
+        <p class="eyebrow">Honest about the niche</p>
+        <h2>Built first for cash-pay and out-of-network.</h2>
         <p class="lede">
-          Praxnote supports Stripe and Manual today, with each practice choosing the one
-          that fits. No platform-level lock-in. Adding a future provider is a small,
-          contained change, not a rewrite.
+          Praxnote's billing is excellent for the practice that doesn't depend on insurance — cash-pay,
+          out-of-network, sliding-scale. We're honest about what it does not yet do: in-network claims,
+          ERA posting, eligibility checks, denial management, prior authorizations. Those are on the
+          long-term roadmap; they aren't in the product today. If your practice depends on them,
+          Praxnote isn't the right choice yet.
         </p>
       </header>
 
       <ul class="checks">
-        <li>Stripe, Connect, customers, payment methods, payment links, autopay</li>
-        <li>Manual, for practices that handle payment outside the platform but want invoice tracking inside it</li>
-        <li>Future-ready: any provider that can mint a payment link and confirm a charge fits the interface</li>
-        <li>Practice-level configuration; no global lock-in</li>
+        <li>Stripe handles the card processing at Stripe's rates — Praxnote adds nothing</li>
+        <li>Practices that handle payments outside the platform can still track invoices inside it</li>
+        <li>Superbills generate cleanly for clients who want to submit their own claims to insurance</li>
+        <li>Sliding-scale and pro-bono sessions are handled directly, not as workarounds</li>
       </ul>
     </div>
   </section>
 
   <CTASection
-    eyebrow="See an invoice flow"
-    heading="From session to payment, in five minutes."
-    body="On a demo we'll generate an invoice, send a payment link, enable autopay, and walk the AR aging report. You'll see why most practices migrate billing first."
+    eyebrow="See it on a real session"
+    heading="From a session to a paid invoice in five minutes."
+    body="On a walk-through we'll generate an invoice from a real (or sample) session, send a payment link, set up autopay, and look at the outstanding-balance view. Most practices say billing is the reason they migrated."
+    primaryHref="/demo"
+    primaryLabel="Book a walk-through"
+    secondaryHref="/solutions/practice-admins"
+    secondaryLabel="More for practice admins"
   />
 </BaseLayout>
 
 <style>
   .capabilities { padding: clamp(3rem, 5vw, 4.5rem) 0; }
   .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
-  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .pluggable { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 760px; margin-bottom: 2rem; }
   .section-head .lede { margin-top: 1rem; }
-  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
   .role-matrix-table th:not(:first-child), .role-matrix-table td:not(:first-child) { text-align: center; }
   .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .table-scroll table { min-width: 640px; }
   .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
 </style>

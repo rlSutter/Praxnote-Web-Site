@@ -6,16 +6,16 @@ import CTASection from '../components/CTASection.astro';
 
 const pillars = [
   {
-    title: 'Clinician control over AI output',
-    body: 'Every AI draft is a starting point. Skills are editable templates. Clinicians sign every document. The AI is your scribe, not your clinician.',
+    title: 'You stay the author',
+    body: "Every AI draft is a starting point. The templates that shape the drafts are editable by your practice. Every document is signed by the clinician who wrote it. The AI is your scribe — never your clinician.",
   },
   {
-    title: 'Defense-grade privacy',
-    body: 'Encrypted at rest. No third-party AI proxies. No Google Fonts CDN. Optional client-side offline vault. GDPR and PIPEDA right-to-erasure.',
+    title: 'Privacy lives in the structure',
+    body: "Records are encrypted. The AI is reached directly — no other vendor in between, and the AI provider does not train on your information. Nothing on this site loads from a third-party server. A private, PIN-locked copy can sit on your device for the days the wifi doesn't cooperate.",
   },
   {
-    title: 'Modality breadth without bloat',
-    body: 'SOAP, DAP, BIRP, narrative, PBT/EEMM, CBT, DBT, standard goals-based, all from one note interface. Skills make the format, not your code.',
+    title: 'The format that fits the work',
+    body: 'SOAP, DAP, BIRP, plain narrative. PBT/EEMM, CBT, DBT, standard goals-based, simple. Five note formats and five treatment-plan formats — and the freedom to choose which one suits each piece of work.',
   },
 ];
 
@@ -27,42 +27,46 @@ const personas = [
   },
   {
     title: 'Group practices',
-    body: 'Scale supervision and billing without sacrificing clinical oversight.',
+    body: 'More clinicians, same care. Supervision that respects supervisor time, billing that handles different rates for different clinicians.',
     href: '/solutions/group-practices',
   },
   {
     title: 'Supervisors',
-    body: 'A queue built for thirty-note Fridays. Approve, return, flag. Keyboard-first.',
+    body: "Thirty notes, twenty minutes, nothing forgotten. One screen for approving, sending back, and setting aside for next week's meeting.",
     href: '/solutions/supervisors',
   },
   {
-    title: 'Practice administrators',
-    body: 'Calendars, intakes, consents, residency, audit. The operations seat is first-class.',
+    title: 'Practice admins',
+    body: 'The work of running a practice — calendars, intakes, invoices, consents, audit — in one place built around the role.',
     href: '/solutions/practice-admins',
   },
 ];
 ---
 <BaseLayout
   title="Notes in minutes. Nuance intact. Control yours."
-  description="Praxnote is a HIPAA-grade clinical workspace for behavioral health. AI drafts session notes, treatment plans, and client letters from clinician-specified context, without flattening clinical nuance or sacrificing your control."
+  description="Praxnote is the clinical workspace for behavioral health. The AI drafts notes, plans, and letters from the context you give it — never replacing your judgment, never reaching client information without your consent."
 >
   <section class="hero wash">
     <div class="container hero-grid">
       <div class="hero-text">
-        <span class="badge">Now in private beta</span>
+        <span class="badge">Built for behavioral health</span>
         <h1>Notes in minutes.<br/><em>Nuance intact.</em><br/>Control yours.</h1>
         <p class="lede">
-          Praxnote is the clinical workspace for behavioral health. AI drafts session notes,
-          treatment plans, and client documents from the context <em>you</em> specify, never
-          replacing your clinical judgment, never trained on your charts, never reaching PHI
-          without your consent.
+          Praxnote is the clinical workspace for behavioral health. The AI drafts session notes,
+          treatment plans, and client letters from the context <em>you</em> give it — never replacing
+          your clinical judgment, never reaching client information without your consent. The AI
+          provider we use does not train on what your practice sends.
+        </p>
+        <p class="hero-deployment">
+          <strong>Hosted by us, or running inside your own cloud account.</strong> Same product, your choice — <a href="/deployment">compare Cloud and Dedicated</a>.
         </p>
         <div class="hero-actions">
-          <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
-          <a href="/product" class="btn btn-ghost">See the platform →</a>
+          <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
+          <a href="/pricing" class="btn btn-secondary">See pricing</a>
+          <a href="/contact?topic=dedicated" class="btn-ghost">Talk to us about Dedicated →</a>
         </div>
         <p class="hero-fineprint">
-          For solo and group practices in the US and Canada · BAA available · GDPR and PIPEDA workflows shipped
+          For solo and group practices in the U.S. and Canada · BAA included · right-to-be-forgotten workflows built in · in early access — we onboard each practice personally
         </p>
       </div>
       <div class="hero-visual-wrap">
@@ -73,7 +77,7 @@ const personas = [
 
   <aside class="trust-line">
     <div class="container">
-      <p>Encrypted by default. BAA available. GDPR and PIPEDA workflows shipped. <a href="/security">No third-party AI proxies, no Google Fonts, no analytics.</a></p>
+      <p>Encrypted by default. BAA included. Right-to-be-forgotten built in. <a href="/security">The AI is reached directly — no other vendor in between, no analytics, no training on your information.</a></p>
     </div>
   </aside>
 
@@ -81,7 +85,7 @@ const personas = [
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">Three commitments</p>
-        <h2>Built into the architecture, not the brochure.</h2>
+        <h2>Built into how the product works, <em>not into a policy page.</em></h2>
       </header>
 
       <ol class="pillar-row">
@@ -100,25 +104,62 @@ const personas = [
     <div class="container">
       <div class="showcase-grid">
         <div class="showcase-text">
-          <p class="eyebrow">Show the prompt, not the magic</p>
-          <h2>Every AI draft starts here. <em>An editable plain-text file.</em></h2>
+          <p class="eyebrow">Show the instructions, not the magic</p>
+          <h2>Every AI draft starts here. <em>An editable template, written in plain language.</em></h2>
           <p class="lede">
-            Most AI scribes hide their prompts. Praxnote's are plain-text files you can read
-            and change. When you customize a global skill for your practice, your edit
-            becomes the prompt every clinician on the team uses, immediately, until you
+            Most AI scribes treat the prompt as a trade secret. Praxnote treats it as something
+            the practice can read and adjust. When you change a template for your practice, your
+            version is what every clinician on the team sees from that moment on — until you
             change it again.
           </p>
           <p>
-            Fourteen skills ship as global defaults: session notes, treatment plans (in five
-            formats), referral letters, discharge summaries, case conceptualizations, and more.
-            Practices override them as needed. Praxnote tracks the version of the skill in
-            effect for every draft.
+            Fourteen templates come ready on day one: session notes, treatment plans in five
+            formats, referral letters, discharge summaries, case conceptualizations, and others.
+            Each one is yours to edit. Each draft a clinician makes is kept alongside the exact
+            version of the template that shaped it.
           </p>
-          <a href="/features/ai-skills" class="showcase-link">Read about AI skills →</a>
+          <a href="/features/ai-skills" class="showcase-link">Read about the templates →</a>
         </div>
         <div class="showcase-visual">
           <SkillMock />
-          <p class="caption">A real Praxnote skill. Open in the product, customize, publish.</p>
+          <p class="caption">An actual Praxnote template. Open in the product, change it, publish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="supervision-band">
+    <div class="container">
+      <div class="supervision-grid">
+        <div class="supervision-text">
+          <p class="eyebrow">Where supervision actually happens</p>
+          <h2>One screen for <em>thirty-note Fridays.</em></h2>
+          <p>
+            Most clinical software treats supervision as a checkbox. Praxnote treats it as the
+            work it actually is — one screen where every supervisee's recent notes are visible,
+            three clear decisions for each one, and a record of every decision that survives
+            the year. Twenty minutes for what used to take an unreadable Friday inbox.
+          </p>
+          <p class="supervision-cta">
+            <a href="/features/supervision" class="showcase-link">See how the screen works →</a>
+          </p>
+        </div>
+        <div class="supervision-keys">
+          <div class="key-row">
+            <span class="action-name">Approve</span>
+            <span>For notes that meet your standard</span>
+          </div>
+          <div class="key-row">
+            <span class="action-name">Send back</span>
+            <span>For notes that need another pass</span>
+          </div>
+          <div class="key-row">
+            <span class="action-name">Set aside</span>
+            <span>For something worth discussing at supervision</span>
+          </div>
+          <p class="key-fineprint">
+            Click anything, or fly through with single-key shortcuts.
+          </p>
         </div>
       </div>
     </div>
@@ -131,7 +172,8 @@ const personas = [
         <h2>Behavioral health, end to end.</h2>
         <p class="lede">
           From a solo clinician with twenty-five clients a week to a group practice with five
-          supervisors and a full operations team, every role is first-class.
+          supervisors and a full operations team — each role has a seat built around the
+          work that role actually does.
         </p>
       </header>
 
@@ -148,13 +190,13 @@ const personas = [
   </section>
 
   <CTASection
-    eyebrow="Ready to see it on your workflow?"
-    heading="Book a 30-minute demo on your real practice."
-    body="Bring a recent session you'd document, or a supervision queue, a billing batch, an erasure scenario. We'll walk Praxnote through the work you actually do."
+    eyebrow="Two doors. Same product."
+    heading="Request Cloud access, or talk to us about a Dedicated pilot."
+    body="Cloud trial is self-serve — you'll be documenting your first session in under a day. Dedicated starts with a paid pilot, deployed into your own cloud account, with a documented teardown path if it isn't a fit."
     primaryHref="/demo"
-    primaryLabel="Book a demo"
-    secondaryHref="/security"
-    secondaryLabel="Read the security overview"
+    primaryLabel="Request access"
+    secondaryHref="/deployment"
+    secondaryLabel="Compare Cloud and Dedicated"
   />
 </BaseLayout>
 
@@ -187,6 +229,23 @@ const personas = [
     color: var(--stone-500);
     font-size: 0.88rem;
   }
+
+  .hero-deployment {
+    margin-top: 1.25rem;
+    padding: 0.8rem 1rem;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--brand-teal);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 0.95rem;
+    color: var(--stone-700);
+  }
+  .hero-deployment strong { color: var(--stone-900); }
+  .hero-deployment a {
+    color: var(--brand-teal-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--brand-teal-soft);
+  }
+  .hero-deployment a:hover { border-bottom-color: var(--brand-teal); }
 
   @media (max-width: 920px) {
     .hero-grid { grid-template-columns: 1fr; }
@@ -291,6 +350,63 @@ const personas = [
   @media (max-width: 920px) {
     .showcase-grid { grid-template-columns: 1fr; }
     .showcase-visual { order: 2; }
+  }
+
+  /* Supervision band */
+  .supervision-band {
+    padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .supervision-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .supervision-text { max-width: 580px; }
+  .supervision-text h2 { margin: 0.4rem 0 1.25rem; }
+  .supervision-text p { color: var(--stone-700); line-height: 1.7; }
+  .supervision-cta { margin-top: 1.25rem; }
+  .supervision-keys {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .key-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .key-row:first-of-type { padding-top: 0; }
+  .key-row:nth-of-type(3) { border-bottom: none; padding-bottom: 0.5rem; }
+  .action-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-variation-settings: 'opsz' 48, 'SOFT' 50;
+    color: var(--brand-teal-dark);
+  }
+  .key-row span:not(.action-name) {
+    color: var(--stone-700);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .key-fineprint {
+    margin: 0.85rem 0 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--hairline);
+    color: var(--stone-500);
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+  @media (max-width: 920px) {
+    .supervision-grid { grid-template-columns: 1fr; }
   }
 
   /* Personas dark band */

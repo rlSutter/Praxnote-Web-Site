@@ -2,134 +2,366 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
+
+const stackRows = [
+  {
+    feature: 'Deployment on your own cloud account',
+    stack: { has: false, note: 'No vendor offers this' },
+    praxnote: { has: true, note: 'Praxnote Dedicated' },
+    why: 'Healthcare data sovereignty without losing managed software.',
+    flag: true,
+  },
+  {
+    feature: 'AI-drafted session notes',
+    stack: { has: true, note: 'via Mentalyc / Blueprint / Upheal' },
+    praxnote: { has: true, note: 'Built in' },
+  },
+  {
+    feature: 'Editable AI skills (the prompt is yours)',
+    stack: { has: false, note: 'AI scribes hide the prompt' },
+    praxnote: { has: true, note: 'Plain-text, version-tracked' },
+  },
+  {
+    feature: 'Anthropic-direct AI (no proxies, no training)',
+    stack: { has: false, note: 'Most scribes use proxies' },
+    praxnote: { has: true, note: 'Direct enterprise terms' },
+  },
+  {
+    feature: 'Treatment plans in five formats',
+    stack: { has: true, note: 'EHR only — not integrated with the scribe' },
+    praxnote: { has: true, note: 'Integrated with notes and skills' },
+  },
+  {
+    feature: 'Keyboard-first supervision queue',
+    stack: { has: false, note: 'EHR has a queue; not built for triage volume' },
+    praxnote: { has: true, note: 'Built for thirty-note Fridays' },
+  },
+  {
+    feature: 'Cash-pay billing, Stripe, superbills',
+    stack: { has: true, note: 'via EHR' },
+    praxnote: { has: true, note: 'Built in, per-therapist CPT rates' },
+  },
+  {
+    feature: 'Insurance claims, ERA, eligibility, denials',
+    stack: { has: true, note: 'via EHR' },
+    praxnote: { has: false, note: 'Roadmap, not shipping' },
+  },
+  {
+    feature: 'e-Prescribing / EPCS',
+    stack: { has: true, note: 'EHR add-on' },
+    praxnote: { has: false, note: 'Not applicable to most clients' },
+  },
+  {
+    feature: 'GDPR-style right-to-erasure workflow (PIPEDA-aligned)',
+    stack: { has: false, note: 'US-built, weak Canadian coverage' },
+    praxnote: { has: true, note: 'Shipped' },
+  },
+  {
+    feature: 'One vendor, one bill, one audit log',
+    stack: { has: false, note: 'Three vendors, three bills, three trust postures' },
+    praxnote: { has: true, note: 'Single platform' },
+  },
+];
+
+const costRows = [
+  { item: 'EHR (SimplePractice Plus or TherapyNotes)', stack: '$99 / clinician / mo', praxnote: '' },
+  { item: 'AI scribe (Blueprint or Mentalyc)', stack: '$59 / clinician / mo', praxnote: '' },
+  { item: 'Supervision tooling (DIY in spreadsheets)', stack: 'Free, but ~3hr/week supervisor time', praxnote: '' },
+  { item: 'Praxnote Group', stack: '', praxnote: '$69 / active clinician / mo' },
+  { item: 'Annual savings on a 10-clinician practice', stack: '', praxnote: '~$10,800 / year', total: true },
+];
+
+const renderCell = (c: { has: boolean; note: string }) =>
+  c.has ? { mark: '✓', cls: 'yes' } : { mark: '—', cls: 'no' };
 ---
 <BaseLayout
-  title="Comparisons"
-  description="How Praxnote compares with legacy EHRs (SimplePractice, TherapyNotes), AI scribes (Mentalyc, Heidi, Upheal), and DIY documentation."
+  title="Praxnote vs. the assembled stack"
+  description="Most behavioral health practices run an EHR plus an AI scribe plus supervision workarounds. Praxnote replaces the stack — and is the only option that deploys into your own cloud."
 >
   <PageHeader
     eyebrow="Comparisons"
-    title="Honest comparisons. <em>Useful tradeoffs.</em>"
-    lede="The behavioral-health software landscape is crowded. Here's how Praxnote actually differs from the platforms practices most often weigh us against."
+    title="Praxnote vs. <em>the stack you're already paying for.</em>"
+    lede="A modern group practice usually runs SimplePractice or TherapyNotes for the EHR, Blueprint or Mentalyc for the AI scribe, a spreadsheet for supervision, and Doxy for telehealth. Praxnote replaces the stack. It is also the only option that can be deployed inside infrastructure you own."
   />
 
-  <section class="comparison">
-    <div class="container">
+  <section class="stack-frame wash">
+    <div class="container container-wide">
       <header class="section-head">
-        <p class="eyebrow">Praxnote vs. legacy EHRs</p>
-        <h2>SimplePractice · TherapyNotes · TheraNest</h2>
+        <p class="eyebrow">The real comparison</p>
+        <h2>The competition isn't one product. <em>It's three.</em></h2>
         <p class="lede">
-          Legacy EHRs ship the full operational stack: scheduling, billing, the client
-          portal. They treat AI documentation as a recent bolt-on. Praxnote starts with
-          documentation and treats AI as a first-class citizen, with editable skills the
-          practice owns.
+          When practices weigh Praxnote against a single competitor, the comparison undersells what's actually happening.
+          The real comparison is against an assembled stack — and the integration overhead between its parts.
         </p>
       </header>
 
-      <div class="grid grid-2">
+      <div class="grid grid-2 stack-cards">
         <div class="card">
-          <h4>Where legacy EHRs lead</h4>
+          <p class="eyebrow">Your current stack</p>
+          <h3>EHR + AI scribe + supervision workarounds + telehealth</h3>
           <ul class="checks">
-            <li>Years of insurance-claim workflow refinement</li>
-            <li>Established integration ecosystems</li>
-            <li>Wide-spread training resources, supervisor familiarity</li>
-            <li>Established e-prescribing options for medication-management practices</li>
+            <li><strong>SimplePractice or TherapyNotes</strong> for charts, scheduling, billing</li>
+            <li><strong>Blueprint, Upheal, or Mentalyc</strong> for AI notes</li>
+            <li><strong>Spreadsheet or Slack thread</strong> for supervision queue</li>
+            <li><strong>Doxy or non-integrated Zoom</strong> for telehealth</li>
+            <li><strong>Three or four vendors</strong> to BAA, audit, and renew</li>
           </ul>
         </div>
-        <div class="card">
-          <h4>Where Praxnote leads</h4>
+        <div class="card card-praxnote">
+          <p class="eyebrow">With Praxnote</p>
+          <h3>One workspace. AI built in. Cloud or your own cloud.</h3>
           <ul class="checks">
-            <li>Modern UI built around the documentation flow</li>
-            <li>Editable AI skills, not a black-box bolt-on</li>
-            <li>Five note formats, five treatment-plan formats</li>
-            <li>Defense-grade encryption at rest, no third-party AI middlemen</li>
-            <li>Supervision queue with keyboard navigation</li>
-            <li>Pluggable payment providers</li>
+            <li>Charts, scheduling, billing, client portal</li>
+            <li>Editable AI skills — fourteen ship as global defaults</li>
+            <li>Supervision queue, keyboard-first, audit-logged</li>
+            <li>Telehealth pluggable; default provider ships in the deployment</li>
+            <li>One vendor, one BAA, one audit log, <strong>one choice of where the data lives</strong></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="comparison alt">
-    <div class="container">
+  <section class="parity">
+    <div class="container container-wide">
       <header class="section-head">
-        <p class="eyebrow">Praxnote vs. AI scribes</p>
-        <h2>Mentalyc · Heidi · Upheal</h2>
+        <p class="eyebrow">Capability comparison</p>
+        <h2>Where each side actually wins.</h2>
         <p class="lede">
-          AI scribes do one thing: turn audio into a draft. Praxnote does that, plus the
-          full clinical workspace around it (scheduling, billing, supervision, portal,
-          assessments). And Praxnote's skills are editable; most scribes' prompts are not.
+          A short-list comparison, with the things Praxnote does not yet do flagged honestly.
+          The top row is the one no other vendor in this space matches.
         </p>
       </header>
 
-      <div class="grid grid-2">
-        <div class="card">
-          <h4>Where AI scribes lead</h4>
-          <ul class="checks">
-            <li>Narrow scope, easy to evaluate</li>
-            <li>Low setup overhead for solo clinicians not changing platforms</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4>Where Praxnote leads</h4>
-          <ul class="checks">
-            <li>Editable skills (you can read and customize the prompt)</li>
-            <li>Drafts integrate into a full practice management platform</li>
-            <li>Treatment plans, assessments, supervision, billing, not bolt-ons</li>
-            <li>HIPAA-grade architecture: defense-grade encryption at rest, no third-party AI middlemen</li>
-            <li>Multi-format documentation (SOAP, DAP, BIRP, narrative, custom)</li>
-          </ul>
-        </div>
+      <div class="parity-table-wrap">
+        <table class="parity-table">
+          <thead>
+            <tr>
+              <th class="col-feature">Capability</th>
+              <th class="col-side">The assembled stack</th>
+              <th class="col-side">Praxnote</th>
+            </tr>
+          </thead>
+          <tbody>
+            {stackRows.map((row) => {
+              const s = renderCell(row.stack);
+              const p = renderCell(row.praxnote);
+              return (
+                <tr class={row.flag ? 'row-flag' : ''}>
+                  <td class="col-feature">
+                    {row.feature}
+                    {row.why && <div class="row-why">{row.why}</div>}
+                  </td>
+                  <td class={`col-side cell-${s.cls}`}>
+                    <span class="mark">{s.mark}</span>
+                    <span class="cell-note">{row.stack.note}</span>
+                  </td>
+                  <td class={`col-side cell-${p.cls}`}>
+                    <span class="mark">{p.mark}</span>
+                    <span class="cell-note">{row.praxnote.note}</span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
+
+      <p class="parity-fineprint">
+        Honest non-goals: Praxnote does not currently handle in-network insurance billing (claims, ERAs, denials)
+        or e-prescribing. If your practice depends on either, the EHR side of the stack still wins. Most cash-pay
+        and out-of-network behavioral health practices don't need either.
+      </p>
     </div>
   </section>
 
-  <section class="comparison">
-    <div class="container">
+  <section class="cost-math">
+    <div class="container container-wide">
       <header class="section-head">
-        <p class="eyebrow">Praxnote vs. DIY</p>
-        <h2>Word documents · Excel · standalone Stripe · email-only intake</h2>
+        <p class="eyebrow">The cost math</p>
+        <h2>Three subscriptions, or one.</h2>
         <p class="lede">
-          DIY documentation works until the practice scales, and then it doesn't. The
-          audit trail is missing. The compliance posture is "trust us." Billing
-          reconciliation is a Monday morning.
+          Indicative monthly cost for a ten-clinician group practice. Stack costs are the publicly-listed
+          prices for SimplePractice Plus and Blueprint as of mid-2026; your real numbers may differ slightly.
         </p>
       </header>
 
-      <div class="grid grid-2">
-        <div class="card">
-          <h4>Where DIY leads</h4>
-          <ul class="checks">
-            <li>Maximum flexibility (and maximum overhead)</li>
-            <li>No vendor relationship</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4>Where Praxnote leads</h4>
-          <ul class="checks">
-            <li>Compliance-ready audit trail by default</li>
-            <li>Billing automation (autopay, AR aging, payment links)</li>
-            <li>Client portal with one-click sign-in links</li>
-            <li>Structured outcome tracking via assessments</li>
-            <li>Single platform, one bill, one audit log, one place to look</li>
-          </ul>
-        </div>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Line item</th>
+            <th class="cost-stack">Assembled stack</th>
+            <th class="cost-prax">Praxnote</th>
+          </tr>
+        </thead>
+        <tbody>
+          {costRows.map((row) => (
+            <tr class={row.total ? 'cost-total' : ''}>
+              <td>{row.item}</td>
+              <td class="cost-stack">{row.stack}</td>
+              <td class="cost-prax">{row.praxnote}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p class="cost-fineprint">
+        Plus the unbilled cost of integration overhead: vendor management, three BAAs to maintain,
+        three audit logs to reconcile, and the inevitable "which system is the source of truth" question.
+      </p>
+    </div>
+  </section>
+
+  <section class="deployment-frame section-ink">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">The closing argument</p>
+        <h2>None of the stack runs in your cloud.</h2>
+        <p class="lede">
+          SimplePractice, TherapyNotes, Blueprint, Mentalyc, Upheal — all SaaS-only. If your security review,
+          insurance posture, or jurisdiction requires that PHI stay in infrastructure you own, the stack
+          doesn't have an answer. Praxnote Dedicated does.
+        </p>
+      </header>
+
+      <div class="deploy-cta">
+        <a href="/deployment" class="btn btn-primary btn-lg">Compare Cloud and Dedicated</a>
+        <a href="/security" class="btn-secondary-link">Read the security posture →</a>
       </div>
     </div>
   </section>
 
   <CTASection
     eyebrow="Side-by-side on your real workflow"
-    heading="Bring the platform you're considering. We'll compare on your terms."
+    heading="Bring the stack you're considering. We'll compare on your terms."
     body="Most comparison demos focus on three workflows: drafting a session note, clearing a supervision queue, sending an invoice. We'll do all three, side-by-side, in 30 minutes."
+    primaryHref="/demo"
+    primaryLabel="Book a comparison demo"
+    secondaryHref="/pricing"
+    secondaryLabel="See Praxnote pricing"
   />
 </BaseLayout>
 
 <style>
-  .comparison { padding: clamp(2.5rem, 5vw, 4rem) 0; }
-  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .stack-frame { padding: clamp(3rem, 6vw, 5rem) 0; }
+  .stack-cards .card h3 { margin: 0.5rem 0 1rem; font-size: 1.25rem; }
+  .stack-cards .card p.eyebrow { margin-bottom: 0; }
+  .card-praxnote { border-color: var(--brand-teal-soft); background: var(--surface-card); }
+  .card-praxnote .eyebrow { color: var(--brand-teal); }
+
+  .parity { padding: clamp(3rem, 6vw, 5rem) 0; }
   .section-head { max-width: 760px; margin-bottom: 2rem; }
-  .section-head .lede { margin-top: 1rem; }
-  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.85rem; }
+  .parity-table-wrap { overflow-x: auto; }
+  .parity-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .parity-table th, .parity-table td {
+    text-align: left;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+    vertical-align: top;
+  }
+  .parity-table th {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--stone-900);
+    background: var(--paper-warm);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .parity-table tr:last-child td { border-bottom: none; }
+  .col-feature { width: 38%; color: var(--stone-800); font-weight: 500; }
+  .col-side { width: 31%; color: var(--stone-700); }
+  .row-flag { background: linear-gradient(to right, rgba(29, 84, 72, 0.04), transparent 80%); }
+  .row-flag .col-feature { font-weight: 600; color: var(--stone-900); }
+  .row-why {
+    margin-top: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--brand-teal-dark);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .mark {
+    display: inline-block;
+    width: 1.25rem;
+    text-align: center;
+    margin-right: 0.4rem;
+    font-weight: 700;
+  }
+  .cell-yes .mark { color: var(--brand-teal); }
+  .cell-no .mark { color: var(--stone-300); }
+  .cell-note { color: var(--stone-600); font-size: 0.9rem; }
+  .parity-fineprint {
+    margin-top: 1.5rem;
+    color: var(--stone-600);
+    font-size: 0.9rem;
+    max-width: 760px;
+    line-height: 1.6;
+  }
+
+  /* Cost math */
+  .cost-math { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .cost-table th, .cost-table td {
+    text-align: left;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .cost-table th {
+    background: var(--paper);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--stone-900);
+    font-weight: 700;
+    font-family: var(--font-sans);
+  }
+  .cost-stack { color: var(--stone-600); }
+  .cost-prax { color: var(--brand-teal-dark); font-weight: 500; }
+  .cost-total td {
+    border-top: 2px solid var(--hairline-strong);
+    font-weight: 600;
+    background: var(--paper-warm);
+  }
+  .cost-total .cost-prax { color: var(--brand-teal-dark); font-size: 1.05rem; }
+  .cost-fineprint {
+    margin-top: 1.25rem;
+    color: var(--stone-600);
+    font-size: 0.88rem;
+    max-width: 720px;
+    line-height: 1.6;
+  }
+
+  /* Deployment closing band */
+  .deployment-frame { padding: clamp(4rem, 7vw, 6rem) 0; }
+  .deployment-frame .section-head { margin-bottom: 0; }
+  .deploy-cta {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .deploy-cta .btn-secondary-link {
+    color: var(--brand-teal-soft);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .deploy-cta .btn-secondary-link:hover { text-decoration: underline; }
 </style>

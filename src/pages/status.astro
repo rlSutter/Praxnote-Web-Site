@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CTASection from '../components/CTASection.astro';
+---
+<BaseLayout
+  title="System status"
+  description="How Praxnote handles outages and incidents — and how to reach us if something is wrong."
+>
+  <PageHeader
+    eyebrow="Status"
+    title="System status. <em>Plain and honest.</em>"
+    lede="Praxnote is in early access. We don't yet publish a real-time uptime dashboard — but we do publish what we know about incidents, how to reach us if something looks wrong, and what we commit to in writing for practices that need an SLA."
+  />
+
+  <section class="current">
+    <div class="container container-wide">
+      <div class="current-card">
+        <div class="status-light status-ok" aria-hidden="true"></div>
+        <div>
+          <h2>All systems operating normally.</h2>
+          <p>If you're seeing something that contradicts this, please tell us — see below for how.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-during">
+    <div class="container container-wide">
+      <header class="section-head">
+        <p class="eyebrow">If something looks wrong</p>
+        <h2>The fastest paths to a human.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>For existing Praxnote practices</h4>
+          <p>
+            Email <a href="mailto:support@praxnote.com">support@praxnote.com</a>. Someone on
+            the team will reply, with priority routing for anything that's blocking clinical
+            work. If the platform is unreachable and you need to confirm whether it's us or
+            you, the same address still works from a personal account.
+          </p>
+        </div>
+        <div class="card">
+          <h4>For security disclosures</h4>
+          <p>
+            If you've found something that looks like a vulnerability, email
+            <a href="mailto:security@praxnote.com">security@praxnote.com</a>. We acknowledge
+            within one business day and triage as quickly as we can. Please don't disclose
+            publicly before we've had a chance to respond.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="commitments alt">
+    <div class="container container-wide">
+      <header class="section-head">
+        <p class="eyebrow">What we commit to</p>
+        <h2>The promises we keep — and the ones we'll write into a contract.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>For all Cloud practices</h4>
+          <ul class="checks">
+            <li>We aim for the platform to be available whenever you need it during clinical hours</li>
+            <li>Planned maintenance is announced ahead of time and scheduled outside U.S. and Canadian clinical hours where possible</li>
+            <li>Incidents that affect clinical work are communicated by email to practice admins, with a clear "what happened, what we're doing, what we changed" follow-up</li>
+            <li>Security patches are applied quickly and out-of-band when they need to be</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>For Enterprise and Dedicated practices</h4>
+          <ul class="checks">
+            <li>A written SLA with uptime targets, response times, and remedies — sized to the engagement</li>
+            <li>Named escalation contacts on both sides</li>
+            <li>A separate, private operational feed for Dedicated tenants</li>
+            <li>Quarterly check-ins on incident history, planned changes, and what's coming</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="history">
+    <div class="container container-wide">
+      <header class="section-head">
+        <p class="eyebrow">Recent incident history</p>
+        <h2>What's happened, in plain language.</h2>
+        <p class="lede">
+          We don't have any open incidents. We don't have any resolved incidents to publish
+          here yet either — Praxnote is in early access and we have not had a customer-affecting
+          outage. When the first one happens, it will be summarised here, honestly.
+        </p>
+      </header>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Want a real-time dashboard?"
+    heading="We'll publish one when we leave early access."
+    body="A public uptime dashboard makes sense once Praxnote is serving enough practices for the numbers to mean something. In the meantime, the email addresses above reach us faster than a status page would anyway."
+    primaryHref="/contact?topic=status"
+    primaryLabel="Ask a status question"
+    secondaryHref="/security"
+    secondaryLabel="Read the security overview"
+    variant="paper"
+  />
+</BaseLayout>
+
+<style>
+  .current { padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+  .current-card {
+    background: var(--surface-card);
+    border: 1px solid var(--brand-teal-soft);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .current-card h2 { margin-bottom: 0.35rem; }
+  .current-card p { color: var(--stone-600); margin: 0; }
+
+  .status-light {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(45, 122, 74, 0.18);
+  }
+  .status-ok { background: var(--success); }
+
+  .contact-during, .commitments, .history { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+  .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+
+  .section-head { max-width: 760px; margin-bottom: 2rem; }
+  .section-head .lede { margin-top: 1rem; }
+
+  .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.65rem; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
+</style>

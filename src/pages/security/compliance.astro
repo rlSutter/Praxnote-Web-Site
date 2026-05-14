@@ -5,49 +5,49 @@ import CTASection from '../../components/CTASection.astro';
 ---
 <BaseLayout
   title="HIPAA · GDPR · PIPEDA"
-  description="Praxnote's compliance posture for HIPAA (US), GDPR (EU clients), and PIPEDA (Canada), what's shipped today and how we honor each framework's distinct requirements."
+  description="How Praxnote handles the U.S., European, and Canadian rules that apply to behavioral-health records — what's true in the product today and what's still on the way."
 >
   <PageHeader
     eyebrow="Compliance"
-    title="HIPAA. GDPR. PIPEDA. <em>Built in, not bolted on.</em>"
-    lede="Behavioral health practices serve clients across borders. Praxnote's compliance posture is shipped, workflows for retention, erasure, consent, and residency live in the product, not in a policy PDF."
+    title="HIPAA. GDPR. PIPEDA. <em>Built into the product.</em>"
+    lede="Behavioral-health practices serve clients across borders, and the rules that apply don't agree with each other in the obvious way. The workflows for keeping records, honoring an erasure request, recording consent, and choosing where data sits all live in the product — not in a policy document."
   />
 
   <section class="hipaa">
     <div class="container container-narrow">
       <p class="eyebrow">HIPAA · United States</p>
-      <h2>Six-year retention via redaction-not-deletion. BAA available.</h2>
+      <h2>Six-year retention through redacting rather than deleting. <em>BAA included.</em></h2>
       <ul class="checks">
-        <li>All PHI is encrypted at rest, defense-grade</li>
-        <li>All traffic is encrypted in transit</li>
-        <li>Each practice's data is walled off from every other practice</li>
-        <li>The activity log records every time PHI is read or written</li>
-        <li>Inactivity logout (30 minutes by default, configurable)</li>
-        <li>Six-year retention via redaction-not-deletion model</li>
-        <li>BAA available on every paid plan, <a href="/security/baa">request here</a></li>
+        <li>All client information is encrypted while it sits in our records</li>
+        <li>All traffic between your browser and Praxnote is encrypted in transit</li>
+        <li>Each practice's records are kept separate from every other practice's — no record from another practice is reachable from yours, ever</li>
+        <li>Every time a record is read or changed, the action is logged with who did it and when</li>
+        <li>The session times out after 30 minutes of inactivity (the practice can adjust this)</li>
+        <li>The six-year retention rule is handled by redacting the identifying information, not deleting the record — so the retention rule and an erasure request can both be honored at the same time</li>
+        <li>A BAA is included on every paid plan — <a href="/security/baa">request one here</a></li>
       </ul>
     </div>
   </section>
 
   <section class="gdpr alt">
     <div class="container container-narrow">
-      <p class="eyebrow">GDPR · clients in the EU/EEA</p>
-      <h2>Article 17 right-to-erasure, with a redaction workflow that respects HIPAA.</h2>
+      <p class="eyebrow">GDPR · clients in the European Union</p>
+      <h2>Right-to-be-forgotten requests, <em>honored cleanly.</em></h2>
       <p>
-        For practices that serve clients with EU/EEA data rights, GDPR Article 17 is a
-        feature, not a policy. Praxnote's erasure workflow lets you scope the request
-        (session notes, transcripts, documents, portal documents, portal messages,
-        assessments, billing narratives), routes it through approval, and removes the
-        client's information while preserving the minimal record-keeping that retention
-        rules still require.
+        For practices that serve clients with European data rights, the right to be forgotten
+        is something Praxnote does, not something the practice has to figure out. The workflow
+        lets you choose what to erase — session notes, transcripts, documents, messages,
+        assessments, billing narratives — sends the request through approval, removes the
+        client's information, and keeps only the minimal record-keeping that retention rules
+        still require.
       </p>
       <ul class="checks">
-        <li>Right-to-erasure workflow with scoped checkboxes</li>
-        <li>Praxnote staff review and approve every request before it executes</li>
-        <li>The client's information is removed; the minimal record-keeping retention rules require is preserved</li>
-        <li>An execution summary is returned to the request record</li>
-        <li>The consent log is first-class (type, source, granted/revoked timestamps)</li>
-        <li>The audit log captures every step</li>
+        <li>A clear request screen where you choose what to erase</li>
+        <li>Praxnote staff review and approve every request before it runs</li>
+        <li>The client's information is removed; the minimal record the U.S. rules require stays as an empty shell</li>
+        <li>A summary of what was erased is recorded with the request</li>
+        <li>Consent is tracked in its own log — what was agreed to, when, and whether it was later revoked</li>
+        <li>The activity record captures every step</li>
       </ul>
     </div>
   </section>
@@ -55,41 +55,50 @@ import CTASection from '../../components/CTASection.astro';
   <section class="pipeda">
     <div class="container container-narrow">
       <p class="eyebrow">PIPEDA · Canada</p>
-      <h2>Canadian residency, Canadian rights, Canadian audit trail.</h2>
+      <h2>The Canadian rules work today. <em>Canadian-region hosting is on the way.</em></h2>
       <p>
-        Praxnote supports practices operating in Canada, with PIPEDA-aligned consent
-        management, residency configuration at the practice level, and erasure workflows
-        equivalent to those used for GDPR.
+        Praxnote is built to support Canadian practices. The consent log and erasure workflow
+        match what Canadian privacy law expects — they share the same structure as the European
+        workflow above, which covers most right-of-access and right-of-erasure scenarios. Where
+        we're not yet, we'd rather say so honestly.
       </p>
       <ul class="checks">
-        <li>Per-practice data residency setting (US / CA today)</li>
-        <li>UX gating respects residency, clients in Canada see Canadian-residency flows</li>
-        <li>Consent log captures granular consent (treatment, communication, billing, research)</li>
-        <li>Right-to-access and right-to-correction workflows shipped</li>
+        <li>Consent is tracked granularly — treatment, communication, billing, research are recorded separately</li>
+        <li>The right-of-access and right-of-erasure workflows are the same as above</li>
       </ul>
+      <p style="margin-top: 1.25rem;"><strong>Where we're not yet:</strong></p>
+      <ul class="checks">
+        <li>Per-practice Canadian data residency is a setting today, not yet enforced at the infrastructure level. Canadian-region hosting is on the <a href="/roadmap">roadmap</a> — and Praxnote Dedicated already solves this today by running inside your own Canadian cloud account</li>
+        <li>Province-specific retention rules (CRPO, BCACC, OPQ) aren't yet built in</li>
+        <li>Canadian-dollar billing for the platform fee is on the roadmap</li>
+      </ul>
+      <p>
+        If you're a Canadian practice evaluating Praxnote, <a href="/contact?topic=canada">talk to us</a> —
+        we'll be straight about what fits today and what's coming.
+      </p>
     </div>
   </section>
 
   <section class="ops alt">
     <div class="container container-narrow">
-      <p class="eyebrow">Operational security commitments</p>
-      <h2>Architecture-level choices that are easier to verify than to claim.</h2>
+      <p class="eyebrow">Day-to-day commitments</p>
+      <h2>Choices that are easier to verify than to claim.</h2>
       <ul class="checks">
-        <li>No third-party AI middlemen, your data goes straight to the AI vendor and back</li>
-        <li>No Google Fonts; the typefaces you see are served from Praxnote, not from a third party</li>
-        <li>No third-party analytics phone home by default</li>
-        <li>Modern session-based authentication, no passwords to leak</li>
-        <li>Updates roll out without forcing your clinicians to refresh the page mid-session</li>
-        <li>Background processing runs in a separate, isolated environment</li>
-        <li>Every destructive action requires explicit, in-app confirmation</li>
+        <li>The AI is reached directly — no other vendor sits between Praxnote and the AI provider</li>
+        <li>The site does not load fonts, scripts, or images from any other server</li>
+        <li>No third-party analytics or trackers, on by default or off</li>
+        <li>Sign-in uses a modern session-based approach — no passwords for anyone to leak, lose, or reuse</li>
+        <li>Updates roll out without forcing your clinicians to refresh in the middle of a session</li>
+        <li>Long-running work (transcription, scoring) runs in a separate, isolated place — it never blocks your interface</li>
+        <li>Anything that can't be undone — deleting, voiding, redacting — asks for confirmation, every time</li>
       </ul>
     </div>
   </section>
 
   <CTASection
-    eyebrow="Compliance conversation"
-    heading="Bring your specific scenario to a 30-minute call."
-    body="Whether you serve a multi-jurisdiction client base, operate across US and Canada, or need attestations for a specific framework, we'll walk through what Praxnote ships and where customization fits."
+    eyebrow="Talk through your situation"
+    heading="Bring your specific scenario to a 30-minute conversation."
+    body="If you serve clients across borders, operate in both the U.S. and Canada, or need specific written attestations for an audit or insurance carrier, we'll walk through what Praxnote does today and where we'd customize."
     primaryHref="/security/baa"
     primaryLabel="Request a BAA"
     secondaryHref="/contact?topic=security"
@@ -102,6 +111,4 @@ import CTASection from '../../components/CTASection.astro';
   .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
   .container-narrow h2 { margin: 0.5rem 0 1.25rem; }
   .container-narrow p { color: var(--stone-700); line-height: 1.7; margin-bottom: 1rem; }
-  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
-  .alt code { background: var(--surface-card); }
 </style>

@@ -2,30 +2,31 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
-import Quote from '../../components/Quote.astro';
 ---
 <BaseLayout
   title="Praxnote for solo clinicians"
-  description="Get your evenings back. AI-drafted session notes, treatment plans, and client letters in your voice, with PHI never reaching a third-party AI proxy."
+  description="Get your evenings back. Session notes, treatment plans, and client letters drafted in your voice, with your clinical thinking kept where it belongs — yours."
 >
   <PageHeader
     eyebrow="Solo clinicians"
     title="Get your <em>evenings</em> back."
-    lede="You're seeing twenty-five clients a week. By Friday at 9 pm there are still six notes to write. Praxnote drafts them, in your format, in your voice. The time you spend on documentation is editing, not staring at a blank page."
+    lede="You're seeing twenty-five clients a week. By Friday at 9 pm there are still six notes to write. Praxnote drafts them, in your format, in your voice. The time you spend on documentation is editing — not staring at a blank page."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
-    <a href="/features/session-notes" class="btn btn-secondary">How session notes work</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
+    <a href="/pricing" class="btn btn-secondary">See solo pricing</a>
+    <a href="/features/session-notes" class="btn-ghost">How session notes work →</a>
   </PageHeader>
 
   <section class="story">
     <div class="container container-narrow">
-      <p class="eyebrow">A common Friday</p>
-      <h2>Maria runs a private practice. Twenty-five clients a week. Six unfinished notes.</h2>
+      <p class="eyebrow">A Friday in private practice</p>
+      <h2>Maria sees twenty-five clients a week. Six unfinished notes <em>used to</em> follow her home.</h2>
       <p>
-        Maria records her sessions on her phone, or transcribes a brief summary inside Praxnote.
-        The system drafts SOAP notes in her preferred voice, "Maria shared" rather than "client
-        reported." She edits in the places that need her clinical impression, signs the note, and
-        moves on. Three to five minutes a note. Her Friday evening is hers again.
+        Now, after each session, Maria either records a brief summary on her phone or types
+        a few sentences into Praxnote. The draft comes back written the way she writes —
+        "Maria shared" rather than "client reported." She makes the changes that need her
+        clinical judgment, signs the note, and the note is done. Three to five minutes each.
+        Friday evening is hers again.
       </p>
     </div>
   </section>
@@ -33,45 +34,67 @@ import Quote from '../../components/Quote.astro';
   <section class="capabilities alt">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">What Praxnote does for a solo practice</p>
-        <h2>The full clinical workspace, sized for one.</h2>
+        <p class="eyebrow">A full practice, sized for one</p>
+        <h2>The work of running a solo practice, in one place.</h2>
       </header>
 
       <div class="grid grid-2">
         <div class="card">
-          <h4>AI-drafted documentation</h4>
-          <p>Session notes from typed transcript or audio. Treatment plans in your modality. Referral, discharge, leave-of-absence letters. Case conceptualization. Every draft signed by you.</p>
+          <h4>Documentation drafted in your voice</h4>
+          <p>Session notes, treatment plans, referral letters, discharge summaries, case conceptualizations — drafted from a brief summary or a recording, in the format you prefer and the wording you'd use. You edit, you sign, you move on.</p>
         </div>
         <div class="card">
-          <h4>Client portal that clients use</h4>
-          <p>One-click sign-in links, no passwords. Self-scheduling, document upload, secure messaging. Multilingual. Generous touch targets sized for thumbs. Your clients won't email you their intake form.</p>
+          <h4>A client portal your clients will actually open</h4>
+          <p>One-click sign-in links instead of yet another password. Self-scheduling, secure messaging, document upload, intake forms — all in something that works on a phone the way clients expect. Multiple languages.</p>
         </div>
         <div class="card">
-          <h4>Self-pay billing through Stripe</h4>
-          <p>Invoice per session. Payment links via SMS or email. Autopay with saved payment method. AR aging at a glance. Stripe at Stripe's rates, no platform markup.</p>
+          <h4>Cash-pay billing without the markup</h4>
+          <p>Invoice per session, send a payment link by text or email, let clients set up autopay. See who owes what at a glance. Stripe handles the card processing at Stripe's rates — Praxnote takes nothing on top.</p>
         </div>
         <div class="card">
-          <h4>Offline vault</h4>
-          <p>For home visits, school sessions, or rural settings. A PIN-locked vault on your device. Notes you write while offline queue up and sync the moment you reconnect. The chart goes where you go.</p>
+          <h4>Your charts go where you go</h4>
+          <p>For home visits, school sessions, or places with spotty wifi, Praxnote keeps a private, PIN-locked copy of what you need on your laptop or phone. Whatever you write while offline is saved and synced the moment you reconnect.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="quote-section">
+  <section class="peace">
     <div class="container">
-      <Quote
-        quote="My referral letters used to take thirty minutes apiece. Now I spend that time on clinical thinking instead. The AI never sees the patient's name. It sees the question I asked."
-        author="Dr. Sarah M."
-        role="Licensed Clinical Psychologist"
-      />
+      <header class="section-head">
+        <p class="eyebrow">The quiet promises</p>
+        <h2>The things that should be true, and are.</h2>
+      </header>
+
+      <div class="grid grid-2 peace-grid">
+        <div class="card">
+          <h4>Your clients' words don't train anything</h4>
+          <p>What your clients share in session is never used to train an AI model. The drafts you see are made on demand, for you, and not kept by anyone after.</p>
+        </div>
+        <div class="card">
+          <h4>You stay in charge of the AI</h4>
+          <p>Every prompt that produces a draft is something you can read and adjust. If a draft style isn't quite right for your modality, you change the words that shape it. Nothing is hidden.</p>
+        </div>
+        <div class="card">
+          <h4>The audit trail is just there</h4>
+          <p>If a state board, an attorney, or your own future self ever needs to know who did what when, the record is complete and exportable. Most clinicians never need it. It's there if you do.</p>
+        </div>
+        <div class="card">
+          <h4>Leaving is easy</h4>
+          <p>If Praxnote isn't right for you, your clients, notes, treatment plans, and billing history export in standard formats you can take anywhere. No exit penalty. No held-hostage data.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <CTASection
-    eyebrow="See it on a real workflow"
-    heading="A demo for solo clinicians, on solo-clinician terms."
-    body="Bring a recent session you'd document. We'll draft the note, edit it together, and walk through scheduling, the portal, and billing, about thirty minutes."
+    eyebrow="Try it on a real session"
+    heading="A demo that fits one solo clinician's day."
+    body="We're in early access — we onboard each solo clinician personally on a 30-minute screen-share. Bring a recent session you'd document, and we'll walk through writing your first note in Praxnote together."
+    primaryHref="/demo"
+    primaryLabel="Request access"
+    secondaryHref="/pricing"
+    secondaryLabel="See solo pricing"
   />
 </BaseLayout>
 
@@ -81,8 +104,10 @@ import Quote from '../../components/Quote.astro';
   .story h2 { margin: 0.5rem 0 1.5rem; }
   .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
   .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .capabilities { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .peace { padding: clamp(3rem, 5vw, 4.5rem) 0; }
   .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
   .quote-section { padding: clamp(2rem, 4vw, 4rem) 0; }
   .quote-section .container { display: flex; justify-content: center; }
 </style>

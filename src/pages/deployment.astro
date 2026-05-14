@@ -1,0 +1,421 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CTASection from '../components/CTASection.astro';
+
+const parity = [
+  { feature: 'AI-drafted session notes, treatment plans, letters', cloud: true, dedicated: true },
+  { feature: 'Editable skills, version-tracked per draft', cloud: true, dedicated: true },
+  { feature: 'Supervision queue with keyboard-first triage', cloud: true, dedicated: true },
+  { feature: 'Scheduling, intakes, consents, client portal', cloud: true, dedicated: true },
+  { feature: 'Cash-pay billing, Stripe, superbills', cloud: true, dedicated: true },
+  { feature: 'Audit log, BAA, encryption at rest', cloud: true, dedicated: true },
+  { feature: 'Self-serve trial', cloud: 'Coming soon', dedicated: 'Paid pilot instead' },
+  { feature: 'Praxnote operates the infrastructure', cloud: true, dedicated: true },
+  { feature: 'Data lives in Praxnote\'s cloud accounts', cloud: true, dedicated: false },
+  { feature: 'Data lives in your cloud account', cloud: false, dedicated: true },
+  { feature: 'Bring your own Anthropic API key', cloud: false, dedicated: true },
+  { feature: 'Bring your own model endpoint', cloud: false, dedicated: 'Roadmap' },
+  { feature: 'Cloud region', cloud: 'US (default)', dedicated: 'Any AWS region you choose' },
+  { feature: 'Update cadence', cloud: 'Continuous', dedicated: 'Scheduled, customer-approved' },
+  { feature: 'SLA', cloud: 'Best-effort today; contracted SLA on Enterprise (roadmap)', dedicated: 'Contracted per agreement' },
+];
+
+const renderCell = (v: boolean | string) => {
+  if (v === true) return { mark: '✓', text: 'Included', cls: 'yes' };
+  if (v === false) return { mark: '—', text: 'Not applicable', cls: 'no' };
+  return { mark: '•', text: v, cls: 'note' };
+};
+---
+<BaseLayout
+  title="Deployment — Praxnote Cloud or Praxnote Dedicated"
+  description="Praxnote runs in two modes: Cloud (multi-tenant, hosted by us) or Dedicated (single-tenant, deployed and operated by us inside your own cloud account). Same product, your choice."
+>
+  <PageHeader
+    eyebrow="Deployment"
+    title="Same product. <em>Your choice</em> of where it runs."
+    lede="Praxnote ships in two operating modes. Both are managed by us. What changes is which cloud account the data lives in, and how the seats are priced. Pick the shape that fits your compliance, residency, and risk posture."
+  />
+
+  <section class="modes">
+    <div class="container container-wide">
+      <div class="mode-grid">
+        <article class="mode-card mode-cloud">
+          <span class="mode-tag">Praxnote Cloud</span>
+          <h2>Hosted by us.</h2>
+          <p class="mode-lede">
+            Multi-tenant SaaS on Praxnote-operated infrastructure. The default for solo clinicians and
+            group practices that want Praxnote to handle every operational detail.
+          </p>
+          <ul class="checks">
+            <li>Onboarded by us during early access; self-serve sign-up shipping soon</li>
+            <li>Per-clinician monthly billing, billed by Stripe</li>
+            <li>Continuous updates — new features land for everyone at once</li>
+            <li>US-hosted today; Canadian residency on the roadmap</li>
+            <li>BAA included from day one</li>
+            <li>Anthropic-direct AI calls (no third-party proxies or aggregators)</li>
+          </ul>
+          <div class="mode-cta">
+            <a href="/demo" class="btn btn-primary">Request access</a>
+            <a href="/pricing" class="btn-secondary-link">See Cloud pricing →</a>
+          </div>
+        </article>
+
+        <article class="mode-card mode-dedicated">
+          <span class="mode-tag">Praxnote Dedicated <small style="font-weight:500;opacity:0.8">— early access</small></span>
+          <h2>Deployed in <em>your</em> cloud.</h2>
+          <p class="mode-lede">
+            Single-tenant Praxnote, deployed and operated by us, running inside your AWS account.
+            Your data never crosses our boundary. We carry the ops burden; you keep the keys.
+            Currently in early access — talk to us about a pilot.
+          </p>
+          <ul class="checks">
+            <li>Praxnote runs inside infrastructure you own (AWS at launch; GCP / Azure on the roadmap)</li>
+            <li>PHI never leaves your cloud account</li>
+            <li>Bring your own Anthropic API key, billed direct from Anthropic to you</li>
+            <li>Any AWS region you choose — including Canadian regions for in-country hosting</li>
+            <li>Praxnote handles deployment, updates, monitoring, and incident response via customer-granted IAM</li>
+            <li>Annual contracts, paid pilot first (30 / 60 / 90 days) to validate the deployment</li>
+          </ul>
+          <div class="mode-cta">
+            <a href="/contact?topic=dedicated" class="btn btn-primary">Talk to us about a pilot</a>
+            <a href="/security" class="btn-secondary-link">Read the security posture →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="parity">
+    <div class="container container-wide">
+      <header class="section-head">
+        <p class="eyebrow">Feature parity</p>
+        <h2>The product surface is the same.</h2>
+        <p class="lede">
+          The only meaningful differences are where data lives, how the AI provider relationship is structured,
+          and how onboarding works. Everything else is identical.
+        </p>
+      </header>
+
+      <div class="parity-table-wrap">
+        <table class="parity-table">
+          <thead>
+            <tr>
+              <th class="col-feature">Capability</th>
+              <th class="col-mode">Praxnote Cloud</th>
+              <th class="col-mode">Praxnote Dedicated</th>
+            </tr>
+          </thead>
+          <tbody>
+            {parity.map((row) => {
+              const c = renderCell(row.cloud);
+              const d = renderCell(row.dedicated);
+              return (
+                <tr>
+                  <td class="col-feature">{row.feature}</td>
+                  <td class={`col-mode cell-${c.cls}`}><span class="mark">{c.mark}</span> {typeof row.cloud === 'string' ? row.cloud : c.text}</td>
+                  <td class={`col-mode cell-${d.cls}`}><span class="mark">{d.mark}</span> {typeof row.dedicated === 'string' ? row.dedicated : d.text}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="pilot section-ink">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Dedicated pilot pathway</p>
+        <h2>Try the deployment before signing a year.</h2>
+        <p class="lede">
+          Dedicated doesn't use the self-serve trial. Instead, a Dedicated engagement starts with a paid pilot:
+          a scoped, time-boxed, fully functional Praxnote tenant inside your cloud, with a documented teardown
+          path if it isn't a fit.
+        </p>
+      </header>
+
+      <div class="grid grid-3 pilot-grid">
+        <div class="pilot-card">
+          <span class="pilot-num">01</span>
+          <h3>Scope the pilot</h3>
+          <p>One site or one team. 30, 60, or 90 days. We agree the success criteria up front in writing.</p>
+        </div>
+        <div class="pilot-card">
+          <span class="pilot-num">02</span>
+          <h3>Deploy into your cloud</h3>
+          <p>We provision Praxnote inside your AWS account using a documented runbook. Customer-granted IAM, no standing access to PHI. (GCP / Azure on the roadmap.)</p>
+        </div>
+        <div class="pilot-card">
+          <span class="pilot-num">03</span>
+          <h3>Decide</h3>
+          <p>Continue on an annual contract, or tear down. Either way you keep your data, exported in standard formats. No exit penalty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="when wash">
+    <div class="container container-wide">
+      <header class="section-head">
+        <p class="eyebrow">Which mode fits</p>
+        <h2>Two readings of the same question.</h2>
+      </header>
+
+      <div class="grid grid-2 when-grid">
+        <div class="card">
+          <h4>Choose Cloud when…</h4>
+          <ul class="checks">
+            <li>You want to be running today, not in a month</li>
+            <li>Your compliance posture is satisfied by a HIPAA BAA with Praxnote</li>
+            <li>You'd rather we carry every piece of the infrastructure</li>
+            <li>You don't have a dedicated cloud-ops team and don't want one</li>
+            <li>Per-clinician monthly billing matches how you think about cost</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Choose Dedicated when…</h4>
+          <ul class="checks">
+            <li>Your security review requires PHI in infrastructure you own</li>
+            <li>You're in Canada and want PHI hosted in-country</li>
+            <li>You have an existing contract with Anthropic and want to use your own API key</li>
+            <li>Your audit, legal, or insurance posture asks for single-tenant separation</li>
+            <li>You can support an annual contract and an internal cloud-account owner</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Frequently asked</p>
+        <h2>What practices ask about deployment.</h2>
+      </header>
+
+      <div class="faq-list">
+        <details>
+          <summary>Who pays the cloud bill on Dedicated?</summary>
+          <p>
+            You do. Praxnote Dedicated runs inside your AWS account — your account, your bill,
+            your reserved instances. Our Dedicated fee covers deployment, updates, monitoring, support, and the
+            engineering work to keep your tenant on the same release cadence as Cloud. It does not cover your
+            underlying cloud infrastructure.
+          </p>
+        </details>
+        <details>
+          <summary>Can we switch from Cloud to Dedicated later?</summary>
+          <p>
+            Yes. We've designed the data model so a Cloud tenant can be migrated to a Dedicated deployment
+            without rebuilding charts, notes, or audit history. It is a planned engagement, not a button —
+            but it doesn't require throwing anything away.
+          </p>
+        </details>
+        <details>
+          <summary>What does Praxnote see in a Dedicated deployment?</summary>
+          <p>
+            Operational telemetry only: error rates, latency, version, uptime, AI usage volume (counts, not
+            content). PHI never crosses the boundary. The cross-boundary telemetry schema is documented on
+            the <a href="/security">security page</a> and is auditable by you on demand.
+          </p>
+        </details>
+        <details>
+          <summary>How do updates work on Dedicated?</summary>
+          <p>
+            Praxnote pushes updates on a scheduled, customer-approved cadence. New features ship to Cloud
+            first; Dedicated tenants typically follow within a release window we agree to in the contract.
+            Security patches are out-of-band and applied as soon as you approve.
+          </p>
+        </details>
+        <details>
+          <summary>Why is there a paid pilot instead of a free trial for Dedicated?</summary>
+          <p>
+            Because deploying Praxnote into your cloud is real engineering work — provisioning, IAM setup,
+            integration testing, training. A free trial doesn't reflect that effort honestly, and a free
+            pilot would set the wrong expectations for either side. A paid pilot is short, scoped, and lets
+            both of us decide whether the long-term contract makes sense.
+          </p>
+        </details>
+        <details>
+          <summary>Can we self-host Praxnote without Praxnote operating it?</summary>
+          <p>
+            No. Praxnote is a proprietary product and we operate every deployment ourselves. Dedicated is
+            "your cloud, our hands" — not "your cloud, your hands." If you need fully self-operated
+            software, Praxnote is the wrong choice.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Pick a door"
+    heading="Request Cloud access, or talk to us about a Dedicated pilot."
+    body="Cloud is in early access — we onboard new practices personally. Dedicated pilots start with a 30-minute scoping call so we can size the deployment for your environment."
+    primaryHref="/demo"
+    primaryLabel="Request access"
+    secondaryHref="/contact?topic=dedicated"
+    secondaryLabel="Talk to us about Dedicated"
+  />
+</BaseLayout>
+
+<style>
+  .modes { padding: clamp(2rem, 4vw, 3.5rem) 0; }
+  .mode-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) { .mode-grid { grid-template-columns: 1fr; } }
+
+  .mode-card {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .mode-cloud { border-color: var(--brand-teal-soft); }
+  .mode-dedicated { background: var(--paper-warm); border-color: var(--hairline-strong); }
+
+  .mode-tag {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-teal);
+    margin-bottom: 0.85rem;
+  }
+  .mode-dedicated .mode-tag { color: var(--terracotta); }
+  .mode-card h2 { margin-bottom: 1rem; }
+  .mode-lede {
+    color: var(--stone-700);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .mode-card ul.checks { margin-bottom: 1.75rem; }
+  .mode-cta {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .mode-cta .btn-secondary-link {
+    color: var(--brand-teal-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .mode-cta .btn-secondary-link:hover { text-decoration: underline; }
+
+  /* Parity table */
+  .parity { padding: clamp(3rem, 6vw, 5rem) 0; }
+  .parity-table-wrap { overflow-x: auto; }
+  .parity-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .parity-table th,
+  .parity-table td {
+    text-align: left;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+    vertical-align: top;
+  }
+  .parity-table th {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--stone-900);
+    background: var(--paper-warm);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .parity-table tr:last-child td { border-bottom: none; }
+  .col-feature { width: 40%; color: var(--stone-800); font-weight: 500; }
+  .col-mode { width: 30%; color: var(--stone-700); }
+  .mark {
+    display: inline-block;
+    width: 1.25rem;
+    text-align: center;
+    margin-right: 0.4rem;
+    font-weight: 700;
+  }
+  .cell-yes .mark { color: var(--brand-teal); }
+  .cell-no { color: var(--stone-400); }
+  .cell-no .mark { color: var(--stone-300); }
+  .cell-note .mark { color: var(--terracotta); }
+  @media (max-width: 720px) {
+    .parity-table th, .parity-table td { padding: 0.65rem 0.75rem; font-size: 0.88rem; }
+    .col-feature { width: 44%; }
+  }
+
+  /* Pilot pathway */
+  .pilot { padding: clamp(3.5rem, 6vw, 5.5rem) 0; }
+  .pilot-grid { margin-top: 1.5rem; }
+  .pilot-card {
+    background: rgba(250, 247, 242, 0.04);
+    border: 1px solid rgba(250, 247, 242, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+  }
+  .pilot-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--brand-teal-soft);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+  .pilot-card h3 { color: var(--paper); margin-bottom: 0.45rem; }
+  .pilot-card p { color: rgba(250, 247, 242, 0.7); font-size: 0.92rem; line-height: 1.6; margin: 0; }
+
+  /* When grid */
+  .when { padding: clamp(3rem, 6vw, 5rem) 0; }
+  .when-grid .card h4 { margin-bottom: 0.9rem; }
+
+  /* FAQ — shared with pricing */
+  .faq { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.5rem; max-width: 800px; }
+  details {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+  }
+  details[open] { border-color: var(--brand-teal-soft); }
+  details summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--stone-900);
+    font-variation-settings: 'opsz' 48, 'SOFT' 50;
+    list-style: none;
+    position: relative;
+    padding-right: 1.5rem;
+  }
+  details summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--brand-teal);
+    font-family: var(--font-sans);
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  details[open] summary::after { content: '−'; }
+  details p { margin-top: 0.85rem; color: var(--stone-600); font-size: 0.95rem; line-height: 1.6; }
+</style>

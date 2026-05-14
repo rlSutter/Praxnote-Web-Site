@@ -2,42 +2,43 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
-import Quote from '../../components/Quote.astro';
 ---
 <BaseLayout
   title="Supervision queue"
-  description="A reviewer surface built for high-volume supervisors, j/k navigation, hotkeys for approve/return/flag, bulk operations, and ConfirmDialog on every destructive action."
+  description="A single place to see every supervisee's notes, three clear decisions, and a record of every supervision moment — built for supervisors who actually have to clear thirty notes a Friday."
 >
   <PageHeader
     eyebrow="Supervision"
     title="A queue built for <em>thirty-note Fridays.</em>"
-    lede="Supervisors don't need another inbox. They need a queue with keyboard navigation, fast triage, and a clear audit trail. Praxnote's supervision queue is the surface most supervisors say is the reason they stayed."
+    lede="Most supervision tools were built as someone's afterthought. Praxnote's was built first, on conversations with clinical supervisors who carry real caseloads. One screen. Clear decisions. A record that survives the year."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
   </PageHeader>
 
   <section class="how">
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">How the queue works</p>
-        <h2>Three keys. Three actions. Three audit-logged outcomes.</h2>
+        <h2>Three decisions. Each one with its own follow-through.</h2>
+        <p class="lede">
+          Every supervision moment falls into one of three buckets. Praxnote gives each its own
+          action and its own record, so nothing dissolves into a "we'll talk about it later" that
+          nobody writes down.
+        </p>
       </header>
 
       <div class="grid grid-3">
         <div class="action-card">
-          <kbd>a</kbd>
           <h3>Approve</h3>
-          <p>Confirms note quality. Note becomes immutable; signature event written to the activity log. Bulk approve is gated by <code>ConfirmDialog</code> with a safety count.</p>
+          <p>For the notes that meet your standard. One click. The note is finalized with your signature on the record, and the supervisee gets a quiet confirmation. If you want to approve a batch of clean notes at once, you can — Praxnote always shows you how many you're about to approve and asks you to confirm before anything is committed.</p>
         </div>
         <div class="action-card">
-          <kbd>r</kbd>
-          <h3>Return for revision</h3>
-          <p>Returns the note to the supervisee with reason text. The supervisee sees the request in their dashboard. The audit log records the return event.</p>
+          <h3>Send back</h3>
+          <p>For notes that need another pass. Write a short comment about what needs to change, and the note returns to the supervisee with your reason visible on their dashboard. They make the changes and resubmit. The conversation stays attached to the note — you don't lose the thread three weeks later.</p>
         </div>
         <div class="action-card">
-          <kbd>f</kbd>
-          <h3>Flag for discussion</h3>
-          <p>Non-blocking. The note remains where it is, but is marked for the next supervision meeting. Useful for clinical patterns that don't warrant a return-for-revision.</p>
+          <h3>Set aside for supervision</h3>
+          <p>For notes that don't need a rewrite but do raise something worth discussing — a clinical pattern, a boundary question, an ethics consult. Flag it. Praxnote keeps the flagged items together so you can pull them up at your next supervision meeting without having to remember which one belonged to which supervisee.</p>
         </div>
       </div>
     </div>
@@ -46,22 +47,26 @@ import Quote from '../../components/Quote.astro';
   <section class="navigation alt">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Navigation</p>
-        <h2>j and k. Just like the inbox.</h2>
+        <p class="eyebrow">Click or fly</p>
+        <h2>Both hands work. <em>Either way you prefer.</em></h2>
         <p class="lede">
-          The keyboard navigation pattern is borrowed from email clients and Vim. Down with
-          <kbd>j</kbd>, up with <kbd>k</kbd>, action keys for the rest.
+          The queue is built so that supervisors who prefer the mouse and supervisors who prefer the
+          keyboard can both go as fast as they like. Click any action. Or — if you're the kind of
+          person who likes to keep your hands on the keys — every action has a single-key shortcut
+          you can pick up in about thirty seconds.
         </p>
       </header>
 
-      <ul class="checks">
-        <li><kbd>j</kbd> / <kbd>k</kbd>, move down / up the queue</li>
-        <li><kbd>a</kbd>, approve current note</li>
-        <li><kbd>r</kbd>, return for revision (focuses the reason field)</li>
-        <li><kbd>f</kbd>, flag for discussion</li>
-        <li><kbd>?</kbd>, open the keyboard-shortcuts overlay (works app-wide)</li>
-        <li><kbd>Cmd</kbd> + <kbd>K</kbd>, command palette to jump elsewhere</li>
-      </ul>
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>If you like the mouse</h4>
+          <p>Every decision is a clearly labeled button on every note. The screen shows you exactly where you are in the queue, what's next, and what you've already cleared. Nothing is hidden behind a hover or a long-press.</p>
+        </div>
+        <div class="card">
+          <h4>If you like the keyboard</h4>
+          <p>Move through the queue with a single key. Approve, send back, or flag with a single key. There's a built-in overlay that shows you every shortcut, available from anywhere with a single keypress. It is the same pattern your email client uses, if you already use that pattern.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -69,48 +74,73 @@ import Quote from '../../components/Quote.astro';
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">For supervisees</p>
-        <h2>Sign your own work. Supervisor reviews after the fact.</h2>
+        <h2>Sign your own work. <em>Or wait for review first.</em></h2>
         <p class="lede">
-          Praxnote's default model lets supervisees sign their own notes, with the
-          supervisor reviewing after the fact in the queue. Practices that need a
-          pre-signature gate can configure it; the model is per-practice.
+          Praxnote's default is for supervisees to sign their own notes, with the supervisor reviewing
+          afterward. For training programs, post-graduate residencies, or any practice where supervision
+          is licensure-required, that default can be flipped — the supervisor reviews first, and the
+          note can't be finalized until they approve. The choice is the practice's, set once by an admin,
+          not asked of every supervisee every time.
         </p>
       </header>
 
       <div class="grid grid-2">
         <div class="card">
           <h4>Why post-signature review is the default</h4>
-          <p>Most practices we've talked to want supervisees fluent in clinical decision-making, including the act of signing their own work. The audit trail and the queue make sure nothing falls through.</p>
+          <p>For licensed clinicians under collaborative supervision, signing one's own work is part of the clinical maturity the supervisor is trying to develop. The record and the queue ensure nothing falls through; the supervisee still owns the decision.</p>
         </div>
         <div class="card">
-          <h4>Why pre-signature gating is configurable</h4>
-          <p>Some training programs require it. Some licensures imply it. Practices set the gate; clinicians don't have to think about it.</p>
+          <h4>Why pre-signature is one click away</h4>
+          <p>Training programs and pre-licensure supervisees often have to have a supervisor's signature on every note. When a practice sets that mode, supervisees see their notes sitting in the supervisor's queue and know they're waiting. The supervisor approves, edits, or returns; the note becomes final when they're satisfied.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="quote-section">
+  <section class="record alt">
     <div class="container">
-      <Quote
-        quote="I was clearing thirty supervision items in a Friday afternoon. With Praxnote, twenty minutes. The keyboard navigation alone gave me back two hours a week."
-        author="Dr. Patel"
-        role="Clinical Supervisor, mid-size group practice"
-      />
+      <header class="section-head">
+        <p class="eyebrow">The supervision record</p>
+        <h2>The things you don't want to have to remember.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>Every approval, signed and dated</h4>
+          <p>If a licensing board, an attorney, or your own future self ever asks who reviewed what when, the record is complete, exportable, and clear.</p>
+        </div>
+        <div class="card">
+          <h4>Every return, with its reason and resolution</h4>
+          <p>When you send a note back with a comment, the reason is preserved and stays attached to the note. When the supervisee resubmits, the conversation is right there. Nothing has to live in a Slack thread or your memory.</p>
+        </div>
+        <div class="card">
+          <h4>Meeting prep, on a page</h4>
+          <p>For your next supervision meeting, Praxnote can give you a clean summary of everything you flagged for a given supervisee — printable, shareable, ready to walk in with.</p>
+        </div>
+        <div class="card">
+          <h4>Nothing destructive by accident</h4>
+          <p>Approving a batch, voiding a return, deleting a flag — Praxnote always asks before anything that can't be undone, and shows you exactly what will happen. The keyboard is fast; the safety stays on.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <CTASection
     eyebrow="See the queue on real notes"
-    heading="A demo for supervisors, on supervisor terms."
-    body="Bring (or use ours) a sample queue. We'll walk j/k navigation, bulk approve with ConfirmDialog, return-for-revision with reasoning, and flag-for-discussion. About fifteen minutes."
+    heading="A walk-through, on supervisor terms."
+    body="Bring (or use a sample queue we have ready) a recent week of supervisee work. We'll walk through approving the clean ones, sending one back with a comment, flagging one for next week's meeting, and printing the meeting prep — about fifteen minutes."
+    primaryHref="/demo"
+    primaryLabel="Book a supervisor walk-through"
+    secondaryHref="/solutions/supervisors"
+    secondaryLabel="More for supervisors"
   />
 </BaseLayout>
 
 <style>
   .how { padding: clamp(3rem, 5vw, 4.5rem) 0; }
   .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
-  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .navigation, .supervisee, .record { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 760px; margin-bottom: 2rem; }
   .section-head .lede { margin-top: 1rem; }
 
   .action-card {
@@ -118,35 +148,9 @@ import Quote from '../../components/Quote.astro';
     border: 1px solid var(--hairline);
     border-radius: var(--radius-lg);
     padding: 2rem;
-    text-align: left;
   }
-  .action-card kbd {
-    display: inline-block;
-    background: var(--brand-teal);
-    color: var(--paper);
-    padding: 0.4rem 0.85rem;
-    border-radius: var(--radius-sm);
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    margin-bottom: 1.25rem;
-  }
-  .action-card h3 { margin-bottom: 0.5rem; }
-  .action-card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
-  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
-  ul.checks kbd {
-    display: inline-block;
-    background: var(--surface-card);
-    border: 1px solid var(--hairline-strong);
-    border-bottom-width: 2px;
-    border-radius: 4px;
-    padding: 0.05rem 0.5rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.85em;
-    color: var(--stone-800);
-    margin: 0 0.1rem;
-  }
+  .action-card h3 { margin-bottom: 0.75rem; }
+  .action-card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
   .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
-  .quote-section { padding: clamp(2rem, 4vw, 4rem) 0; }
-  .quote-section .container { display: flex; justify-content: center; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
 </style>

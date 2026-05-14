@@ -5,47 +5,50 @@ import CTASection from '../components/CTASection.astro';
 ---
 <BaseLayout
   title="Platform overview"
-  description="Praxnote is one platform with three layers: documentation, workflow, and the platform underneath. Four roles share all of it."
+  description="Praxnote is one workspace for behavioral health — documentation, the practice's daily work, and the quiet protections underneath. Four roles share all of it."
 >
   <PageHeader
-    eyebrow="The platform"
-    title="One workspace. <em>Three layers.</em> Four roles."
-    lede="Praxnote isn't a documentation tool with a billing add-on, or a billing tool with a documentation add-on. It's three layers built together, for the four roles that actually run a behavioral-health practice."
+    eyebrow="The workspace"
+    title="One workspace. <em>Four people who share it.</em>"
+    lede="Praxnote isn't a notes tool with billing bolted on, or a billing tool with notes bolted on. It's one workspace, built end to end for behavioral-health practices, with the four people who actually run a practice in mind from the start."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
-    <a href="/security" class="btn btn-secondary">Security overview</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
+    <a href="/security" class="btn btn-secondary">Read the security overview</a>
   </PageHeader>
 
   <section class="prose">
     <div class="container container-narrow">
       <p>
-        At the top is the <strong>clinical record</strong>. Fourteen editable AI skills draft
-        session notes in five formats, treatment plans in five formats, referral and
-        discharge letters, case conceptualizations, and assessment-results letters. Every
-        prompt is a plain-text file. Practices customize the ones they want to. Clinicians edit and
-        sign. The version of the skill in effect is captured with every draft.
+        At the front is the <strong>clinical work</strong>. Fourteen editable templates draft
+        session notes in five formats, treatment plans in five formats, referral and discharge
+        letters, case conceptualizations, assessment-result letters in clinician or client
+        voice. Each template is written in plain language and can be adjusted by the practice
+        to match how you actually write. The version in effect at the moment of a draft is
+        kept with the document.
       </p>
       <p>
-        In the middle are the <strong>surfaces a practice runs on</strong>. The supervision
-        queue with keyboard navigation. The calendar with availability blocks, self-scheduling,
-        and waitlist routing. Billing with per-therapist rates, payment links, and Stripe
-        autopay. The client portal with one-click sign-in links, secure messaging, document upload,
-        and multilingual access. None of these are bolt-ons. They share one audit log, one
-        security model, and one set of permissions.
+        Around it is the <strong>day-to-day of running a practice</strong>. The supervision
+        screen that lets a supervisor clear a Friday's notes in twenty minutes. The calendar
+        that lets clinicians set their availability and clients book against it. Billing that
+        sends an invoice and a payment link in a tap, with the right rate for the right
+        clinician. The client portal that opens with a single link in a text message. These
+        are not add-ons. They share one history, one set of permissions, and one place to
+        look when you need to.
       </p>
       <p>
-        Underneath is the <strong>substrate</strong>. Encryption at rest and in transit. An
-        activity log on every read and write. The right-to-erasure workflow that satisfies
-        GDPR and PIPEDA without breaking HIPAA's six-year retention. A multilingual portal
-        with a live translation system. The PIN-locked offline vault for clinicians whose
-        practice doesn't always have wifi. These layers don't have surfaces of their own.
-        They're the things the surfaces depend on.
+        Underneath is the <strong>quiet work that keeps it all safe</strong>. Client information
+        is encrypted, both when it sits and when it moves. Every read and every change is recorded.
+        A right-to-be-forgotten request can be carried out cleanly, even alongside the records-retention
+        rules that apply at the same time. The portal speaks more than one language. A private,
+        PIN-locked copy of what you need can live on a clinician's device for the days when the
+        wifi doesn't. None of this is visible most of the time. All of it is true all of the time.
       </p>
       <p>
-        Four first-class roles share all of it: therapist, supervisor, practice administrator,
-        and client. Each has its own permissions and its own navigation. A dual-role
-        therapist-admin (the way most group-practice owners actually work) gets two themes
-        and one identity, audit-logged accordingly.
+        Four roles share the workspace: <strong>clinician, supervisor, practice admin, and
+        client</strong>. Each sees what their role calls for. The owner who is also a clinician
+        — or the supervisor who still carries a half caseload — doesn't need two accounts. One
+        identity, a clear visual cue for which hat is on, and a record that knows which hat
+        took each action.
       </p>
     </div>
   </section>
@@ -56,37 +59,37 @@ import CTASection from '../components/CTASection.astro';
         <div class="layer layer--top">
           <div class="layer-rail">
             <span class="layer-num">01</span>
-            <h3>Documentation</h3>
+            <h3>The clinical work</h3>
           </div>
           <div class="layer-body">
-            <p>14 editable AI skills · session notes (SOAP · DAP · BIRP · narrative · custom) · treatment plans (PBT/EEMM · standard · CBT · DBT · simple) · diagnoses · case conceptualization · referral, discharge, and leave-of-absence letters · the assessments suite</p>
+            <p>14 editable templates · session notes (SOAP, DAP, BIRP, narrative, custom) · treatment plans (PBT/EEMM, standard, CBT, DBT, simple) · diagnoses · case conceptualization · referral, discharge, and leave-of-absence letters · twenty validated assessments</p>
           </div>
         </div>
         <div class="layer layer--mid">
           <div class="layer-rail">
             <span class="layer-num">02</span>
-            <h3>Workflow</h3>
+            <h3>The day-to-day</h3>
           </div>
           <div class="layer-body">
-            <p>supervision queue · scheduling and waitlist · per-therapist billing with Stripe autopay · client portal with one-click sign-in · email and SMS templates · session-type and CPT-rate management</p>
+            <p>supervision screen · scheduling and waitlist · cash-pay billing with autopay · client portal with one-tap sign-in · email and text templates · session types and rates per clinician</p>
           </div>
         </div>
         <div class="layer layer--bottom">
           <div class="layer-rail">
             <span class="layer-num">03</span>
-            <h3>Platform</h3>
+            <h3>The quiet work</h3>
           </div>
           <div class="layer-body">
-            <p>encryption at rest and in transit · activity log on every read and write · GDPR and PIPEDA right-to-erasure · multilingual portal with live translation · PIN-locked offline vault · audit-ready exports</p>
+            <p>encryption when records sit and when they move · a complete history of who did what when · right-to-be-forgotten that doesn't break records-retention · a multilingual portal · a PIN-locked offline copy for clinicians on the road · audit-ready exports</p>
           </div>
         </div>
-        <figcaption id="stack-caption">Three layers, one platform. Same audit log, same encryption, same role model.</figcaption>
+        <figcaption id="stack-caption">One workspace. One history. One set of permissions. Same encryption everywhere.</figcaption>
       </figure>
 
       <aside class="roles-rail">
         <span class="rail-label">Four roles share all of it</span>
         <ul>
-          <li><a href="/solutions/solo-clinicians">Therapist</a></li>
+          <li><a href="/solutions/solo-clinicians">Clinician</a></li>
           <li><a href="/solutions/supervisors">Supervisor</a></li>
           <li><a href="/solutions/practice-admins">Practice admin</a></li>
           <li><a href="/features/client-portal">Client</a></li>
@@ -95,7 +98,15 @@ import CTASection from '../components/CTASection.astro';
     </div>
   </section>
 
-  <CTASection />
+  <CTASection
+    eyebrow="See it on your practice"
+    heading="A walk-through, on your terms."
+    body="Bring a recent session, a billing batch, a supervision queue, or an erasure scenario. We'll walk Praxnote through the actual work you do."
+    primaryHref="/demo"
+    primaryLabel="Book a walk-through"
+    secondaryHref="/pricing"
+    secondaryLabel="See pricing"
+  />
 </BaseLayout>
 
 <style>

@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CTASection from '../components/CTASection.astro';
+
+// Praxnote is in early access. A public, customer-visible changelog will start
+// here once the first general-release tag ships. Until then we keep this page
+// honest — empty rather than backfilled.
+const releases: Array<{ date: string; version: string; headline: string; items: Array<{ kind: string; text: string }> }> = [];
+
+const kindStyles: Record<string, { label: string; cls: string }> = {
+  feature: { label: 'New', cls: 'kind-feature' },
+  improvement: { label: 'Improved', cls: 'kind-improvement' },
+  fix: { label: 'Fix', cls: 'kind-fix' },
+};
+---
+<BaseLayout
+  title="Changelog"
+  description="Customer-visible changes to Praxnote, in reverse chronological order. New features, improvements, and fixes that affect how the product works."
+>
+  <PageHeader
+    eyebrow="Changelog"
+    title="What's changed, in reverse chronological order."
+    lede="Customer-visible changes only — new features, improvements that affect workflow, and fixes that affect data or billing. Security patches and minor UI polish aren't listed unless they change how you use the product."
+  />
+
+  <section class="changelog-meta">
+    <div class="container container-wide">
+      <div class="meta-bar">
+        <div class="meta-item">
+          <span class="meta-label">Want a heads-up on each change?</span>
+          <a href="/contact?topic=changelog" class="meta-link">Email me when published</a>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Looking forward instead?</span>
+          <a href="/roadmap" class="meta-link">See the roadmap →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="releases">
+    <div class="container container-wide">
+      {releases.length === 0 && (
+        <div class="changelog-empty">
+          <h2>The public changelog starts at v1.0.</h2>
+          <p>
+            Praxnote is in <strong>early access</strong>. We're onboarding practices personally and
+            shipping changes weekly, but we're not publishing a customer-facing changelog yet — we'd
+            rather start the record at the first general-release tag than backfill marketing prose.
+          </p>
+          <p>
+            If you're already an early-access practice, your point of contact at Praxnote shares a
+            release note in your shared channel every time something user-visible changes. If you'd
+            like to follow what's coming, the <a href="/roadmap">roadmap</a> is public.
+          </p>
+        </div>
+      )}
+      {releases.map((release) => (
+        <article class="release">
+          <aside class="release-meta">
+            <time datetime={release.date}>{new Date(release.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            <span class="release-version">v{release.version}</span>
+          </aside>
+          <div class="release-body">
+            <h2>{release.headline}</h2>
+            <ul class="release-items">
+              {release.items.map((item) => (
+                <li>
+                  <span class={`kind-tag ${kindStyles[item.kind].cls}`}>{kindStyles[item.kind].label}</span>
+                  <span class="item-text">{item.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Want to know what's next?"
+    heading="The roadmap is public too."
+    body="We update the roadmap quarterly with what's shipping, what's planned, and what we're considering. If your situation isn't represented, tell us."
+    primaryHref="/roadmap"
+    primaryLabel="See the roadmap"
+    secondaryHref="/contact?topic=roadmap"
+    secondaryLabel="Email the team"
+    variant="paper"
+  />
+</BaseLayout>
+
+<style>
+  .changelog-meta { padding: 1.5rem 0; border-bottom: 1px solid var(--hairline); }
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--stone-500);
+  }
+  .meta-link {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--brand-teal-dark);
+    text-decoration: none;
+  }
+
+  .releases { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+  .release {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .release:last-child { border-bottom: none; }
+  @media (max-width: 720px) { .release { grid-template-columns: 1fr; gap: 1rem; } }
+
+  .release-meta { display: flex; flex-direction: column; gap: 0.35rem; }
+  .release-meta time {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--stone-900);
+    font-variation-settings: 'opsz' 36, 'SOFT' 50;
+  }
+  .release-version {
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--stone-500);
+    background: var(--paper-warm);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    align-self: flex-start;
+  }
+
+  .release-body h2 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    font-variation-settings: 'opsz' 72, 'SOFT' 30;
+  }
+  .release-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .release-items li {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0.85rem;
+    align-items: baseline;
+  }
+  @media (max-width: 520px) { .release-items li { grid-template-columns: 1fr; gap: 0.3rem; } }
+
+  .kind-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    width: fit-content;
+  }
+  .kind-feature { background: var(--brand-teal-soft); color: var(--brand-teal-dark); }
+  .kind-improvement { background: var(--terracotta-soft); color: var(--terracotta); }
+  .kind-fix { background: var(--paper-warm); color: var(--stone-700); border: 1px solid var(--hairline); }
+
+  .item-text { color: var(--stone-700); line-height: 1.6; font-size: 0.95rem; }
+
+  .changelog-empty {
+    max-width: 720px;
+    padding: 2rem 0 1rem;
+  }
+  .changelog-empty h2 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-variation-settings: 'opsz' 96, 'SOFT' 30;
+  }
+  .changelog-empty p {
+    color: var(--stone-700);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+</style>

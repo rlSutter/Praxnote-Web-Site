@@ -40,6 +40,7 @@ const isActive = (path: string) => pathname === path || pathname.startsWith(path
             <h4>Platform</h4>
             <a href="/features/offline-vault">Offline vault</a>
             <a href="/product">Platform overview</a>
+            <a href="/deployment">Cloud vs. Dedicated</a>
             <a href="/security">Security &amp; trust</a>
           </div>
         </div>
@@ -59,7 +60,7 @@ const isActive = (path: string) => pathname === path || pathname.startsWith(path
       <a href="/security" data-mobile-order="3" class:list={['nav-link', isActive('/security') && 'is-active']} aria-current={isActive('/security') ? 'page' : undefined}>Security</a>
       <a href="/pricing" data-mobile-order="2" class:list={['nav-link', isActive('/pricing') && 'is-active']} aria-current={isActive('/pricing') ? 'page' : undefined}>Pricing</a>
       <a href="/resources" data-mobile-order="6" class:list={['nav-link', isActive('/resources') && 'is-active']} aria-current={isActive('/resources') ? 'page' : undefined}>Resources</a>
-      <a href="/demo" data-mobile-order="1" class="btn btn-primary nav-cta">Book a demo</a>
+      <a href="/demo" data-mobile-order="1" class="btn btn-primary nav-cta">Request access</a>
     </div>
   </div>
 </nav>

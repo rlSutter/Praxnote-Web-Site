@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CTASection from '../components/CTASection.astro';
+
+const roadmap = [
+  {
+    band: 'Shipped and stable',
+    description: 'In active use by early-access practices; production-grade architecture.',
+    items: [
+      { title: 'AI-drafted session notes, treatment plans, letters', detail: 'Fourteen editable global skills. Five note formats. Five treatment-plan formats.' },
+      { title: 'Supervision queue, end to end', detail: 'Approve, send back, set aside — with a mouse or a single-key shortcut, and a full record of every decision.' },
+      { title: 'Cash-pay billing, Stripe, superbills', detail: 'Per-therapist CPT rate overrides. Sliding-scale documentation. AR aging.' },
+      { title: 'Right-to-be-forgotten workflows', detail: 'Redact rather than delete, so the U.S. records-retention rules and a European or Canadian erasure request can both be honored at the same time. Every step recorded.' },
+      { title: 'Client portal with one-click sign-in', detail: 'Intakes, consents, secure messages, payments, superbill download.' },
+      { title: 'BAA-included onboarding', detail: 'Click-through BAA, cryptographically logged signature.' },
+    ],
+  },
+  {
+    band: 'Shipping this quarter',
+    description: 'In active development, expected to ship within the next 90 days.',
+    items: [
+      { title: 'Self-serve Cloud trial', detail: 'Free trial that takes a practice from signup to first documented session without a sales call.' },
+      { title: 'Posted indicative pricing', detail: 'Per-clinician numbers for Solo and Group tiers; Enterprise and Dedicated quoted.' },
+      { title: 'Practice-level AI usage visibility', detail: 'In-product admin dashboard showing AI draft usage vs. monthly limit.' },
+      { title: 'Supervision-meeting export', detail: 'Printable per-supervisor-supervisee summary of flagged items for offline review.' },
+    ],
+  },
+  {
+    band: 'Next on the build',
+    description: 'Planned for the following quarter. Order may shift based on what we learn from shipping the items above.',
+    items: [
+      { title: 'Praxnote Dedicated — productized deployment', detail: 'Documented runbook, automated update pipeline, BYO-Anthropic-key support.' },
+      { title: 'Migration tooling — SimplePractice', detail: 'Documented import path. Self-serve where possible, services-supported where not.' },
+      { title: 'Migration tooling — TherapyNotes, Owl Practice, Jane', detail: 'Sequenced behind SimplePractice import, same playbook structure.' },
+      { title: 'AI provider abstraction', detail: 'Anthropic stays default. Second-provider pluggability without rewrite. Per-skill cost observability.' },
+      { title: 'Outcome measures depth — ORS/SRS, OQ-45, AUDIT, C-SSRS', detail: 'Extends current seven-scale library. Client-side scheduled push of measures.' },
+    ],
+  },
+  {
+    band: 'Considering',
+    description: 'On the long-term roadmap. Sequencing depends on signal from customers and on the items above landing well.',
+    items: [
+      { title: 'Native telehealth video', detail: 'Currently pluggable; we\'d ship a default provider in the deployment.' },
+      { title: 'Cloud Canadian region', detail: 'In-country PHI hosting for Canadian practices; province-specific retention rules and CAD platform billing track behind it.' },
+      { title: 'BYO model endpoint for Dedicated', detail: 'Customer points a Dedicated tenant at an alternate or self-hosted model. AI abstraction is the prerequisite.' },
+      { title: 'Insurance billing — clearinghouse integration', detail: 'Off the roadmap until we have 50+ paying practices and clear signal it\'s the right next investment.' },
+      { title: 'e-Prescribing / EPCS', detail: 'Not in scope for behavioral-health-only practices. Would only be added for a specific partnership opportunity.' },
+    ],
+  },
+];
+---
+<BaseLayout
+  title="Roadmap"
+  description="Public roadmap for Praxnote — what's shipped, what's in flight this quarter, what's next, and what we're considering. Updated quarterly."
+>
+  <PageHeader
+    eyebrow="Roadmap"
+    title="What we're building, in the order we're building it."
+    lede="Updated quarterly. Items are grouped by confidence: shipped, this quarter, next quarter, considering. We don't list everything — just the work likely to matter to customers and prospects."
+  />
+
+  <section class="roadmap-meta">
+    <div class="container container-wide">
+      <div class="meta-bar">
+        <div class="meta-item">
+          <span class="meta-label">Last updated</span>
+          <span class="meta-value">May 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Next update</span>
+          <span class="meta-value">August 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Want to influence priorities?</span>
+          <a href="/contact?topic=roadmap" class="meta-link">Email us →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {roadmap.map((band, i) => (
+    <section class={`band band-${i}`}>
+      <div class="container container-wide">
+        <header class="band-head">
+          <p class="band-tag">{band.band}</p>
+          <p class="band-description">{band.description}</p>
+        </header>
+        <div class="items">
+          {band.items.map((item) => (
+            <article class="item">
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CTASection
+    eyebrow="Don't see something you need?"
+    heading="Tell us what we're missing."
+    body="The roadmap reflects what we hear from practices we talk to. If your situation isn't represented, we want to know. The fastest way is a short email — we read all of them."
+    primaryHref="/contact?topic=roadmap"
+    primaryLabel="Email the team"
+    secondaryHref="/changelog"
+    secondaryLabel="See the changelog"
+    variant="paper"
+  />
+</BaseLayout>
+
+<style>
+  .roadmap-meta { padding: 1.5rem 0; border-bottom: 1px solid var(--hairline); }
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--stone-500);
+  }
+  .meta-value { font-family: var(--font-display); font-size: 1.1rem; color: var(--stone-900); }
+  .meta-link {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--brand-teal-dark);
+    text-decoration: none;
+  }
+
+  .band { padding: clamp(2.5rem, 4vw, 3.5rem) 0; border-bottom: 1px solid var(--hairline); }
+  .band-0 { background: var(--paper); }
+  .band-1 { background: var(--paper-warm); }
+  .band-2 { background: var(--paper); }
+  .band-3 { background: var(--paper-warm); }
+
+  .band-head { margin-bottom: 1.75rem; max-width: 760px; }
+  .band-tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-variation-settings: 'opsz' 72, 'SOFT' 30;
+    color: var(--brand-teal-dark);
+    margin-bottom: 0.4rem;
+  }
+  .band-0 .band-tag { color: var(--success); }
+  .band-1 .band-tag { color: var(--brand-teal-dark); }
+  .band-2 .band-tag { color: var(--terracotta); }
+  .band-3 .band-tag { color: var(--stone-500); }
+  .band-description {
+    color: var(--stone-600);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (max-width: 720px) { .items { grid-template-columns: 1fr; } }
+
+  .item {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.4rem;
+  }
+  .item h3 {
+    font-size: 1.1rem;
+    font-variation-settings: 'opsz' 48, 'SOFT' 50;
+    margin-bottom: 0.4rem;
+  }
+  .item p {
+    color: var(--stone-600);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+</style>

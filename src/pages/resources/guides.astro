@@ -4,12 +4,12 @@ import PageHeader from '../../components/PageHeader.astro';
 import CTASection from '../../components/CTASection.astro';
 
 const guides = [
-  { title: 'SOAP vs. DAP vs. BIRP, when each note format fits', summary: 'A clinician\'s guide to the four traditional formats and when each one earns its place in your documentation.', tag: 'Documentation' },
-  { title: 'Process-Based Therapy for therapists who haven\'t adopted it yet', summary: 'A practical introduction to PBT and the EEMM matrix, with a worked example of a treatment plan.', tag: 'Modality' },
-  { title: 'GDPR for US-based therapists with EU clients', summary: 'What right-to-erasure means in practice, how it interacts with HIPAA retention, and what your erasure workflow needs to do.', tag: 'Compliance' },
-  { title: 'Building a supervision workflow that scales', summary: 'How to design a supervision practice that handles thirty notes a week without burning out the supervisor.', tag: 'Operations' },
-  { title: 'AI ethics in clinical practice, what "in your workflow" should mean', summary: 'A practical framework for thinking about AI in a clinical context, beyond marketing and beyond fear.', tag: 'AI ethics' },
-  { title: 'Burnout reduction through documentation efficiency', summary: 'The research on documentation burden in behavioral health, and what a more efficient documentation flow actually changes.', tag: 'Clinician wellbeing' },
+  { title: 'SOAP, DAP, BIRP — when each note format fits', summary: 'A clinician\'s guide to the traditional note formats and the kind of session each one suits best.', tag: 'Documentation' },
+  { title: 'Process-Based Therapy for clinicians who haven\'t tried it yet', summary: 'A practical introduction to PBT and the EEMM matrix, with a worked example of what a treatment plan looks like.', tag: 'Modality' },
+  { title: 'Right-to-be-forgotten for US-based therapists with European clients', summary: 'What the right-to-erasure means in practice, how it sits alongside the U.S. records-retention rules, and what your workflow needs to be able to do.', tag: 'Compliance' },
+  { title: 'Building a supervision workflow that holds up', summary: 'How to design a supervision practice that handles thirty notes a week without burning out the supervisor or the supervisees.', tag: 'Operations' },
+  { title: 'AI in clinical practice — what "in your workflow" should actually mean', summary: 'A practical way to think about AI in a clinical context, past the marketing and past the fear.', tag: 'Ethics' },
+  { title: 'Documentation burden and clinician burnout', summary: 'What the research says about documentation load in behavioral health, and what a faster, calmer documentation experience actually changes.', tag: 'Clinician wellbeing' },
 ];
 ---
 <BaseLayout
@@ -19,7 +19,7 @@ const guides = [
   <PageHeader
     eyebrow="Guides"
     title="Long-form. <em>Considered.</em> Free."
-    lede="Pieces we wrote because the questions kept coming up, from clinicians, supervisors, and practice owners considering a documentation platform. Drafts of these are in progress; sign up to be notified when each lands."
+    lede="Pieces we wrote because the same questions kept coming up — from clinicians, supervisors, and practice owners thinking through whether a documentation platform is right for them. Drafts of these are in progress; let us know which one you'd like first and we'll send it when it's ready."
   />
 
   <section class="guide-list">
@@ -39,12 +39,12 @@ const guides = [
 
   <CTASection
     eyebrow="Want a heads-up when each lands?"
-    heading="We email you when a guide is published. No marketing list."
-    body="Tell us which topic you're most interested in and we'll email you when that piece is published. We do not send unrelated marketing email."
+    heading="We'll email you when a guide is published. Nothing else."
+    body="Tell us which topic you'd like first and we'll send you that piece the moment it's ready. We don't send unrelated marketing email — we don't have a marketing list."
     primaryHref="/contact?topic=guides"
     primaryLabel="Email me when published"
     secondaryHref="/demo"
-    secondaryLabel="Or book a demo"
+    secondaryLabel="Or request access"
     variant="paper"
   />
 </BaseLayout>

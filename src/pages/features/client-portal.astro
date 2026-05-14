@@ -5,14 +5,14 @@ import CTASection from '../../components/CTASection.astro';
 ---
 <BaseLayout
   title="Client portal"
-  description="One-click sign-in links, self-scheduling, secure messaging, document upload, multilingual portal. Generous touch targets. Built to respect clients' time and attention."
+  description="A simple, calm portal for the people your clinicians care for. One-click sign-in by email or text, mobile-first, English and Spanish out of the box."
 >
   <PageHeader
     eyebrow="Client portal"
-    title="Care that respects your client's time. <em>And privacy.</em>"
-    lede="Praxnote's portal is intentionally sparse, fast, and mobile-first. Clients sign in with a one-click link, no passwords. Multilingual. Generous touch targets. Eight pages, every one translated."
+    title="A portal that respects the client's <em>time and attention.</em>"
+    lede="The Praxnote portal is intentionally calm and quick. Clients tap a sign-in link from their email or text — there's no password to remember. It works on a phone the way clients expect a phone to work. Every screen is translated."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
   </PageHeader>
 
   <section class="overview">
@@ -21,15 +21,15 @@ import CTASection from '../../components/CTASection.astro';
         <div>
           <h2>What clients can do.</h2>
           <ul class="checks">
-            <li>Sign in with a one-click link from email or SMS, no password</li>
-            <li>View and self-schedule appointments against therapist availability</li>
-            <li>Reschedule or cancel within practice-defined policy</li>
-            <li>Send and receive secure messages with read receipts</li>
-            <li>Upload intake forms, insurance cards, and assessments</li>
-            <li>Complete assigned assessments (PHQ-9, GAD-7, more)</li>
-            <li>View invoices and pay through Stripe</li>
-            <li>Enroll in autopay with saved payment method</li>
-            <li>Switch between English and Spanish (or other languages on request)</li>
+            <li>Sign in by tapping a link in their email or text — no password</li>
+            <li>See their upcoming appointments, and book new ones against their clinician's availability</li>
+            <li>Reschedule or cancel, within the practice's policy</li>
+            <li>Send and receive secure messages with their clinician</li>
+            <li>Upload intake forms, insurance cards, and completed assessments</li>
+            <li>Complete an assessment their clinician assigned (PHQ-9, GAD-7, and others)</li>
+            <li>See and pay invoices</li>
+            <li>Set up autopay with a saved card</li>
+            <li>Switch between English and Spanish (or other languages your practice adds)</li>
           </ul>
         </div>
         <div class="mock">
@@ -39,10 +39,10 @@ import CTASection from '../../components/CTASection.astro';
               <span class="badge">EN · ES</span>
             </header>
             <h4>Welcome back, Jordan</h4>
-            <p class="muted">You have one upcoming session and one outstanding form.</p>
+            <p class="muted">You have one upcoming session and one form to complete.</p>
             <ul class="mock-list">
               <li><strong>Tue 3:00 pm</strong> · Dr. Patel · Telehealth</li>
-              <li><strong>Form</strong> · Initial Intake (8 min)</li>
+              <li><strong>Form</strong> · Initial intake (8 min)</li>
               <li><strong>Assessment</strong> · PHQ-9 · ready to start</li>
             </ul>
             <button class="btn btn-primary">Complete intake</button>
@@ -56,11 +56,11 @@ import CTASection from '../../components/CTASection.astro';
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">How clients sign in</p>
-        <h2>One-click links. No passwords to remember, lose, or leak.</h2>
+        <h2>One-click links. <em>No passwords to remember, lose, or leak.</em></h2>
         <p class="lede">
-          Praxnote sends the client a sign-in link by email or text. On our side,
-          the link is stored in a form we can't read back. Only the client's tap
-          on the original email or text opens the portal.
+          Praxnote sends each client a single-use sign-in link by email or text. They tap it,
+          they're in. No password is created, stored, or asked for — which means there is no
+          password for anyone to steal, share, or reuse from another site.
         </p>
       </header>
 
@@ -68,16 +68,16 @@ import CTASection from '../../components/CTASection.astro';
         <div class="card">
           <h4>How sign-in works</h4>
           <ol class="num-list">
-            <li>Client requests access (or receives an invite from the clinician)</li>
-            <li>Praxnote sends a one-click sign-in link by email or text</li>
-            <li>Client taps the link, the portal opens, signed in</li>
-            <li>Client device can also enable a PIN-locked offline cache for low-connectivity contexts</li>
+            <li>The client requests access, or receives an invitation from their clinician</li>
+            <li>Praxnote sends them a single-use link by email or text</li>
+            <li>They tap the link, and the portal opens, already signed in</li>
+            <li>For clients who use the portal offline (waiting rooms, in transit), the device can keep a private, PIN-locked copy of what they need</li>
           </ol>
         </div>
         <div class="card">
           <h4>Why this is safer than passwords</h4>
-          <p>Most password breaches happen because clients reuse passwords across services. One-click sign-in links don't have that failure mode, there's no shared secret to reuse.</p>
-          <p>For practices that prefer two-factor, we layer a text code or an authenticator-app code on top of the sign-in flow.</p>
+          <p>Most password breaches happen because people reuse the same password across sites. A site that doesn't have a password can't have that problem. There's nothing to remember and nothing to steal.</p>
+          <p>For practices that want an extra layer, the portal can be set to require a one-time code by email on every sign-in. SMS codes and authenticator-app codes are coming.</p>
         </div>
       </div>
     </div>
@@ -86,29 +86,32 @@ import CTASection from '../../components/CTASection.astro';
   <section class="i18n">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Multilingual</p>
-        <h2>English and Spanish out of the box. More languages on request.</h2>
+        <p class="eyebrow">For clients who don't read in English</p>
+        <h2>English and Spanish from day one. <em>More on request.</em></h2>
         <p class="lede">
-          Every page of the client portal is translated. English and Spanish ship by
-          default. Practices serving clients in additional languages can add more, and
-          Praxnote remembers each client's preference between visits. Practice and admin
-          screens stay in English by design.
+          Every screen of the client portal is translated. English and Spanish ship by default. Practices
+          serving clients in other languages can add more, and each client's language preference is
+          remembered between visits. Clinician and admin screens stay in English.
         </p>
       </header>
 
       <ul class="checks">
-        <li>Each client's language preference is remembered between visits</li>
-        <li>Add more languages on request; English is always available as a fallback</li>
-        <li>Every portal screen is accessible, with generous touch targets sized for thumbs</li>
-        <li>Warm, calm palette tuned to meet accessibility-grade contrast standards</li>
+        <li>The client's language preference is remembered each time they come back</li>
+        <li>Additional languages can be added at the practice's request; English is always available</li>
+        <li>Every screen is designed for phones — large taps, clear type, calm pacing</li>
+        <li>A warm, low-contrast palette designed to meet accessibility standards without feeling clinical</li>
       </ul>
     </div>
   </section>
 
   <CTASection
-    eyebrow="See the portal end-to-end"
+    eyebrow="See the portal end to end"
     heading="Walk through a client's first day."
-    body="From the first sign-in link to appointment, intake, and first assessment, about ten minutes on the demo. The shape of the experience your clients will actually have."
+    body="From the first sign-in link through their first appointment, first intake, and first assessment — about ten minutes on the walk-through. The shape of the experience your clients will actually have."
+    primaryHref="/demo"
+    primaryLabel="Book a walk-through"
+    secondaryHref="/features/scheduling"
+    secondaryLabel="See scheduling"
   />
 </BaseLayout>
 
@@ -150,11 +153,11 @@ import CTASection from '../../components/CTASection.astro';
   .mock-list strong { color: var(--brand-teal-dark); margin-right: 0.4rem; }
 
   .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
-  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .auth, .i18n { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 760px; margin-bottom: 2rem; }
   .section-head .lede { margin-top: 1rem; }
   .num-list { padding-left: 1.25rem; color: var(--stone-700); }
-  .num-list li { margin-bottom: 0.5rem; line-height: 1.6; }
-  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
+  .num-list li { margin-bottom: 0.5rem; line-height: 1.65; }
   .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.85rem; }
-  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
 </style>

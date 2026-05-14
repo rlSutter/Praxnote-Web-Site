@@ -5,27 +5,29 @@ import CTASection from '../../components/CTASection.astro';
 ---
 <BaseLayout
   title="Praxnote for supervisors"
-  description="A supervision queue built for high-volume reviewers. Down-arrow / up-arrow navigation, hotkeys, bulk operations, and a clear audit trail."
+  description="Clinical supervision that respects supervisor time. One place to see every supervisee's notes, three clear actions, and a record of every decision."
 >
   <PageHeader
     eyebrow="Supervisors"
-    title="A queue that <em>respects your time.</em>"
-    lede="Supervisors don't need another inbox. They need fast triage, a clear audit trail, and the right defaults."
+    title="Supervision that <em>respects your time.</em>"
+    lede="A clinical supervisor doesn't need another inbox. You need to see your supervisees' work clearly, decide quickly when the work is sound, and have a way to ask for changes when it isn't — without losing the thread of what's been asked, returned, or resolved."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
-    <a href="/features/supervision" class="btn btn-secondary">Supervision queue detail</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
+    <a href="/features/supervision" class="btn btn-secondary">See the supervision queue</a>
   </PageHeader>
 
   <section class="story">
     <div class="container container-narrow">
-      <p class="eyebrow">The shape of a supervision week</p>
-      <h2>Thirty notes. Forty minutes if you're lucky. Twenty if you have keyboard navigation.</h2>
+      <p class="eyebrow">A real supervision week</p>
+      <h2>Thirty notes. <em>Twenty minutes.</em> Nothing forgotten.</h2>
       <p>
-        Most supervision review platforms feel like email from 2008. Praxnote treats the
-        queue like the high-volume reviewer surface it is: keyboard navigation, hotkeys,
-        bulk operations, and a confirmation dialog on every destructive action. Supervisees
-        can sign their own notes by default; the supervisor reviews after the fact and
-        approves, returns for revision, or flags for discussion.
+        Most supervision tools feel like an email inbox from 2008 — long lists, no
+        structure, and no record of what you've already decided. Praxnote gives you one
+        screen that shows every supervisee's recent notes, organized so the work that's
+        ready to read sits on top and the work that's waiting on someone else sits in its
+        own bucket. You read a note. You make a decision. You move on. By the time you
+        close the screen, there's a clear record of what you approved, what you sent back,
+        and what you set aside for the next supervision meeting.
       </p>
     </div>
   </section>
@@ -33,22 +35,27 @@ import CTASection from '../../components/CTASection.astro';
   <section class="actions alt">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Three actions, three audit-logged outcomes</p>
-        <h2>Approve. Return. Flag.</h2>
+        <p class="eyebrow">Three clear decisions</p>
+        <h2>Approve. Send back. Set aside.</h2>
+        <p class="lede">
+          Every supervision decision falls into one of three buckets. Praxnote gives each its own
+          action, its own record, and its own follow-through. Click them with the mouse,
+          or fly through the queue with a single keystroke each if you prefer — both work.
+        </p>
       </header>
 
       <div class="grid grid-3">
         <div class="card">
-          <h4>Approve · <kbd>a</kbd></h4>
-          <p>Confirms note quality. Note becomes immutable. Signature event written to the activity log. Bulk approve gated by ConfirmDialog with a safety count.</p>
+          <h4>Approve</h4>
+          <p>For the notes that meet your standard. One click. The note is finalized, your signature is on the record, and the supervisee gets a quiet confirmation. If you want to approve several clean notes at once, you can — Praxnote always shows you how many you're about to approve and asks you to confirm before it commits.</p>
         </div>
         <div class="card">
-          <h4>Return · <kbd>r</kbd></h4>
-          <p>Note returned to supervisee with reason text. Supervisee sees the request in their dashboard. Audit log records the return event.</p>
+          <h4>Send back</h4>
+          <p>For notes that need another pass. Write a short comment about what needs to change, and the note goes back to the supervisee with your reason visible on their dashboard. They make the changes and resubmit. The conversation stays attached to the note — you don't lose the thread three weeks later.</p>
         </div>
         <div class="card">
-          <h4>Flag · <kbd>f</kbd></h4>
-          <p>Non-blocking. Note marked for the next supervision meeting. Useful for clinical patterns that don't warrant a return-for-revision.</p>
+          <h4>Set aside for supervision</h4>
+          <p>For notes that don't need a rewrite but do raise something worth discussing — a clinical pattern, a boundary question, an ethics consultation. Flag it. Praxnote keeps the flagged items together so you can pull them up at your next supervision meeting and not have to remember which one was Sarah's.</p>
         </div>
       </div>
     </div>
@@ -57,41 +64,78 @@ import CTASection from '../../components/CTASection.astro';
   <section class="control">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Configurable to your training program</p>
-        <h2>Pre-signature gate, post-signature review, or both.</h2>
+        <p class="eyebrow">Your training model, not ours</p>
+        <h2>Sign first, review after — or review first, then sign.</h2>
         <p class="lede">
-          Praxnote's default model is post-signature review (supervisees sign their own
-          work; the supervisor reviews in the queue). Some training programs require
-          pre-signature gating; that's configurable per practice. The model is yours.
+          Some practices have supervisees sign their own notes, with the supervisor
+          reviewing afterward. Others — especially training programs — require a
+          supervisor's eyes before a note is final. Praxnote supports either. The
+          choice is made at the practice level by an admin, not by us, and not buried in
+          a settings page only an engineer can find.
         </p>
       </header>
+
+      <div class="grid grid-2 control-grid">
+        <div class="card">
+          <h4>Post-signature review (the default)</h4>
+          <p>Supervisees finalize their own notes. You review them afterward, approving, sending back, or setting aside as needed. Works well for licensed clinicians under collaborative supervision, and for any practice where supervisors don't need to gate every note.</p>
+        </div>
+        <div class="card">
+          <h4>Pre-signature review</h4>
+          <p>Notes can't be finalized until a supervisor approves them. The supervisee sees their note sitting in your queue and knows it's waiting. Works for training programs, post-graduate residencies, and anywhere supervision is licensure-required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="record alt">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">A record you don't have to think about</p>
+        <h2>Every supervision decision, kept.</h2>
+      </header>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>What you approved, when, and why</h4>
+          <p>Every approval is signed and timestamped. If a licensing board, an attorney, or your own future self ever needs to know who reviewed what, the record is there, exportable, and complete.</p>
+        </div>
+        <div class="card">
+          <h4>What you returned, and how it resolved</h4>
+          <p>When you send a note back with a comment, the reason is captured and stays attached to the note. When the supervisee resubmits, the conversation is right there. Nothing falls between the cracks.</p>
+        </div>
+        <div class="card">
+          <h4>Print-ready meeting prep</h4>
+          <p>For your next supervision meeting, Praxnote can give you a clean summary of everything you flagged for a given supervisee — printable, shareable, ready to walk into the room with.</p>
+        </div>
+        <div class="card">
+          <h4>Nothing destructive happens by accident</h4>
+          <p>If an action can't be undone — bulk approval, voiding a return, deleting a flag — Praxnote always confirms first and shows you exactly what will happen. The keyboard is fast; the safety stays on.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <CTASection
-    eyebrow="See the queue on real notes"
-    heading="A 20-minute demo for supervisors."
-    body="Bring (or use ours) a sample queue. We'll walk down-arrow / up-arrow navigation, bulk approve with ConfirmDialog, return-for-revision with reasoning, and flag-for-discussion."
+    eyebrow="See the queue on a real week"
+    heading="A 20-minute walk-through, on supervisor terms."
+    body="Bring a recent week of your supervisees' work, or use a sample queue we have ready. We'll walk through approving the clean notes, sending one back with a comment, flagging one for next week's meeting, and printing the meeting prep."
+    primaryHref="/demo"
+    primaryLabel="Book a supervisor walk-through"
+    secondaryHref="/features/supervision"
+    secondaryLabel="Read the supervision queue page"
   />
 </BaseLayout>
 
 <style>
   .story { padding: clamp(2.5rem, 5vw, 4rem) 0; }
-  .story p { color: var(--stone-700); line-height: 1.7; max-width: 640px; }
+  .story p { color: var(--stone-700); line-height: 1.7; }
   .story h2 { margin: 0.5rem 0 1.5rem; }
   .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
   .section-head { max-width: 720px; margin-bottom: 2rem; }
   .section-head .lede { margin-top: 1rem; }
+  .actions, .control, .record { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .control-grid { margin-top: 1rem; }
   .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
-  kbd {
-    display: inline-block;
-    background: var(--brand-teal);
-    color: var(--paper);
-    border-radius: 4px;
-    padding: 0.05rem 0.4rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.78em;
-    font-weight: 600;
-  }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
 </style>

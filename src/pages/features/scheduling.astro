@@ -5,47 +5,47 @@ import CTASection from '../../components/CTASection.astro';
 ---
 <BaseLayout
   title="Scheduling"
-  description="All-therapist calendars, availability blocks, waitlist management, calendar sync, and session-type management with CPT-coded sessions."
+  description="The full calendar of the practice in one view, self-scheduling for clients, a waitlist that doesn't slip, and clear at-a-glance status on every session."
 >
   <PageHeader
     eyebrow="Scheduling"
     title="The schedule, <em>without the spreadsheet.</em>"
-    lede="Praxnote's scheduling layer is built for the practice administrator who manages four therapists' calendars, the solo clinician who wants self-scheduling, and the supervisor who needs to see who's where."
+    lede="A calendar that works for the practice admin managing four clinicians, the solo clinician who wants clients to self-book, and the supervisor who needs to see where the team is on any given afternoon."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
   </PageHeader>
 
   <section class="capabilities">
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">What it does</p>
-        <h2>Calendars that map to how the practice runs.</h2>
+        <h2>A calendar that maps to how a practice actually runs.</h2>
       </header>
 
       <div class="grid grid-2">
         <div class="card">
-          <h4>All-therapist visibility</h4>
-          <p>Practice administrators see every therapist's calendar in one view. Therapists see their own. Supervisees see their supervisor's availability when scheduling joint sessions.</p>
+          <h4>Every clinician's calendar, in one view</h4>
+          <p>Practice admins see the whole practice at once. Clinicians see their own. Supervisees can see their supervisor's openings when they're booking a joint session.</p>
         </div>
         <div class="card">
-          <h4>Availability blocks</h4>
-          <p>Therapists set windows of availability. Clients self-schedule against those windows from the portal. No back-and-forth about times.</p>
+          <h4>Availability your clinicians set</h4>
+          <p>Each clinician sets the windows they're available. Clients can self-book against those windows from the portal. No back-and-forth about times. No phone tag.</p>
         </div>
         <div class="card">
-          <h4>Calendar sync</h4>
-          <p>Google Calendar today; more on the roadmap. Sync respects practice boundaries, your personal calendar stays separate from your practice availability.</p>
+          <h4>Calendars stay in sync</h4>
+          <p>Praxnote syncs with Google Calendar today. Your personal calendar and your practice availability stay separate — your spouse can't accidentally see a client's name, and a personal appointment doesn't show up to a client as "available."</p>
         </div>
         <div class="card">
-          <h4>Waitlist management</h4>
-          <p>Status flow: waiting → notified → converted/removed. Practice administrators see who's waiting, what they're waiting for, and how long it's been.</p>
+          <h4>A waitlist that doesn't slip</h4>
+          <p>See who's on the waitlist, what they're waiting for, and how long they've been waiting. Move clients from waiting to scheduled when an opening appears. Nothing dissolves into "I think someone emailed about that."</p>
         </div>
         <div class="card">
-          <h4>Session types</h4>
-          <p>CPT-coded sessions with per-therapist rate overrides. The same code can be billed at different rates by different licensures, cleanly.</p>
+          <h4>The right rate on the right session</h4>
+          <p>Each kind of session has a code and a default rate. If a clinician's license, contract, or experience calls for a different rate, override it for them. The right number applies every time.</p>
         </div>
         <div class="card">
-          <h4>Status icons</h4>
-          <p>Scheduled, signed, no-show, late-cancelled, therapist-cancelled. Each has its own icon on the calendar, at-a-glance status without a click.</p>
+          <h4>Status, at a glance</h4>
+          <p>Scheduled, signed, no-show, late-cancel, clinician-cancelled — each has a clear icon on the calendar. You can see where the day stands without clicking into anything.</p>
         </div>
       </div>
     </div>
@@ -54,32 +54,41 @@ import CTASection from '../../components/CTASection.astro';
   <section class="self-sched alt">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Self-scheduling</p>
-        <h2>Clients book against availability. Without a phone call.</h2>
+        <p class="eyebrow">When the client books their own time</p>
+        <h2>Clients book against openings. <em>Without a phone call.</em></h2>
         <p class="lede">
-          From the portal: pick a session type, see open windows for the assigned therapist
-          (or any therapist for new clients), confirm. The portal uses ProgressSteps UX so
-          clients always know where they are.
+          From the portal: the client picks the kind of session, sees the openings on their clinician's
+          calendar (or any clinician, if they're new), confirms. They're guided through it one step at
+          a time so they always know what to do next.
         </p>
       </header>
 
       <ul class="checks">
-        <li>Practice-defined cancellation policy enforces itself in the portal</li>
-        <li>SMS and email reminders configurable per practice</li>
-        <li>Late-cancel and no-show fees route to the billing layer if your practice charges them</li>
-        <li>Telehealth integrations on supported providers; native video on the roadmap</li>
+        <li>The practice's cancellation policy is enforced quietly in the portal</li>
+        <li>Reminder emails and texts go out on the cadence the practice has set</li>
+        <li>Late-cancel and no-show fees flow into billing automatically, if your practice charges them</li>
+        <li>Telehealth works through the providers Praxnote supports; native video is coming</li>
       </ul>
     </div>
   </section>
 
-  <CTASection />
+  <CTASection
+    eyebrow="See it on a real week"
+    heading="Walk a Tuesday through the calendar."
+    body="Bring a recent week — an availability change, a waitlist client to schedule, a session that needs to be marked no-show. We'll walk how each one plays out."
+    primaryHref="/demo"
+    primaryLabel="Book a walk-through"
+    secondaryHref="/features/client-portal"
+    secondaryLabel="See the client portal"
+  />
 </BaseLayout>
 
 <style>
   .capabilities { padding: clamp(3rem, 5vw, 4.5rem) 0; }
   .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
-  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .self-sched { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 760px; margin-bottom: 2rem; }
   .section-head .lede { margin-top: 1rem; }
   .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
 </style>

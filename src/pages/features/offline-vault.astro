@@ -5,35 +5,35 @@ import CTASection from '../../components/CTASection.astro';
 ---
 <BaseLayout
   title="Offline vault"
-  description="A PIN-locked, encrypted local store on your device. Notes you write offline queue up and sync the moment you reconnect. Built for clinicians working in homes, schools, and rural clinics."
+  description="A private, PIN-locked copy of what you need on your laptop or phone. Whatever you write while offline is saved and synced the moment you reconnect."
 >
   <PageHeader
     eyebrow="Offline vault"
     title="The chart, <em>even when the wifi isn't.</em>"
-    lede="Praxnote's offline vault is a PIN-locked vault that lives on your device. Notes you write while offline queue up and sync the moment you reconnect. Built for clinicians whose practice doesn't always have an Ethernet jack."
+    lede="Praxnote's offline vault keeps a private, PIN-locked copy of what you need on your laptop or phone. Whatever you write while offline is saved on your device and synced the moment you reconnect. Built for clinicians whose practice doesn't always have a reliable signal."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
   </PageHeader>
 
   <section class="overview">
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">When the vault matters</p>
-        <h2>Real-world clinical contexts where connectivity isn't guaranteed.</h2>
+        <h2>Real clinical days where the wifi isn't a given.</h2>
       </header>
 
       <div class="grid grid-3">
         <div class="card">
           <h4>Home visits</h4>
-          <p>In-home therapy with families. Cell service is unreliable; wifi belongs to the family. The vault lets you document on-site, even offline.</p>
+          <p>Working with a family in their living room. Cell service is uneven; the family's wifi has a password no one can find. The vault lets you document on-site, even when there's no signal.</p>
         </div>
         <div class="card">
-          <h4>School-based clinicians</h4>
-          <p>School wifi is locked down. Captive portals interrupt sessions. The vault keeps your work local until you're back on a known network.</p>
+          <h4>School-based work</h4>
+          <p>School networks tend to lock down anything that isn't on a pre-approved list, and the sign-in page that interrupts you every fifteen minutes makes any clinical software unusable. The vault keeps your work local until you're back on your own network.</p>
         </div>
         <div class="card">
           <h4>Rural clinics</h4>
-          <p>Rural broadband is improving but not yet uniform. The vault lets clinicians work without waiting for a request to round-trip.</p>
+          <p>Rural broadband is improving but it isn't everywhere yet. The vault lets clinicians do their work without waiting for every save to round-trip across a slow link.</p>
         </div>
       </div>
     </div>
@@ -43,25 +43,25 @@ import CTASection from '../../components/CTASection.astro';
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">How it works</p>
-        <h2>An encrypted store on your device, locked behind your PIN.</h2>
+        <h2>A locked copy on your device. <em>Your PIN unlocks it.</em></h2>
       </header>
 
       <div class="grid grid-2">
         <div class="card">
-          <h4>Encryption</h4>
-          <p>The vault lives on your device. Your PIN unlocks it. Without the PIN, nothing inside is readable, even by someone holding the laptop.</p>
+          <h4>Locked, every time</h4>
+          <p>The vault sits on your device. Your PIN unlocks it. Without the PIN, nothing inside is readable — even by someone holding your laptop. If the device walks away, the contents go with it but stay sealed.</p>
         </div>
         <div class="card">
-          <h4>Auto-lock</h4>
-          <p>The vault auto-locks after a configurable idle window. The PIN is required to unlock, same UX pattern your phone trains.</p>
+          <h4>Auto-locks when you step away</h4>
+          <p>The vault locks itself after a short idle period, the same way your phone does. You re-enter your PIN to come back in. Practices can set the idle time.</p>
         </div>
         <div class="card">
-          <h4>Outbox</h4>
-          <p>Writes performed offline queue into the outbox. When the device reconnects to a known network, queued writes sync to the server in order. Conflicts are surfaced to the clinician for resolution.</p>
+          <h4>What you write offline, saved for later</h4>
+          <p>Notes you write while you're offline are saved in the vault and queued for sync. When your device is back on a known network, the queued work syncs in the right order. If anything has been edited in two places, Praxnote shows you the conflict and lets you resolve it.</p>
         </div>
         <div class="card">
-          <h4>Audit-aware</h4>
-          <p>Activity log entries are still recorded for offline reads and writes. They sync with the outbox. The vault doesn't bypass the audit trail. It batches it.</p>
+          <h4>The record still catches every change</h4>
+          <p>Praxnote keeps an entry for every read and write you make, even offline. Those entries sync along with the work. The vault doesn't go around the audit trail — it just waits to add to it.</p>
         </div>
       </div>
     </div>
@@ -70,26 +70,34 @@ import CTASection from '../../components/CTASection.astro';
   <section class="setup">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Setup</p>
-        <h2>Set a PIN during onboarding. That's most of it.</h2>
+        <p class="eyebrow">Setting it up</p>
+        <h2>Pick a PIN during onboarding. <em>That's most of it.</em></h2>
         <p class="lede">
-          The vault is opt-in per clinician. During onboarding, you choose a PIN, the vault
-          provisions, and you're ready. Practices can require the vault for certain roles or
-          devices via practice options.
+          The vault is optional and chosen per clinician. During onboarding, you set a PIN and the
+          vault sets itself up. Practices that want the vault required for certain roles or devices
+          can make that a rule.
         </p>
       </header>
     </div>
   </section>
 
-  <CTASection />
+  <CTASection
+    eyebrow="See it from the road"
+    heading="Walk through a session in airplane mode."
+    body="On a walk-through we can simulate writing a note offline and watch it sync when the connection comes back. About ten minutes — enough to know whether it works for the way your practice actually moves."
+    primaryHref="/demo"
+    primaryLabel="Book a walk-through"
+    secondaryHref="/security"
+    secondaryLabel="Read the security overview"
+  />
 </BaseLayout>
 
 <style>
   .overview { padding: clamp(3rem, 5vw, 4.5rem) 0; }
   .alt { background: var(--paper-warm); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
-  .section-head { max-width: 720px; margin-bottom: 2rem; }
+  .how, .setup { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 760px; margin-bottom: 2rem; }
   .section-head .lede { margin-top: 1rem; }
-  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
   .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
 </style>

@@ -28,23 +28,24 @@ const instruments = [
 ---
 <BaseLayout
   title="Assessments"
-  description="Twenty built-in validated instruments (PHQ-9, GAD-7, PCL-5, ACE, BDI-II, C-SSRS, RAADS-R, and more) with upload-and-score extraction and a deterministic safety net. Custom scoring rules per instrument."
+  description="Twenty validated assessment instruments built in. Upload a completed form, get a scored result on the chart. Severity bands and interpretations you can adjust for your population."
 >
   <PageHeader
     eyebrow="Assessments"
-    title="Validated instruments. Upload-and-score. <em>Routed back to the chart.</em>"
-    lede="Praxnote ships with twenty validated instruments and the infrastructure to add more without code changes. Scores route automatically into the client record. Severity bands and interpretations come from per-instrument scoring rules you can override per practice."
+    title="Validated instruments. Score from a file. <em>Land on the chart.</em>"
+    lede="Praxnote ships with twenty validated assessments. Upload a completed form in almost any format, and the scored result lands on the client's record. The interpretations and severity bands are clinician-editable for the populations you actually see."
   >
-    <a href="/demo" class="btn btn-primary btn-lg">Book a demo</a>
+    <a href="/demo" class="btn btn-primary btn-lg">Request access</a>
   </PageHeader>
 
   <section class="instruments">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Instruments shipped</p>
-        <h2>Twenty validated instruments out of the box.</h2>
+        <p class="eyebrow">Instruments included</p>
+        <h2>Twenty validated assessments, ready to use.</h2>
         <p class="lede">
-          Adding more is an assessment-builder change, not an engineering one.
+          Adding more is something we can do without writing new code — they're set up in the
+          same editable structure as everything else in Praxnote.
         </p>
       </header>
 
@@ -63,21 +64,41 @@ const instruments = [
   <section class="upload section-ink">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Upload-and-score pipeline</p>
-        <h2>Drop in a file. Get a scored assessment back.</h2>
+        <p class="eyebrow">From a file to a scored result</p>
+        <h2>Drop in the form. <em>Get a result back.</em></h2>
         <p class="lede">
-          Praxnote's scoring tool accepts PDFs, images, Word, Excel, CSV, and RTF files. It
-          works in stages, with a clinician-grade safety net for plain-text PDFs that don't
-          quite scan cleanly the first time.
+          Praxnote accepts the form however the client gave it to you — PDF, image, Word, Excel,
+          CSV, RTF. The scoring happens in steps, with a careful safety check for the simple
+          paper-and-pen forms that sometimes don't scan cleanly the first time.
         </p>
       </header>
 
       <ol class="pipeline">
-        <li><span class="step">1</span><h4>Read the file</h4><p>Praxnote pulls the answers off whatever you uploaded, no matter the format.</p></li>
-        <li><span class="step">2</span><h4>Find the scoring rules</h4><p>Each instrument has its own scoring rules. Your practice's customized rules apply first; the Praxnote default fills in if you haven't customized.</p></li>
-        <li><span class="step">3</span><h4>Score it</h4><p>The AI applies the scoring rules to the answers and produces a result in the form your clinicians expect.</p></li>
-        <li><span class="step">4</span><h4>Cross-check the result</h4><p>For straightforward "question, then answer" PDFs, a second clinician-grade safety net re-scores the form to make sure the AI got it right.</p></li>
-        <li><span class="step">5</span><h4>Land it on the chart</h4><p>The scored assessment lands in the client's record, linked back to the file you uploaded. The clinician reviews it from the chart.</p></li>
+        <li>
+          <span class="step">1</span>
+          <h4>Read the form</h4>
+          <p>Praxnote pulls the client's answers off whatever file you gave it, in whatever format the form happened to be in.</p>
+        </li>
+        <li>
+          <span class="step">2</span>
+          <h4>Apply your scoring</h4>
+          <p>Each instrument has its own scoring rules. If your practice has adjusted them, your version applies. Otherwise the Praxnote default does.</p>
+        </li>
+        <li>
+          <span class="step">3</span>
+          <h4>Produce the result</h4>
+          <p>The scoring is applied to the answers and the result is produced in the shape your clinicians expect — total score, sub-scales, severity band.</p>
+        </li>
+        <li>
+          <span class="step">4</span>
+          <h4>Cross-check</h4>
+          <p>For straightforward question-and-answer forms, Praxnote re-scores the form a second way and compares the two — a quiet safety check that you don't have to think about.</p>
+        </li>
+        <li>
+          <span class="step">5</span>
+          <h4>Onto the chart</h4>
+          <p>The scored assessment lands on the client's record, linked back to the file you uploaded. The clinician reviews it from the chart.</p>
+        </li>
       </ol>
     </div>
   </section>
@@ -85,41 +106,45 @@ const instruments = [
   <section class="micro-skills">
     <div class="container">
       <header class="section-head">
-        <p class="eyebrow">Scoring micro-skills</p>
-        <h2>The scoring rules are skills, too.</h2>
+        <p class="eyebrow">Severity bands you can shape</p>
+        <h2>The interpretation is editable, too.</h2>
         <p class="lede">
-          Every instrument has a dedicated scoring skill: plain text, editable, audit-logged.
-          Practices can override the global scoring skill for their patient population (for
-          example, adjusting severity bands for a specific demographic).
+          The scoring rules and the severity-band interpretations are written in plain language and
+          editable per practice. Some clinical populations need different severity cutoffs than the
+          ones that ship as defaults — your practice can adjust them and your version will apply
+          from then on.
         </p>
       </header>
 
       <div class="grid grid-2">
         <div class="card">
           <h4>Why this matters</h4>
-          <p>Severity bands aren't universal. A PHQ-9 of 12 means different things in different contexts. Letting practices customize the scoring skill (without changing how scores propagate) lets clinical voice flow through the data.</p>
+          <p>Severity bands aren't universal. A PHQ-9 of 12 can mean different things in different populations. Letting your practice shape the interpretation lets the clinical voice come through, without changing how the underlying score is calculated.</p>
         </div>
         <div class="card">
           <h4>What you can change</h4>
-          <p>Cutoffs, severity language, interpretation paragraphs, dual-mode (provider vs client) phrasing. Each is a plain-text edit, deployed to your practice only.</p>
+          <p>The cutoffs, the wording of each severity band, the interpretation paragraphs the clinician sees, and the paragraphs the client sees in their version. Each is a plain-language edit that applies to your practice only.</p>
         </div>
       </div>
     </div>
   </section>
 
   <CTASection
-    eyebrow="See an assessment scored"
-    heading="Bring a PDF. We'll score it on the demo."
-    body="Most demos run an upload-and-score on a real (or sanitized) PHQ-9 PDF. You'll see the score, the severity band, and how it lands on the chart."
+    eyebrow="See it on a real form"
+    heading="Bring a PHQ-9 or a GAD-7. We'll score it on the walk-through."
+    body="On most walk-throughs we run a real (or sanitized) form through scoring live. You'll see the result, the severity band, and how it lands on the chart."
+    primaryHref="/demo"
+    primaryLabel="Book a walk-through"
+    secondaryHref="/features/session-notes"
+    secondaryLabel="See session notes"
   />
 </BaseLayout>
 
 <style>
   .instruments { padding: clamp(3rem, 5vw, 4.5rem) 0; }
-  .section-head { max-width: 720px; margin-bottom: 2.5rem; }
+  .micro-skills { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .section-head { max-width: 760px; margin-bottom: 2.5rem; }
   .section-head .lede { margin-top: 1rem; }
-  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; background: var(--paper-warm); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
-  .section-ink code { background: rgba(250, 247, 242, 0.1); color: var(--paper); }
   .instr-grid {
     list-style: none;
     padding: 0;
@@ -185,5 +210,5 @@ const instruments = [
   @media (max-width: 600px) { .pipeline { grid-template-columns: 1fr; } .pipeline li { border-right: 0; border-bottom: 1px solid rgba(250, 247, 242, 0.08); } }
 
   .card h4 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.6; }
+  .card p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; }
 </style>

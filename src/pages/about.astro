@@ -5,74 +5,84 @@ import CTASection from '../components/CTASection.astro';
 ---
 <BaseLayout
   title="About Praxnote"
-  description="Praxnote is built for behavioral health by people who care about clinical nuance, defense-grade privacy, and the craft of documentation."
+  description="Praxnote is built for behavioral health by people who care about clinical voice, client privacy, and the way documentation is part of the work."
 >
   <PageHeader
     eyebrow="About"
-    title="A clinical workspace, finally on your side."
-    lede="Praxnote was built because the platforms behavioral health was supposed to settle for kept missing what mattered most, the clinician's voice, the practice's autonomy, and the client's privacy."
+    title="A clinical workspace, <em>finally on your side.</em>"
+    lede="Praxnote was built because the software behavioral health was supposed to settle for kept missing what mattered most — the clinician's voice, the practice's freedom to run the way it runs, and the client's privacy."
   />
 
   <section class="about-body">
     <div class="container container-narrow">
       <h2>Why we built it</h2>
       <p>
-        Most clinical software treats documentation as a checkbox. Most AI scribes treat
-        clinical reasoning as a transcription problem. Both miss something fundamental:
-        documentation is part of the work. The summary you write helps you think about the
-        next session. The treatment plan you draft is a document of what you and the client
+        Most clinical software treats documentation like a chore. Most AI scribes treat
+        clinical reasoning like a transcription problem. Both miss something fundamental:
+        documentation is part of the work. The note you write helps you think about the next
+        session. The treatment plan you draft is the document of what you and your client
         agreed on. The referral letter is, for many clients, the only thing that lands in
         front of the next provider.
       </p>
       <p>
-        We built Praxnote because we wanted documentation to be respected, neither
-        outsourced to a black box nor shoehorned into a 2008 EHR. We wanted skills the
-        clinician could read and edit. We wanted privacy that wasn't policy-only. We wanted
-        modality breadth, not because every practice needs ten formats, but because forcing
-        a CBT clinician into SOAP-only is a small daily violence.
+        We built Praxnote because we wanted documentation to be respected — neither handed
+        off to a black box, nor squeezed into software designed before tablets existed. We
+        wanted the prompts behind the AI to be something a clinician could read and adjust.
+        We wanted privacy to be a real thing, not a paragraph in a policy. And we wanted the
+        breadth of formats that real practices need — because forcing a CBT clinician into
+        SOAP-only is a small daily violence.
       </p>
 
       <h2>What we believe</h2>
       <ol class="beliefs">
         <li>
-          <strong>The clinician is the author.</strong> AI is the apprentice. Every document is signed.
+          <strong>The clinician is the author.</strong> The AI is the apprentice. Every document is signed by a person.
         </li>
         <li>
-          <strong>Skills are readable.</strong> If you can't see the prompt, you can't trust the output.
+          <strong>The instructions behind the AI should be readable.</strong> If you can't see what's shaping the draft, you can't trust the draft.
         </li>
         <li>
-          <strong>Privacy is architecture.</strong> Encryption at rest, no third-party AI proxies, no analytics phone-homes by default.
+          <strong>Privacy lives in the structure, not the policy.</strong> Records are encrypted. The AI is reached directly, not through a third party. The site doesn't load fonts, scripts, or trackers from anywhere else.
         </li>
         <li>
-          <strong>Practices are different.</strong> A solo clinician and a fifty-therapist group don't need the same product wearing the same hat. They need shared substrate and different surfaces.
+          <strong>Practices come in different shapes.</strong> A solo clinician and a thirty-person group can't be served by the same product pretending to be the same product. They share the same foundation; the surface fits the work.
         </li>
         <li>
-          <strong>The client is a person.</strong> One-click sign-in. Multilingual. Generous touch targets. Mobile-first.
+          <strong>The client is a person.</strong> One tap to sign in. More than one language. A portal that works on a phone the way a phone is supposed to work.
         </li>
         <li>
-          <strong>Compliance is a feature.</strong> HIPAA six-year retention, GDPR right-to-erasure, PIPEDA. Built-in workflows, not policy PDFs.
+          <strong>The compliance work belongs in the product.</strong> The six-year records-retention rule and the right-to-be-forgotten rule both apply at the same time. Praxnote carries that load so you don't have to.
         </li>
       </ol>
 
       <h2>How we work</h2>
       <p>
-        Praxnote is built by a small team that talks to clinicians, supervisors, billers,
-        and clients every week. We ship continuously, document canonically, and treat the
-        platform like a clinical artifact in itself, versioned, audited, signed.
+        Praxnote is built by a small team that talks to clinicians, supervisors, billers, and
+        clients every week. We release improvements continuously, write our decisions down so
+        they can be checked, and treat the platform like a clinical artifact in itself —
+        versioned, recorded, signed.
       </p>
       <p>
-        We're privately held and self-funded. We do not sell user data. We do not train on
-        your charts. We do not run third-party trackers, fonts, or AI proxies. These are not
-        marketing claims. They are architectural choices we make and re-make every week.
+        We're privately held and self-funded. We do not sell client information. We do not
+        train AI models on your charts. We do not run third-party trackers, third-party
+        fonts, or any vendor in between Praxnote and the AI provider. These are not slogans.
+        They are choices we make and re-make every week, and they show up in the structure of
+        the product rather than in a policy page.
       </p>
 
       <h2>Where we are, where we're going</h2>
       <p>
-        Praxnote serves behavioral health practices in the United States and Canada,
-        from solo clinicians to mid-size groups. Hospital-system EHR integrations, native
-        mobile apps, and group-session documentation are on the roadmap; we'll be honest about
-        what's shipped and what's planned. Read the
-        <a href="/security">security overview</a> for what's in production today.
+        Praxnote is in early access today, built for behavioral health practices in the
+        United States and Canada — from solo clinicians to mid-size groups. We're onboarding
+        our first practices personally, so the first month is hand-held and we learn faster
+        from what we hear.
+      </p>
+      <p>
+        Hospital-system integrations, native mobile apps, and group-session documentation are
+        on the longer-term plan. We're honest about what's shipped and what's planned — the
+        <a href="/roadmap">roadmap</a> is public, and the <a href="/changelog">changelog</a>
+        records every change worth knowing about. The <a href="/security">security
+        overview</a> describes what's true in the product today.
       </p>
     </div>
   </section>
@@ -80,9 +90,9 @@ import CTASection from '../components/CTASection.astro';
   <CTASection
     eyebrow="Talk to the team"
     heading="The fastest way to understand Praxnote is to see it."
-    body="A 30-minute walkthrough of your real workflow, with someone who can answer clinical, technical, and pricing questions in the same call."
+    body="A 30-minute walk-through on your real workflow, with someone who can answer clinical, practical, and pricing questions in the same conversation."
     primaryHref="/demo"
-    primaryLabel="Book a demo"
+    primaryLabel="Request access"
     secondaryHref="/contact"
     secondaryLabel="Send us a note"
     variant="paper"

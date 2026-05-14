@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CTASection from '../components/CTASection.astro';
+
+const packages = [
+  {
+    name: 'Concierge migration assistance',
+    audience: 'For practices moving from another EHR — primarily SimplePractice, TherapyNotes, Owl Practice, or Jane. Automated bulk-import tooling is on the roadmap; this package covers the gap with hands-on help.',
+    tiers: [
+      { size: 'Solo practice', price: '$2,500', detail: 'Up to 200 active clients, single clinician.' },
+      { size: 'Small group', price: '$5,000', detail: '2–10 clinicians.' },
+      { size: 'Mid group', price: '$10,000+', detail: '11–25 clinicians, custom mapping.' },
+    ],
+    includes: [
+      'Joint working session to map your origin-system export into Praxnote\'s data model',
+      'Hands-on assisted entry of client roster, scheduling, intake documents, and active treatment plans',
+      'Calendar import via ICS / Google / Outlook (already automated)',
+      'Per-document AI extraction for intake docs and assessment PDFs (already automated)',
+      'Parallel-run period — keep your old EHR live, read-only, for chart history (signed-note history is not imported; retention stays in your old system)',
+      'A written playbook your practice keeps so the same steps work for late additions',
+    ],
+  },
+  {
+    name: 'Custom skill authoring',
+    audience: 'For practices with specialized modalities or assessment workflows the global skills don\'t cover.',
+    tiers: [
+      { size: 'Single skill', price: '$1,200', detail: 'One skill, two rounds of revision, version-tracked.' },
+      { size: 'Five-skill bundle', price: '$4,800', detail: 'Five skills, shared editing session, training included.' },
+      { size: 'Practice skill library', price: 'From $9,500', detail: 'Comprehensive modality library, ongoing maintenance retainer optional.' },
+    ],
+    includes: [
+      'Modality-specific draft templates (EMDR, IFS, somatic, ketamine-assisted, others)',
+      'Custom assessment scoring and interpretation skills',
+      'Practice-specific letter and discharge templates',
+      'Version-tracked in your practice — clinicians always see the current version',
+      'Editable in-product after delivery, so the skill stays yours',
+    ],
+  },
+  {
+    name: 'Supervision-program rollout',
+    audience: 'For group practices establishing or formalizing a supervision program with associates and supervisees.',
+    tiers: [
+      { size: 'Program setup', price: '$6,000', detail: 'Two-week engagement, up to 5 supervisors and 20 supervisees.' },
+      { size: 'Training-program rollout', price: 'From $12,000', detail: 'Post-graduate residencies, multi-cohort setup, custom reporting.' },
+    ],
+    includes: [
+      'Role and permission design tailored to your supervision structure',
+      'Pre-signature gating configured by tier and by clinician',
+      'Supervision-meeting export templates (printable, sharable)',
+      'Supervisor workshop on keyboard triage and bulk approval workflows',
+      'Audit-log review and documentation handoff',
+    ],
+  },
+  {
+    name: 'Training',
+    audience: 'For practices that want guided onboarding instead of self-serve, or ongoing workshops as the team grows.',
+    tiers: [
+      { size: 'Team workshop', price: '$1,800', detail: '2-hour live workshop, up to 15 attendees, recorded for replay.' },
+      { size: 'Hourly office hours', price: '$400 / hr', detail: 'Ad-hoc engineering and clinical-workflow help, block of 5 hours minimum.' },
+      { size: 'Quarterly retainer', price: '$6,000 / quarter', detail: 'Standing 1-hour weekly office hour plus async support.' },
+    ],
+    includes: [
+      'Role-specific tracks: clinicians, supervisors, admins',
+      'Recorded for replay and onboarding new staff',
+      'Live Q&A on your real workflows',
+      'Optional: customized to your modalities and skill library',
+      'Includes a written summary and next-step list',
+    ],
+  },
+];
+---
+<BaseLayout
+  title="Services"
+  description="Praxnote services: migration, custom AI skills, supervision-program rollout, and training. Fixed packages with posted prices."
+>
+  <PageHeader
+    eyebrow="Services"
+    title="Services that get you running, not retainers that don't end."
+    lede="Four service lines, all fixed-price, all scoped before we start. No retainer minimums, no hidden discovery fees, no scope creep. You can pick one, pick all four, or skip the page entirely — Praxnote is fully usable self-serve."
+  />
+
+  <section class="services-intro">
+    <div class="container container-narrow">
+      <p class="services-paragraph">
+        Praxnote is in early access — we onboard every practice personally, and most of that work is included.
+        These paid services exist for the cases where they earn their keep: a concierge migration from a legacy EHR,
+        a custom skill library for a specialized modality, a structured supervision-program setup, or workshops
+        for a larger team.
+      </p>
+    </div>
+  </section>
+
+  {packages.map((pkg, i) => (
+    <section class={i % 2 === 0 ? 'service-block' : 'service-block alt'}>
+      <div class="container container-wide">
+        <header class="section-head service-head">
+          <p class="eyebrow">{pkg.name}</p>
+          <h2>{pkg.audience}</h2>
+        </header>
+
+        <div class="service-grid">
+          <div class="tier-list">
+            {pkg.tiers.map((t) => (
+              <div class="tier-row">
+                <div class="tier-meta">
+                  <h4>{t.size}</h4>
+                  <p class="tier-detail">{t.detail}</p>
+                </div>
+                <div class="tier-price-cell">{t.price}</div>
+              </div>
+            ))}
+          </div>
+          <div class="includes-card card">
+            <h4>What's included</h4>
+            <ul class="checks">
+              {pkg.includes.map((line) => <li>{line}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="how-it-works wash">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">How a services engagement works</p>
+        <h2>Three steps. No surprises.</h2>
+      </header>
+
+      <ol class="how-list">
+        <li>
+          <span class="step-num">01</span>
+          <h4>Scoping call</h4>
+          <p>30 minutes. We pick the package that fits, confirm timing, and write the statement of work in plain English. You either sign it or you don't. No fees so far.</p>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <h4>Fixed-price engagement</h4>
+          <p>You pay 50% on signature, 50% on completion. The price is fixed even if the work takes us longer than expected. If we need more from you than we anticipated, we tell you before doing it.</p>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <h4>Handoff</h4>
+          <p>You get the deliverable, a written playbook, and a documented handback. We don't keep keys to anything you've handed us. If you want ongoing help, retainers are available — but they're not the default.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Frequently asked</p>
+        <h2>What practices ask about services.</h2>
+      </header>
+
+      <div class="faq-list">
+        <details>
+          <summary>Do I need services to use Praxnote?</summary>
+          <p>
+            No. Cloud is fully self-serve. Most practices migrate themselves, write their own skills if they
+            need custom ones, and don't need formal training. Services exist for the cases where they save
+            time or risk, not as a gate on using the product.
+          </p>
+        </details>
+        <details>
+          <summary>Why are the prices fixed instead of hourly?</summary>
+          <p>
+            Because we don't want our incentive to be "drag it out." Fixed pricing means our incentive is to
+            finish well and move on. If a project turns out to be larger than we scoped, that's our risk, not
+            yours. If it turns out to be smaller, the price doesn't change either — we put care into the scoping
+            call so neither side gets a surprise.
+          </p>
+        </details>
+        <details>
+          <summary>Can services be bundled with the software subscription?</summary>
+          <p>
+            Yes, on Enterprise and Dedicated contracts. Group and Solo tiers are subscription-only; services
+            are billed separately if you want them.
+          </p>
+        </details>
+        <details>
+          <summary>Do you work with US and Canadian practices?</summary>
+          <p>
+            Yes, both. US engagements are invoiced in USD; Canadian engagements in USD today, with CAD invoicing
+            on the roadmap. The concierge migration package is the same on both sides of the border —
+            SimplePractice, TherapyNotes, Owl Practice, and Jane are all systems we've helped practices
+            leave behind, but the data work is hands-on, not fully automated.
+          </p>
+        </details>
+        <details>
+          <summary>What about insurance-billing setup?</summary>
+          <p>
+            Praxnote does not currently handle in-network insurance billing (claims, ERAs, denials). We don't
+            offer migration or setup services for those workflows because the underlying product doesn't yet
+            support them. Cash-pay and out-of-network billing setup is included in the standard migration package.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Ready to scope an engagement?"
+    heading="A 30-minute scoping call costs nothing."
+    body="We'll listen to what you're trying to accomplish, recommend the right package (or no package), and write a one-page SOW. You decide from there."
+    primaryHref="/contact?topic=services"
+    primaryLabel="Book a scoping call"
+    secondaryHref="/pricing"
+    secondaryLabel="See subscription pricing"
+  />
+</BaseLayout>
+
+<style>
+  .services-intro { padding: clamp(2rem, 4vw, 3rem) 0; }
+  .services-paragraph {
+    font-family: var(--font-display);
+    font-variation-settings: 'opsz' 60, 'SOFT' 50;
+    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+    line-height: 1.6;
+    color: var(--stone-800);
+    max-width: 60ch;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .service-block { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+  .service-block.alt {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .service-head { max-width: 760px; margin-bottom: 2rem; }
+  .service-head h2 { font-size: clamp(1.4rem, 2.2vw, 1.7rem); color: var(--stone-800); }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .service-grid { grid-template-columns: 1fr; } }
+
+  .tier-list {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .tier-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tier-row:last-child { border-bottom: none; }
+  .tier-meta h4 { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.3rem; font-variation-settings: 'opsz' 48, 'SOFT' 50; }
+  .tier-detail { color: var(--stone-600); font-size: 0.9rem; margin: 0; line-height: 1.5; }
+  .tier-price-cell {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--brand-teal-dark);
+    font-variation-settings: 'opsz' 72, 'SOFT' 30;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .includes-card h4 { margin-bottom: 0.85rem; }
+
+  /* How it works */
+  .how-it-works { padding: clamp(3rem, 6vw, 5rem) 0; }
+  .how-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  @media (max-width: 820px) { .how-list { grid-template-columns: 1fr; } }
+  .how-list li {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+  }
+  .step-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--brand-teal);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.85rem;
+    font-variation-settings: 'opsz' 48, 'SOFT' 30;
+  }
+  .how-list h4 { margin-bottom: 0.5rem; }
+  .how-list p { color: var(--stone-700); font-size: 0.95rem; line-height: 1.65; margin: 0; }
+
+  /* FAQ */
+  .faq { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.5rem; max-width: 800px; }
+  details {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+  }
+  details[open] { border-color: var(--brand-teal-soft); }
+  details summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--stone-900);
+    font-variation-settings: 'opsz' 48, 'SOFT' 50;
+    list-style: none;
+    position: relative;
+    padding-right: 1.5rem;
+  }
+  details summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--brand-teal);
+    font-family: var(--font-sans);
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  details[open] summary::after { content: '−'; }
+  details p { margin-top: 0.85rem; color: var(--stone-600); font-size: 0.95rem; line-height: 1.6; }
+</style>
